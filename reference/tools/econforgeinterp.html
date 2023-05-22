@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Econforgeinterp &mdash; HARK latest documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Estimation" href="estimation.html" />
+    <link rel="prev" title="Distribution" href="distribution.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            HARK
+          </a>
+              <div class="version">
+                latest
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick-start.html">Installing HARK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick-start.html#learning-hark">Learning HARK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick-start.html#making-changes-to-hark">Making changes to HARK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick-start.html#next-steps">Next steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ARKitecture.html">ARKitecture of Econ-ARK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/CONTRIBUTING.html">Contributing to Econ-ARK</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">API Documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#tools">Tools</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">Tools</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="core.html">Core</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dcegm.html">dcegm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="distribution.html">Distribution</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Econforgeinterp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="estimation.html">Estimation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="frame.html">Frame</a></li>
+<li class="toctree-l4"><a class="reference internal" href="helpers.html">Helpers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="interpolation.html">Interpolation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="numba.html">Numba</a></li>
+<li class="toctree-l4"><a class="reference internal" href="parallel.html">Parallel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rewards.html">Rewards</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simulation.html">Simulation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="utilities.html">Utilities</a></li>
+<li class="toctree-l4"><a class="reference internal" href="validators.html">Validators</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#models">Models</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../CHANGELOG.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../example_notebooks/Gentle-Intro-To-HARK.html">A Gentle Introduction to HARK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../example_notebooks/PerfForesightConsumerType.html">PerfForesightConsumerType: Perfect foresight consumption-saving</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../example_notebooks/IndShockConsumerType.html">IndShockConsumerType Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../example_notebooks/KinkedRconsumerType.html">KinkedRconsumerType: Consumption-saving model with idiosyncratic income shocks and different interest rates on borrowing and saving</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../example_notebooks/ConsPortfolioModel.html">Portfolio Models in HARK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../example_notebooks/GenIncProcessModel.html">Permanent versus Persistent Income Shocks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../example_notebooks/LifecycleModel.html">A Lifecycle Model: The Distribution of Assets By Age</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../example_notebooks/HowWeSolveIndShockConsumerType.html">How we solve a model defined by the <code class="docutils literal notranslate"><span class="pre">IndShockConsumerType</span></code> class</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">HARK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">API Documentation</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Tools</a></li>
+      <li class="breadcrumb-item active">Econforgeinterp</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/reference/tools/econforgeinterp.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="econforgeinterp">
+<h1>Econforgeinterp<a class="headerlink" href="#econforgeinterp" title="Permalink to this heading"></a></h1>
+<span class="target" id="module-HARK.econforgeinterp"></span><dl class="py class">
+<dt class="sig sig-object py" id="HARK.econforgeinterp.DecayInterp">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">HARK.econforgeinterp.</span></span><span class="sig-name descname"><span class="pre">DecayInterp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit_fun</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extrap_method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'decay_prop'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#HARK.econforgeinterp.DecayInterp" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">MetricObject</span></code></p>
+<p>A class of interpolators that use a limiting function
+for extrapolation.</p>
+<p>See HARK/examples/Interpolation/DecayInterp.ipynb for examples of
+how to use this class.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="HARK.econforgeinterp.DecayInterp.distance_criteria">
+<span class="sig-name descname"><span class="pre">distance_criteria</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['interp']</span></em><a class="headerlink" href="#HARK.econforgeinterp.DecayInterp.distance_criteria" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="HARK.econforgeinterp.DecayInterp.extrap_decay_hark">
+<span class="sig-name descname"><span class="pre">extrap_decay_hark</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">closest_x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#HARK.econforgeinterp.DecayInterp.extrap_decay_hark" title="Permalink to this definition"></a></dt>
+<dd><p>“decay_hark” extrapolation method. Takes into account the rate at
+which the interpolator and limiting function are approaching at the
+edge of the grid for combining them.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>inputs that require extrapolation.</em>) – </p></li>
+<li><p><strong>closest_x</strong> (<em>for each</em><em> of </em><em>the inputs that require extrapolation</em><em>, </em><em>contains</em>) – the closest point that falls inside the grid.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="HARK.econforgeinterp.DecayInterp.extrap_decay_prop">
+<span class="sig-name descname"><span class="pre">extrap_decay_prop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">closest_x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#HARK.econforgeinterp.DecayInterp.extrap_decay_prop" title="Permalink to this definition"></a></dt>
+<dd><p>“decay_prop” extrapolation method. Combines the interpolator’s
+default extrapolation and the limiting function with weights
+that depend on how far from the grid the values are.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>inputs that require extrapolation.</em>) – </p></li>
+<li><p><strong>closest_x</strong> (<em>for each</em><em> of </em><em>the inputs that require extrapolation</em><em>, </em><em>contains</em>) – the closest point that falls inside the grid.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="HARK.econforgeinterp.DecayInterp.extrap_paste">
+<span class="sig-name descname"><span class="pre">extrap_paste</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">closest_x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#HARK.econforgeinterp.DecayInterp.extrap_paste" title="Permalink to this definition"></a></dt>
+<dd><p>“paste” extrapolation method. Uses the limiting function
+for extrapolation, but with a vertical shift that “pastes” it
+to the interpolator at the edge of the grid.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>inputs that require extrapolation.</em>) – </p></li>
+<li><p><strong>closest_x</strong> (<em>for each</em><em> of </em><em>the inputs that require extrapolation</em><em>, </em><em>contains</em>) – the closest point that falls inside the grid.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="HARK.econforgeinterp.LinearFast">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">HARK.econforgeinterp.</span></span><span class="sig-name descname"><span class="pre">LinearFast</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f_val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extrap_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'linear'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#HARK.econforgeinterp.LinearFast" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">MetricObject</span></code></p>
+<p>A class that constructs and holds all the necessary elements to
+call a multilinear interpolator from econforge.interpolator in
+a way that resembles the basic interpolators in HARK.interpolation.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="HARK.econforgeinterp.LinearFast.distance_criteria">
+<span class="sig-name descname"><span class="pre">distance_criteria</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['f_val',</span> <span class="pre">'grid_list']</span></em><a class="headerlink" href="#HARK.econforgeinterp.LinearFast.distance_criteria" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="HARK.econforgeinterp.LinearFast.gradient">
+<span class="sig-name descname"><span class="pre">gradient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#HARK.econforgeinterp.LinearFast.gradient" title="Permalink to this definition"></a></dt>
+<dd><p>Evaluates gradient of the interpolator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>args</strong> (<em>[</em><em>numpy.array</em><em>]</em>) – List of arrays. The i-th entry contains the i-th coordinate
+of all the points to be evaluated. All entries must have the
+same shape.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>List of the derivatives of the function with respect to each
+input, evaluated at the given points. E.g. if the interpolator
+represents 3D function f, f.gradient(x,y,z) will return
+[df/dx(x,y,z), df/dy(x,y,z), df/dz(x,y,z)]. Each element has the
+shape of items in args.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>[numpy.array]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="distribution.html" class="btn btn-neutral float-left" title="Distribution" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="estimation.html" class="btn btn-neutral float-right" title="Estimation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Econ-ARK team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>API Documentation &mdash; HARK latest documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Tools" href="tools/index.html" />
+    <link rel="prev" title="Contributing to Econ-ARK" href="../contributing/CONTRIBUTING.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            HARK
+          </a>
+              <div class="version">
+                latest
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick-start.html">Installing HARK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick-start.html#learning-hark">Learning HARK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick-start.html#making-changes-to-hark">Making changes to HARK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick-start.html#next-steps">Next steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ARKitecture.html">ARKitecture of Econ-ARK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/CONTRIBUTING.html">Contributing to Econ-ARK</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#tools">Tools</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tools/index.html">Tools</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#models">Models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ConsumptionSaving/index.html">Consumption Saving</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../CHANGELOG.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../example_notebooks/Gentle-Intro-To-HARK.html">A Gentle Introduction to HARK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../example_notebooks/PerfForesightConsumerType.html">PerfForesightConsumerType: Perfect foresight consumption-saving</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../example_notebooks/IndShockConsumerType.html">IndShockConsumerType Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../example_notebooks/KinkedRconsumerType.html">KinkedRconsumerType: Consumption-saving model with idiosyncratic income shocks and different interest rates on borrowing and saving</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../example_notebooks/ConsPortfolioModel.html">Portfolio Models in HARK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../example_notebooks/GenIncProcessModel.html">Permanent versus Persistent Income Shocks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../example_notebooks/LifecycleModel.html">A Lifecycle Model: The Distribution of Assets By Age</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../example_notebooks/HowWeSolveIndShockConsumerType.html">How we solve a model defined by the <code class="docutils literal notranslate"><span class="pre">IndShockConsumerType</span></code> class</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">HARK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">API Documentation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/reference/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="api-documentation">
+<h1>API Documentation<a class="headerlink" href="#api-documentation" title="Permalink to this heading"></a></h1>
+<section id="tools">
+<h2>Tools<a class="headerlink" href="#tools" title="Permalink to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tools/index.html">Tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tools/core.html">Core</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tools/core.html#HARK.core.AgentPopulation"><code class="docutils literal notranslate"><span class="pre">AgentPopulation</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/core.html#HARK.core.AgentType"><code class="docutils literal notranslate"><span class="pre">AgentType</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/core.html#HARK.core.Market"><code class="docutils literal notranslate"><span class="pre">Market</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/core.html#HARK.core.Model"><code class="docutils literal notranslate"><span class="pre">Model</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/core.html#HARK.core.distribute_params"><code class="docutils literal notranslate"><span class="pre">distribute_params()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/core.html#HARK.core.make_one_period_oo_solver"><code class="docutils literal notranslate"><span class="pre">make_one_period_oo_solver()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/core.html#HARK.core.solve_agent"><code class="docutils literal notranslate"><span class="pre">solve_agent()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/core.html#HARK.core.solve_one_cycle"><code class="docutils literal notranslate"><span class="pre">solve_one_cycle()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tools/dcegm.html">dcegm</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tools/dcegm.html#HARK.dcegm.calc_cross_points"><code class="docutils literal notranslate"><span class="pre">calc_cross_points()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/dcegm.html#HARK.dcegm.calc_linear_crossing"><code class="docutils literal notranslate"><span class="pre">calc_linear_crossing()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/dcegm.html#HARK.dcegm.calc_nondecreasing_segments"><code class="docutils literal notranslate"><span class="pre">calc_nondecreasing_segments()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/dcegm.html#HARK.dcegm.upper_envelope"><code class="docutils literal notranslate"><span class="pre">upper_envelope()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tools/distribution.html">Distribution</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tools/distribution.html#HARK.distribution.Bernoulli"><code class="docutils literal notranslate"><span class="pre">Bernoulli</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/distribution.html#HARK.distribution.ContinuousFrozenDistribution"><code class="docutils literal notranslate"><span class="pre">ContinuousFrozenDistribution</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/distribution.html#HARK.distribution.DiscreteDistribution"><code class="docutils literal notranslate"><span class="pre">DiscreteDistribution</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/distribution.html#HARK.distribution.DiscreteDistributionLabeled"><code class="docutils literal notranslate"><span class="pre">DiscreteDistributionLabeled</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/distribution.html#HARK.distribution.DiscreteFrozenDistribution"><code class="docutils literal notranslate"><span class="pre">DiscreteFrozenDistribution</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/distribution.html#HARK.distribution.Distribution"><code class="docutils literal notranslate"><span class="pre">Distribution</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/distribution.html#HARK.distribution.IndexDistribution"><code class="docutils literal notranslate"><span class="pre">IndexDistribution</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/distribution.html#HARK.distribution.Lognormal"><code class="docutils literal notranslate"><span class="pre">Lognormal</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/distribution.html#HARK.distribution.MVNormal"><code class="docutils literal notranslate"><span class="pre">MVNormal</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/distribution.html#HARK.distribution.MarkovProcess"><code class="docutils literal notranslate"><span class="pre">MarkovProcess</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/distribution.html#HARK.distribution.MeanOneLogNormal"><code class="docutils literal notranslate"><span class="pre">MeanOneLogNormal</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/distribution.html#HARK.distribution.Normal"><code class="docutils literal notranslate"><span class="pre">Normal</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/distribution.html#HARK.distribution.TimeVaryingDiscreteDistribution"><code class="docutils literal notranslate"><span class="pre">TimeVaryingDiscreteDistribution</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/distribution.html#HARK.distribution.Uniform"><code class="docutils literal notranslate"><span class="pre">Uniform</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/distribution.html#HARK.distribution.Weibull"><code class="docutils literal notranslate"><span class="pre">Weibull</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/distribution.html#HARK.distribution.add_discrete_outcome"><code class="docutils literal notranslate"><span class="pre">add_discrete_outcome()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/distribution.html#HARK.distribution.add_discrete_outcome_constant_mean"><code class="docutils literal notranslate"><span class="pre">add_discrete_outcome_constant_mean()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/distribution.html#HARK.distribution.approx_beta"><code class="docutils literal notranslate"><span class="pre">approx_beta()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/distribution.html#HARK.distribution.approx_lognormal_gauss_hermite"><code class="docutils literal notranslate"><span class="pre">approx_lognormal_gauss_hermite()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/distribution.html#HARK.distribution.calc_expectation"><code class="docutils literal notranslate"><span class="pre">calc_expectation()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/distribution.html#HARK.distribution.calc_lognormal_style_pars_from_normal_pars"><code class="docutils literal notranslate"><span class="pre">calc_lognormal_style_pars_from_normal_pars()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/distribution.html#HARK.distribution.calc_normal_style_pars_from_lognormal_pars"><code class="docutils literal notranslate"><span class="pre">calc_normal_style_pars_from_lognormal_pars()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/distribution.html#HARK.distribution.combine_indep_dstns"><code class="docutils literal notranslate"><span class="pre">combine_indep_dstns()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/distribution.html#HARK.distribution.distr_of_function"><code class="docutils literal notranslate"><span class="pre">distr_of_function()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/distribution.html#HARK.distribution.expected"><code class="docutils literal notranslate"><span class="pre">expected()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/distribution.html#HARK.distribution.make_markov_approx_to_normal"><code class="docutils literal notranslate"><span class="pre">make_markov_approx_to_normal()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/distribution.html#HARK.distribution.make_markov_approx_to_normal_by_monte_carlo"><code class="docutils literal notranslate"><span class="pre">make_markov_approx_to_normal_by_monte_carlo()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/distribution.html#HARK.distribution.make_tauchen_ar1"><code class="docutils literal notranslate"><span class="pre">make_tauchen_ar1()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tools/econforgeinterp.html">Econforgeinterp</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tools/econforgeinterp.html#HARK.econforgeinterp.DecayInterp"><code class="docutils literal notranslate"><span class="pre">DecayInterp</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/econforgeinterp.html#HARK.econforgeinterp.LinearFast"><code class="docutils literal notranslate"><span class="pre">LinearFast</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tools/estimation.html">Estimation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tools/estimation.html#HARK.estimation.bootstrap_sample_from_data"><code class="docutils literal notranslate"><span class="pre">bootstrap_sample_from_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/estimation.html#HARK.estimation.minimize_nelder_mead"><code class="docutils literal notranslate"><span class="pre">minimize_nelder_mead()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/estimation.html#HARK.estimation.minimize_powell"><code class="docutils literal notranslate"><span class="pre">minimize_powell()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/estimation.html#HARK.estimation.parallelNelderMead"><code class="docutils literal notranslate"><span class="pre">parallelNelderMead()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tools/frame.html">Frame</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tools/frame.html#HARK.frame.BackwardFrameReference"><code class="docutils literal notranslate"><span class="pre">BackwardFrameReference</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/frame.html#HARK.frame.ForwardFrameReference"><code class="docutils literal notranslate"><span class="pre">ForwardFrameReference</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/frame.html#HARK.frame.Frame"><code class="docutils literal notranslate"><span class="pre">Frame</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/frame.html#HARK.frame.FrameAgentType"><code class="docutils literal notranslate"><span class="pre">FrameAgentType</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/frame.html#HARK.frame.FrameModel"><code class="docutils literal notranslate"><span class="pre">FrameModel</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/frame.html#HARK.frame.FrameSet"><code class="docutils literal notranslate"><span class="pre">FrameSet</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/frame.html#HARK.frame.draw_frame_model"><code class="docutils literal notranslate"><span class="pre">draw_frame_model()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tools/helpers.html">Helpers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tools/helpers.html#HARK.helpers.copy_module"><code class="docutils literal notranslate"><span class="pre">copy_module()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/helpers.html#HARK.helpers.copy_module_to_local"><code class="docutils literal notranslate"><span class="pre">copy_module_to_local()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/helpers.html#HARK.helpers.print_helper"><code class="docutils literal notranslate"><span class="pre">print_helper()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tools/interpolation.html">Interpolation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tools/interpolation.html#HARK.interpolation.BilinearInterp"><code class="docutils literal notranslate"><span class="pre">BilinearInterp</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/interpolation.html#HARK.interpolation.BilinearInterpOnInterp1D"><code class="docutils literal notranslate"><span class="pre">BilinearInterpOnInterp1D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/interpolation.html#HARK.interpolation.BilinearInterpOnInterp2D"><code class="docutils literal notranslate"><span class="pre">BilinearInterpOnInterp2D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/interpolation.html#HARK.interpolation.ConstantFunction"><code class="docutils literal notranslate"><span class="pre">ConstantFunction</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/interpolation.html#HARK.interpolation.CubicHermiteInterp"><code class="docutils literal notranslate"><span class="pre">CubicHermiteInterp</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/interpolation.html#HARK.interpolation.CubicInterp"><code class="docutils literal notranslate"><span class="pre">CubicInterp</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/interpolation.html#HARK.interpolation.Curvilinear2DInterp"><code class="docutils literal notranslate"><span class="pre">Curvilinear2DInterp</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/interpolation.html#HARK.interpolation.DiscreteInterp"><code class="docutils literal notranslate"><span class="pre">DiscreteInterp</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/interpolation.html#HARK.interpolation.HARKinterpolator1D"><code class="docutils literal notranslate"><span class="pre">HARKinterpolator1D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/interpolation.html#HARK.interpolation.HARKinterpolator2D"><code class="docutils literal notranslate"><span class="pre">HARKinterpolator2D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/interpolation.html#HARK.interpolation.HARKinterpolator3D"><code class="docutils literal notranslate"><span class="pre">HARKinterpolator3D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/interpolation.html#HARK.interpolation.HARKinterpolator4D"><code class="docutils literal notranslate"><span class="pre">HARKinterpolator4D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/interpolation.html#HARK.interpolation.IdentityFunction"><code class="docutils literal notranslate"><span class="pre">IdentityFunction</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/interpolation.html#HARK.interpolation.LinearInterp"><code class="docutils literal notranslate"><span class="pre">LinearInterp</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/interpolation.html#HARK.interpolation.LinearInterpOnInterp1D"><code class="docutils literal notranslate"><span class="pre">LinearInterpOnInterp1D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/interpolation.html#HARK.interpolation.LinearInterpOnInterp2D"><code class="docutils literal notranslate"><span class="pre">LinearInterpOnInterp2D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/interpolation.html#HARK.interpolation.LowerEnvelope"><code class="docutils literal notranslate"><span class="pre">LowerEnvelope</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/interpolation.html#HARK.interpolation.LowerEnvelope2D"><code class="docutils literal notranslate"><span class="pre">LowerEnvelope2D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/interpolation.html#HARK.interpolation.LowerEnvelope3D"><code class="docutils literal notranslate"><span class="pre">LowerEnvelope3D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/interpolation.html#HARK.interpolation.MargMargValueFuncCRRA"><code class="docutils literal notranslate"><span class="pre">MargMargValueFuncCRRA</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/interpolation.html#HARK.interpolation.MargValueFuncCRRA"><code class="docutils literal notranslate"><span class="pre">MargValueFuncCRRA</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/interpolation.html#HARK.interpolation.QuadlinearInterp"><code class="docutils literal notranslate"><span class="pre">QuadlinearInterp</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/interpolation.html#HARK.interpolation.TrilinearInterp"><code class="docutils literal notranslate"><span class="pre">TrilinearInterp</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/interpolation.html#HARK.interpolation.TrilinearInterpOnInterp1D"><code class="docutils literal notranslate"><span class="pre">TrilinearInterpOnInterp1D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/interpolation.html#HARK.interpolation.UpperEnvelope"><code class="docutils literal notranslate"><span class="pre">UpperEnvelope</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/interpolation.html#HARK.interpolation.ValueFuncCRRA"><code class="docutils literal notranslate"><span class="pre">ValueFuncCRRA</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/interpolation.html#HARK.interpolation.VariableLowerBoundFunc2D"><code class="docutils literal notranslate"><span class="pre">VariableLowerBoundFunc2D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/interpolation.html#HARK.interpolation.VariableLowerBoundFunc3D"><code class="docutils literal notranslate"><span class="pre">VariableLowerBoundFunc3D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/interpolation.html#HARK.interpolation.calc_choice_probs"><code class="docutils literal notranslate"><span class="pre">calc_choice_probs()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/interpolation.html#HARK.interpolation.calc_log_sum"><code class="docutils literal notranslate"><span class="pre">calc_log_sum()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/interpolation.html#HARK.interpolation.calc_log_sum_choice_probs"><code class="docutils literal notranslate"><span class="pre">calc_log_sum_choice_probs()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/interpolation.html#HARK.interpolation.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tools/numba.html">Numba</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools/parallel.html">Parallel</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tools/parallel.html#HARK.parallel.multi_thread_commands"><code class="docutils literal notranslate"><span class="pre">multi_thread_commands()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/parallel.html#HARK.parallel.multi_thread_commands_fake"><code class="docutils literal notranslate"><span class="pre">multi_thread_commands_fake()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/parallel.html#HARK.parallel.run_commands"><code class="docutils literal notranslate"><span class="pre">run_commands()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tools/rewards.html">Rewards</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tools/rewards.html#HARK.rewards.CARAutility"><code class="docutils literal notranslate"><span class="pre">CARAutility()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/rewards.html#HARK.rewards.CARAutilityP"><code class="docutils literal notranslate"><span class="pre">CARAutilityP()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/rewards.html#HARK.rewards.CARAutilityPP"><code class="docutils literal notranslate"><span class="pre">CARAutilityPP()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/rewards.html#HARK.rewards.CARAutilityPPP"><code class="docutils literal notranslate"><span class="pre">CARAutilityPPP()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/rewards.html#HARK.rewards.CARAutilityP_inv"><code class="docutils literal notranslate"><span class="pre">CARAutilityP_inv()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/rewards.html#HARK.rewards.CARAutility_inv"><code class="docutils literal notranslate"><span class="pre">CARAutility_inv()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/rewards.html#HARK.rewards.CARAutility_invP"><code class="docutils literal notranslate"><span class="pre">CARAutility_invP()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/rewards.html#HARK.rewards.CRRAutility"><code class="docutils literal notranslate"><span class="pre">CRRAutility()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/rewards.html#HARK.rewards.CRRAutilityP"><code class="docutils literal notranslate"><span class="pre">CRRAutilityP()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/rewards.html#HARK.rewards.CRRAutilityPP"><code class="docutils literal notranslate"><span class="pre">CRRAutilityPP()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/rewards.html#HARK.rewards.CRRAutilityPPP"><code class="docutils literal notranslate"><span class="pre">CRRAutilityPPP()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/rewards.html#HARK.rewards.CRRAutilityPPPP"><code class="docutils literal notranslate"><span class="pre">CRRAutilityPPPP()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/rewards.html#HARK.rewards.CRRAutilityP_inv"><code class="docutils literal notranslate"><span class="pre">CRRAutilityP_inv()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/rewards.html#HARK.rewards.CRRAutilityP_invP"><code class="docutils literal notranslate"><span class="pre">CRRAutilityP_invP()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/rewards.html#HARK.rewards.CRRAutility_inv"><code class="docutils literal notranslate"><span class="pre">CRRAutility_inv()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/rewards.html#HARK.rewards.CRRAutility_invP"><code class="docutils literal notranslate"><span class="pre">CRRAutility_invP()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/rewards.html#HARK.rewards.StoneGearyCRRAutility"><code class="docutils literal notranslate"><span class="pre">StoneGearyCRRAutility()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/rewards.html#HARK.rewards.StoneGearyCRRAutilityP"><code class="docutils literal notranslate"><span class="pre">StoneGearyCRRAutilityP()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/rewards.html#HARK.rewards.StoneGearyCRRAutilityPP"><code class="docutils literal notranslate"><span class="pre">StoneGearyCRRAutilityPP()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/rewards.html#HARK.rewards.UtilityFuncCRRA"><code class="docutils literal notranslate"><span class="pre">UtilityFuncCRRA</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/rewards.html#HARK.rewards.UtilityFuncCobbDouglas"><code class="docutils literal notranslate"><span class="pre">UtilityFuncCobbDouglas</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/rewards.html#HARK.rewards.UtilityFuncCobbDouglasCRRA"><code class="docutils literal notranslate"><span class="pre">UtilityFuncCobbDouglasCRRA</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/rewards.html#HARK.rewards.UtilityFuncConstElastSubs"><code class="docutils literal notranslate"><span class="pre">UtilityFuncConstElastSubs</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/rewards.html#HARK.rewards.UtilityFunction"><code class="docutils literal notranslate"><span class="pre">UtilityFunction</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/rewards.html#HARK.rewards.cobb_douglas"><code class="docutils literal notranslate"><span class="pre">cobb_douglas()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/rewards.html#HARK.rewards.cobb_douglas_p"><code class="docutils literal notranslate"><span class="pre">cobb_douglas_p()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/rewards.html#HARK.rewards.cobb_douglas_pn"><code class="docutils literal notranslate"><span class="pre">cobb_douglas_pn()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/rewards.html#HARK.rewards.cobb_douglas_pp"><code class="docutils literal notranslate"><span class="pre">cobb_douglas_pp()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/rewards.html#HARK.rewards.const_elast_subs"><code class="docutils literal notranslate"><span class="pre">const_elast_subs()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/rewards.html#HARK.rewards.const_elast_subs_p"><code class="docutils literal notranslate"><span class="pre">const_elast_subs_p()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tools/simulation.html">Simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools/utilities.html">Utilities</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tools/utilities.html#HARK.utilities.NullFunc"><code class="docutils literal notranslate"><span class="pre">NullFunc</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/utilities.html#HARK.utilities.benchmark"><code class="docutils literal notranslate"><span class="pre">benchmark()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/utilities.html#HARK.utilities.calc_subpop_avg"><code class="docutils literal notranslate"><span class="pre">calc_subpop_avg()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/utilities.html#HARK.utilities.calc_weighted_avg"><code class="docutils literal notranslate"><span class="pre">calc_weighted_avg()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/utilities.html#HARK.utilities.construct_assets_grid"><code class="docutils literal notranslate"><span class="pre">construct_assets_grid()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/utilities.html#HARK.utilities.determine_platform"><code class="docutils literal notranslate"><span class="pre">determine_platform()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/utilities.html#HARK.utilities.epanechnikov_kernel"><code class="docutils literal notranslate"><span class="pre">epanechnikov_kernel()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/utilities.html#HARK.utilities.files_in_dir"><code class="docutils literal notranslate"><span class="pre">files_in_dir()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/utilities.html#HARK.utilities.find_gui"><code class="docutils literal notranslate"><span class="pre">find_gui()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/utilities.html#HARK.utilities.gen_tran_matrix_1D"><code class="docutils literal notranslate"><span class="pre">gen_tran_matrix_1D()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/utilities.html#HARK.utilities.gen_tran_matrix_2D"><code class="docutils literal notranslate"><span class="pre">gen_tran_matrix_2D()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/utilities.html#HARK.utilities.get_arg_names"><code class="docutils literal notranslate"><span class="pre">get_arg_names()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/utilities.html#HARK.utilities.get_lorenz_shares"><code class="docutils literal notranslate"><span class="pre">get_lorenz_shares()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/utilities.html#HARK.utilities.get_percentiles"><code class="docutils literal notranslate"><span class="pre">get_percentiles()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/utilities.html#HARK.utilities.in_ipynb"><code class="docutils literal notranslate"><span class="pre">in_ipynb()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/utilities.html#HARK.utilities.jump_to_grid_1D"><code class="docutils literal notranslate"><span class="pre">jump_to_grid_1D()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/utilities.html#HARK.utilities.jump_to_grid_2D"><code class="docutils literal notranslate"><span class="pre">jump_to_grid_2D()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/utilities.html#HARK.utilities.kernel_regression"><code class="docutils literal notranslate"><span class="pre">kernel_regression()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/utilities.html#HARK.utilities.make_figs"><code class="docutils literal notranslate"><span class="pre">make_figs()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/utilities.html#HARK.utilities.make_grid_exp_mult"><code class="docutils literal notranslate"><span class="pre">make_grid_exp_mult()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/utilities.html#HARK.utilities.memoize"><code class="docutils literal notranslate"><span class="pre">memoize()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/utilities.html#HARK.utilities.mround"><code class="docutils literal notranslate"><span class="pre">mround()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/utilities.html#HARK.utilities.plot_funcs"><code class="docutils literal notranslate"><span class="pre">plot_funcs()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/utilities.html#HARK.utilities.plot_funcs_der"><code class="docutils literal notranslate"><span class="pre">plot_funcs_der()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/utilities.html#HARK.utilities.round_in_file"><code class="docutils literal notranslate"><span class="pre">round_in_file()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/utilities.html#HARK.utilities.setup_latex_env_notebook"><code class="docutils literal notranslate"><span class="pre">setup_latex_env_notebook()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools/utilities.html#HARK.utilities.test_latex_installation"><code class="docutils literal notranslate"><span class="pre">test_latex_installation()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tools/validators.html">Validators</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tools/validators.html#HARK.validators.non_empty"><code class="docutils literal notranslate"><span class="pre">non_empty()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="models">
+<h2>Models<a class="headerlink" href="#models" title="Permalink to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="ConsumptionSaving/index.html">Consumption Saving</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ConsumptionSaving/ConsAggShockModel.html">ConsAggShockModel</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ConsumptionSaving/ConsAggShockModel.html#HARK.ConsumptionSaving.ConsAggShockModel.AggShockConsumerType"><code class="docutils literal notranslate"><span class="pre">AggShockConsumerType</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsumptionSaving/ConsAggShockModel.html#HARK.ConsumptionSaving.ConsAggShockModel.AggShockMarkovConsumerType"><code class="docutils literal notranslate"><span class="pre">AggShockMarkovConsumerType</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsumptionSaving/ConsAggShockModel.html#HARK.ConsumptionSaving.ConsAggShockModel.AggShocksDynamicRule"><code class="docutils literal notranslate"><span class="pre">AggShocksDynamicRule</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsumptionSaving/ConsAggShockModel.html#HARK.ConsumptionSaving.ConsAggShockModel.AggregateSavingRule"><code class="docutils literal notranslate"><span class="pre">AggregateSavingRule</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsumptionSaving/ConsAggShockModel.html#HARK.ConsumptionSaving.ConsAggShockModel.CobbDouglasEconomy"><code class="docutils literal notranslate"><span class="pre">CobbDouglasEconomy</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsumptionSaving/ConsAggShockModel.html#HARK.ConsumptionSaving.ConsAggShockModel.CobbDouglasMarkovEconomy"><code class="docutils literal notranslate"><span class="pre">CobbDouglasMarkovEconomy</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsumptionSaving/ConsAggShockModel.html#HARK.ConsumptionSaving.ConsAggShockModel.SmallOpenEconomy"><code class="docutils literal notranslate"><span class="pre">SmallOpenEconomy</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsumptionSaving/ConsAggShockModel.html#HARK.ConsumptionSaving.ConsAggShockModel.SmallOpenMarkovEconomy"><code class="docutils literal notranslate"><span class="pre">SmallOpenMarkovEconomy</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ConsumptionSaving/ConsGenIncProcessModel.html">ConsGenIncProcessModel</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ConsumptionSaving/ConsGenIncProcessModel.html#HARK.ConsumptionSaving.ConsGenIncProcessModel.ConsGenIncProcessSolver"><code class="docutils literal notranslate"><span class="pre">ConsGenIncProcessSolver</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsumptionSaving/ConsGenIncProcessModel.html#HARK.ConsumptionSaving.ConsGenIncProcessModel.GenIncProcessConsumerType"><code class="docutils literal notranslate"><span class="pre">GenIncProcessConsumerType</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsumptionSaving/ConsGenIncProcessModel.html#HARK.ConsumptionSaving.ConsGenIncProcessModel.IndShockExplicitPermIncConsumerType"><code class="docutils literal notranslate"><span class="pre">IndShockExplicitPermIncConsumerType</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsumptionSaving/ConsGenIncProcessModel.html#HARK.ConsumptionSaving.ConsGenIncProcessModel.PersistentShockConsumerType"><code class="docutils literal notranslate"><span class="pre">PersistentShockConsumerType</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsumptionSaving/ConsGenIncProcessModel.html#HARK.ConsumptionSaving.ConsGenIncProcessModel.pLvlFuncAR1"><code class="docutils literal notranslate"><span class="pre">pLvlFuncAR1</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ConsumptionSaving/ConsIndShockModel.html">ConsIndShockModel</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ConsumptionSaving/ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.ConsIndShockSetup"><code class="docutils literal notranslate"><span class="pre">ConsIndShockSetup</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsumptionSaving/ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.ConsIndShockSolver"><code class="docutils literal notranslate"><span class="pre">ConsIndShockSolver</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsumptionSaving/ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.ConsIndShockSolverBasic"><code class="docutils literal notranslate"><span class="pre">ConsIndShockSolverBasic</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsumptionSaving/ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.ConsKinkedRsolver"><code class="docutils literal notranslate"><span class="pre">ConsKinkedRsolver</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsumptionSaving/ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.ConsPerfForesightSolver"><code class="docutils literal notranslate"><span class="pre">ConsPerfForesightSolver</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsumptionSaving/ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.ConsumerSolution"><code class="docutils literal notranslate"><span class="pre">ConsumerSolution</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsumptionSaving/ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.IndShockConsumerType"><code class="docutils literal notranslate"><span class="pre">IndShockConsumerType</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsumptionSaving/ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.KinkedRconsumerType"><code class="docutils literal notranslate"><span class="pre">KinkedRconsumerType</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsumptionSaving/ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.PerfForesightConsumerType"><code class="docutils literal notranslate"><span class="pre">PerfForesightConsumerType</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ConsumptionSaving/ConsIndShockModelFast.html">ConsIndShockModelFast</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ConsumptionSaving/ConsIndShockModelFast.html#HARK.ConsumptionSaving.ConsIndShockModelFast.ConsIndShockSolverBasicFast"><code class="docutils literal notranslate"><span class="pre">ConsIndShockSolverBasicFast</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsumptionSaving/ConsIndShockModelFast.html#HARK.ConsumptionSaving.ConsIndShockModelFast.ConsIndShockSolverFast"><code class="docutils literal notranslate"><span class="pre">ConsIndShockSolverFast</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsumptionSaving/ConsIndShockModelFast.html#HARK.ConsumptionSaving.ConsIndShockModelFast.ConsPerfForesightSolverFast"><code class="docutils literal notranslate"><span class="pre">ConsPerfForesightSolverFast</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsumptionSaving/ConsIndShockModelFast.html#HARK.ConsumptionSaving.ConsIndShockModelFast.IndShockConsumerTypeFast"><code class="docutils literal notranslate"><span class="pre">IndShockConsumerTypeFast</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsumptionSaving/ConsIndShockModelFast.html#HARK.ConsumptionSaving.ConsIndShockModelFast.IndShockSolution"><code class="docutils literal notranslate"><span class="pre">IndShockSolution</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsumptionSaving/ConsIndShockModelFast.html#HARK.ConsumptionSaving.ConsIndShockModelFast.PerfForesightConsumerTypeFast"><code class="docutils literal notranslate"><span class="pre">PerfForesightConsumerTypeFast</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsumptionSaving/ConsIndShockModelFast.html#HARK.ConsumptionSaving.ConsIndShockModelFast.PerfForesightSolution"><code class="docutils literal notranslate"><span class="pre">PerfForesightSolution</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ConsumptionSaving/ConsLaborModel.html">ConsLaborModel</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ConsumptionSaving/ConsLaborModel.html#HARK.ConsumptionSaving.ConsLaborModel.ConsumerLaborSolution"><code class="docutils literal notranslate"><span class="pre">ConsumerLaborSolution</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsumptionSaving/ConsLaborModel.html#HARK.ConsumptionSaving.ConsLaborModel.LaborIntMargConsumerType"><code class="docutils literal notranslate"><span class="pre">LaborIntMargConsumerType</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsumptionSaving/ConsLaborModel.html#HARK.ConsumptionSaving.ConsLaborModel.solve_ConsLaborIntMarg"><code class="docutils literal notranslate"><span class="pre">solve_ConsLaborIntMarg()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ConsumptionSaving/ConsMarkovModel.html">ConsMarkovModel</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ConsumptionSaving/ConsMarkovModel.html#HARK.ConsumptionSaving.ConsMarkovModel.ConsMarkovSolver"><code class="docutils literal notranslate"><span class="pre">ConsMarkovSolver</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsumptionSaving/ConsMarkovModel.html#HARK.ConsumptionSaving.ConsMarkovModel.MarkovConsumerType"><code class="docutils literal notranslate"><span class="pre">MarkovConsumerType</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ConsumptionSaving/ConsMedModel.html">ConsMedModel</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ConsumptionSaving/ConsMedModel.html#HARK.ConsumptionSaving.ConsMedModel.ConsMedShockSolver"><code class="docutils literal notranslate"><span class="pre">ConsMedShockSolver</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsumptionSaving/ConsMedModel.html#HARK.ConsumptionSaving.ConsMedModel.MedShockConsumerType"><code class="docutils literal notranslate"><span class="pre">MedShockConsumerType</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsumptionSaving/ConsMedModel.html#HARK.ConsumptionSaving.ConsMedModel.MedShockPolicyFunc"><code class="docutils literal notranslate"><span class="pre">MedShockPolicyFunc</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsumptionSaving/ConsMedModel.html#HARK.ConsumptionSaving.ConsMedModel.MedThruXfunc"><code class="docutils literal notranslate"><span class="pre">MedThruXfunc</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsumptionSaving/ConsMedModel.html#HARK.ConsumptionSaving.ConsMedModel.cThruXfunc"><code class="docutils literal notranslate"><span class="pre">cThruXfunc</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ConsumptionSaving/ConsPortfolioFrameModel.html">ConsPortfolioFrameModel</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ConsumptionSaving/ConsPortfolioFrameModel.html#HARK.ConsumptionSaving.ConsPortfolioFrameModel.PortfolioConsumerFrameType"><code class="docutils literal notranslate"><span class="pre">PortfolioConsumerFrameType</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ConsumptionSaving/ConsPortfolioModel.html">ConsPortfolioModel</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ConsumptionSaving/ConsPortfolioModel.html#HARK.ConsumptionSaving.ConsPortfolioModel.ConsPortfolioDiscreteSolver"><code class="docutils literal notranslate"><span class="pre">ConsPortfolioDiscreteSolver</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsumptionSaving/ConsPortfolioModel.html#HARK.ConsumptionSaving.ConsPortfolioModel.ConsPortfolioJointDistSolver"><code class="docutils literal notranslate"><span class="pre">ConsPortfolioJointDistSolver</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsumptionSaving/ConsPortfolioModel.html#HARK.ConsumptionSaving.ConsPortfolioModel.ConsPortfolioSolver"><code class="docutils literal notranslate"><span class="pre">ConsPortfolioSolver</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsumptionSaving/ConsPortfolioModel.html#HARK.ConsumptionSaving.ConsPortfolioModel.ConsSequentialPortfolioSolver"><code class="docutils literal notranslate"><span class="pre">ConsSequentialPortfolioSolver</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsumptionSaving/ConsPortfolioModel.html#HARK.ConsumptionSaving.ConsPortfolioModel.PortfolioConsumerType"><code class="docutils literal notranslate"><span class="pre">PortfolioConsumerType</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsumptionSaving/ConsPortfolioModel.html#HARK.ConsumptionSaving.ConsPortfolioModel.PortfolioSolution"><code class="docutils literal notranslate"><span class="pre">PortfolioSolution</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsumptionSaving/ConsPortfolioModel.html#HARK.ConsumptionSaving.ConsPortfolioModel.SequentialPortfolioConsumerType"><code class="docutils literal notranslate"><span class="pre">SequentialPortfolioConsumerType</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ConsumptionSaving/ConsPrefShochModel.html">ConsPrefShockModel</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ConsumptionSaving/ConsPrefShochModel.html#HARK.ConsumptionSaving.ConsPrefShockModel.ConsKinkyPrefSolver"><code class="docutils literal notranslate"><span class="pre">ConsKinkyPrefSolver</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsumptionSaving/ConsPrefShochModel.html#HARK.ConsumptionSaving.ConsPrefShockModel.ConsPrefShockSolver"><code class="docutils literal notranslate"><span class="pre">ConsPrefShockSolver</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsumptionSaving/ConsPrefShochModel.html#HARK.ConsumptionSaving.ConsPrefShockModel.KinkyPrefConsumerType"><code class="docutils literal notranslate"><span class="pre">KinkyPrefConsumerType</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsumptionSaving/ConsPrefShochModel.html#HARK.ConsumptionSaving.ConsPrefShockModel.PrefShockConsumerType"><code class="docutils literal notranslate"><span class="pre">PrefShockConsumerType</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ConsumptionSaving/ConsRepAgentModel.html">ConsRepAgentModel</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ConsumptionSaving/ConsRepAgentModel.html#HARK.ConsumptionSaving.ConsRepAgentModel.RepAgentConsumerType"><code class="docutils literal notranslate"><span class="pre">RepAgentConsumerType</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsumptionSaving/ConsRepAgentModel.html#HARK.ConsumptionSaving.ConsRepAgentModel.RepAgentMarkovConsumerType"><code class="docutils literal notranslate"><span class="pre">RepAgentMarkovConsumerType</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ConsumptionSaving/ConsRiskyAssetModel.html">ConsRiskyAssetModel</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ConsumptionSaving/ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsFixedPortfolioIndShkRiskyAssetSolver"><code class="docutils literal notranslate"><span class="pre">ConsFixedPortfolioIndShkRiskyAssetSolver</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsumptionSaving/ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver"><code class="docutils literal notranslate"><span class="pre">ConsIndShkRiskyAssetSolver</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsumptionSaving/ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsPortfolioIndShkRiskyAssetSolver"><code class="docutils literal notranslate"><span class="pre">ConsPortfolioIndShkRiskyAssetSolver</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsumptionSaving/ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.FixedPortfolioShareRiskyAssetConsumerType"><code class="docutils literal notranslate"><span class="pre">FixedPortfolioShareRiskyAssetConsumerType</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsumptionSaving/ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.IndShockRiskyAssetConsumerType"><code class="docutils literal notranslate"><span class="pre">IndShockRiskyAssetConsumerType</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsumptionSaving/ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.RiskyAssetConsumerType"><code class="docutils literal notranslate"><span class="pre">RiskyAssetConsumerType</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ConsumptionSaving/ConsRiskyContribModel.html">ConsRiskyContribModel</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ConsumptionSaving/ConsRiskyContribModel.html#HARK.ConsumptionSaving.ConsRiskyContribModel.RiskyContribCnsSolution"><code class="docutils literal notranslate"><span class="pre">RiskyContribCnsSolution</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsumptionSaving/ConsRiskyContribModel.html#HARK.ConsumptionSaving.ConsRiskyContribModel.RiskyContribConsumerType"><code class="docutils literal notranslate"><span class="pre">RiskyContribConsumerType</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsumptionSaving/ConsRiskyContribModel.html#HARK.ConsumptionSaving.ConsRiskyContribModel.RiskyContribRebSolution"><code class="docutils literal notranslate"><span class="pre">RiskyContribRebSolution</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsumptionSaving/ConsRiskyContribModel.html#HARK.ConsumptionSaving.ConsRiskyContribModel.RiskyContribShaSolution"><code class="docutils literal notranslate"><span class="pre">RiskyContribShaSolution</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsumptionSaving/ConsRiskyContribModel.html#HARK.ConsumptionSaving.ConsRiskyContribModel.RiskyContribSolution"><code class="docutils literal notranslate"><span class="pre">RiskyContribSolution</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsumptionSaving/ConsRiskyContribModel.html#HARK.ConsumptionSaving.ConsRiskyContribModel.m_nrm_next"><code class="docutils literal notranslate"><span class="pre">m_nrm_next()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsumptionSaving/ConsRiskyContribModel.html#HARK.ConsumptionSaving.ConsRiskyContribModel.n_nrm_next"><code class="docutils literal notranslate"><span class="pre">n_nrm_next()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsumptionSaving/ConsRiskyContribModel.html#HARK.ConsumptionSaving.ConsRiskyContribModel.rebalance_assets"><code class="docutils literal notranslate"><span class="pre">rebalance_assets()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsumptionSaving/ConsRiskyContribModel.html#HARK.ConsumptionSaving.ConsRiskyContribModel.solveRiskyContrib"><code class="docutils literal notranslate"><span class="pre">solveRiskyContrib()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsumptionSaving/ConsRiskyContribModel.html#HARK.ConsumptionSaving.ConsRiskyContribModel.solve_RiskyContrib_Cns"><code class="docutils literal notranslate"><span class="pre">solve_RiskyContrib_Cns()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsumptionSaving/ConsRiskyContribModel.html#HARK.ConsumptionSaving.ConsRiskyContribModel.solve_RiskyContrib_Reb"><code class="docutils literal notranslate"><span class="pre">solve_RiskyContrib_Reb()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsumptionSaving/ConsRiskyContribModel.html#HARK.ConsumptionSaving.ConsRiskyContribModel.solve_RiskyContrib_Sha"><code class="docutils literal notranslate"><span class="pre">solve_RiskyContrib_Sha()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ConsumptionSaving/TractableBufferStockModel.html">TractableBufferStockModel</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ConsumptionSaving/TractableBufferStockModel.html#HARK.ConsumptionSaving.TractableBufferStockModel.TractableConsumerSolution"><code class="docutils literal notranslate"><span class="pre">TractableConsumerSolution</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsumptionSaving/TractableBufferStockModel.html#HARK.ConsumptionSaving.TractableBufferStockModel.TractableConsumerType"><code class="docutils literal notranslate"><span class="pre">TractableConsumerType</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../contributing/CONTRIBUTING.html" class="btn btn-neutral float-left" title="Contributing to Econ-ARK" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="tools/index.html" class="btn btn-neutral float-right" title="Tools" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Econ-ARK team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

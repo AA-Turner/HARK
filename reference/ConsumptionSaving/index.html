@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Consumption Saving &mdash; HARK latest documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="ConsAggShockModel" href="ConsAggShockModel.html" />
+    <link rel="prev" title="Validators" href="../tools/validators.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            HARK
+          </a>
+              <div class="version">
+                latest
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick-start.html">Installing HARK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick-start.html#learning-hark">Learning HARK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick-start.html#making-changes-to-hark">Making changes to HARK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick-start.html#next-steps">Next steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ARKitecture.html">ARKitecture of Econ-ARK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/CONTRIBUTING.html">Contributing to Econ-ARK</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">API Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../index.html#tools">Tools</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#models">Models</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Consumption Saving</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ConsAggShockModel.html">ConsAggShockModel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ConsGenIncProcessModel.html">ConsGenIncProcessModel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ConsIndShockModel.html">ConsIndShockModel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ConsIndShockModelFast.html">ConsIndShockModelFast</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ConsLaborModel.html">ConsLaborModel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ConsMarkovModel.html">ConsMarkovModel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ConsMedModel.html">ConsMedModel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ConsPortfolioFrameModel.html">ConsPortfolioFrameModel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ConsPortfolioModel.html">ConsPortfolioModel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ConsPrefShochModel.html">ConsPrefShockModel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ConsRepAgentModel.html">ConsRepAgentModel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ConsRiskyAssetModel.html">ConsRiskyAssetModel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ConsRiskyContribModel.html">ConsRiskyContribModel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="TractableBufferStockModel.html">TractableBufferStockModel</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../CHANGELOG.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../example_notebooks/Gentle-Intro-To-HARK.html">A Gentle Introduction to HARK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../example_notebooks/PerfForesightConsumerType.html">PerfForesightConsumerType: Perfect foresight consumption-saving</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../example_notebooks/IndShockConsumerType.html">IndShockConsumerType Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../example_notebooks/KinkedRconsumerType.html">KinkedRconsumerType: Consumption-saving model with idiosyncratic income shocks and different interest rates on borrowing and saving</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../example_notebooks/ConsPortfolioModel.html">Portfolio Models in HARK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../example_notebooks/GenIncProcessModel.html">Permanent versus Persistent Income Shocks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../example_notebooks/LifecycleModel.html">A Lifecycle Model: The Distribution of Assets By Age</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../example_notebooks/HowWeSolveIndShockConsumerType.html">How we solve a model defined by the <code class="docutils literal notranslate"><span class="pre">IndShockConsumerType</span></code> class</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">HARK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">API Documentation</a></li>
+      <li class="breadcrumb-item active">Consumption Saving</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/reference/ConsumptionSaving/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="consumption-saving">
+<h1>Consumption Saving<a class="headerlink" href="#consumption-saving" title="Permalink to this heading"></a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="ConsAggShockModel.html">ConsAggShockModel</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ConsAggShockModel.html#HARK.ConsumptionSaving.ConsAggShockModel.AggShockConsumerType"><code class="docutils literal notranslate"><span class="pre">AggShockConsumerType</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ConsAggShockModel.html#HARK.ConsumptionSaving.ConsAggShockModel.AggShockConsumerType.add_AggShkDstn"><code class="docutils literal notranslate"><span class="pre">AggShockConsumerType.add_AggShkDstn()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsAggShockModel.html#HARK.ConsumptionSaving.ConsAggShockModel.AggShockConsumerType.calc_bounding_values"><code class="docutils literal notranslate"><span class="pre">AggShockConsumerType.calc_bounding_values()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsAggShockModel.html#HARK.ConsumptionSaving.ConsAggShockModel.AggShockConsumerType.get_MaggNow"><code class="docutils literal notranslate"><span class="pre">AggShockConsumerType.get_MaggNow()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsAggShockModel.html#HARK.ConsumptionSaving.ConsAggShockModel.AggShockConsumerType.get_Rfree"><code class="docutils literal notranslate"><span class="pre">AggShockConsumerType.get_Rfree()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsAggShockModel.html#HARK.ConsumptionSaving.ConsAggShockModel.AggShockConsumerType.get_controls"><code class="docutils literal notranslate"><span class="pre">AggShockConsumerType.get_controls()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsAggShockModel.html#HARK.ConsumptionSaving.ConsAggShockModel.AggShockConsumerType.get_economy_data"><code class="docutils literal notranslate"><span class="pre">AggShockConsumerType.get_economy_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsAggShockModel.html#HARK.ConsumptionSaving.ConsAggShockModel.AggShockConsumerType.get_shocks"><code class="docutils literal notranslate"><span class="pre">AggShockConsumerType.get_shocks()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsAggShockModel.html#HARK.ConsumptionSaving.ConsAggShockModel.AggShockConsumerType.make_euler_error_func"><code class="docutils literal notranslate"><span class="pre">AggShockConsumerType.make_euler_error_func()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsAggShockModel.html#HARK.ConsumptionSaving.ConsAggShockModel.AggShockConsumerType.market_action"><code class="docutils literal notranslate"><span class="pre">AggShockConsumerType.market_action()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsAggShockModel.html#HARK.ConsumptionSaving.ConsAggShockModel.AggShockConsumerType.pre_solve"><code class="docutils literal notranslate"><span class="pre">AggShockConsumerType.pre_solve()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsAggShockModel.html#HARK.ConsumptionSaving.ConsAggShockModel.AggShockConsumerType.reset"><code class="docutils literal notranslate"><span class="pre">AggShockConsumerType.reset()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsAggShockModel.html#HARK.ConsumptionSaving.ConsAggShockModel.AggShockConsumerType.sim_birth"><code class="docutils literal notranslate"><span class="pre">AggShockConsumerType.sim_birth()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsAggShockModel.html#HARK.ConsumptionSaving.ConsAggShockModel.AggShockConsumerType.sim_death"><code class="docutils literal notranslate"><span class="pre">AggShockConsumerType.sim_death()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsAggShockModel.html#HARK.ConsumptionSaving.ConsAggShockModel.AggShockConsumerType.update_solution_terminal"><code class="docutils literal notranslate"><span class="pre">AggShockConsumerType.update_solution_terminal()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ConsAggShockModel.html#HARK.ConsumptionSaving.ConsAggShockModel.AggShockMarkovConsumerType"><code class="docutils literal notranslate"><span class="pre">AggShockMarkovConsumerType</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ConsAggShockModel.html#HARK.ConsumptionSaving.ConsAggShockModel.AggShockMarkovConsumerType.add_AggShkDstn"><code class="docutils literal notranslate"><span class="pre">AggShockMarkovConsumerType.add_AggShkDstn()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsAggShockModel.html#HARK.ConsumptionSaving.ConsAggShockModel.AggShockMarkovConsumerType.getMrkvNow"><code class="docutils literal notranslate"><span class="pre">AggShockMarkovConsumerType.getMrkvNow()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsAggShockModel.html#HARK.ConsumptionSaving.ConsAggShockModel.AggShockMarkovConsumerType.get_controls"><code class="docutils literal notranslate"><span class="pre">AggShockMarkovConsumerType.get_controls()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsAggShockModel.html#HARK.ConsumptionSaving.ConsAggShockModel.AggShockMarkovConsumerType.get_shocks"><code class="docutils literal notranslate"><span class="pre">AggShockMarkovConsumerType.get_shocks()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsAggShockModel.html#HARK.ConsumptionSaving.ConsAggShockModel.AggShockMarkovConsumerType.reset_rng"><code class="docutils literal notranslate"><span class="pre">AggShockMarkovConsumerType.reset_rng()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsAggShockModel.html#HARK.ConsumptionSaving.ConsAggShockModel.AggShockMarkovConsumerType.update_solution_terminal"><code class="docutils literal notranslate"><span class="pre">AggShockMarkovConsumerType.update_solution_terminal()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ConsAggShockModel.html#HARK.ConsumptionSaving.ConsAggShockModel.AggShocksDynamicRule"><code class="docutils literal notranslate"><span class="pre">AggShocksDynamicRule</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ConsAggShockModel.html#HARK.ConsumptionSaving.ConsAggShockModel.AggregateSavingRule"><code class="docutils literal notranslate"><span class="pre">AggregateSavingRule</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ConsAggShockModel.html#HARK.ConsumptionSaving.ConsAggShockModel.CobbDouglasEconomy"><code class="docutils literal notranslate"><span class="pre">CobbDouglasEconomy</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ConsAggShockModel.html#HARK.ConsumptionSaving.ConsAggShockModel.CobbDouglasEconomy.calc_AFunc"><code class="docutils literal notranslate"><span class="pre">CobbDouglasEconomy.calc_AFunc()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsAggShockModel.html#HARK.ConsumptionSaving.ConsAggShockModel.CobbDouglasEconomy.calc_R_and_W"><code class="docutils literal notranslate"><span class="pre">CobbDouglasEconomy.calc_R_and_W()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsAggShockModel.html#HARK.ConsumptionSaving.ConsAggShockModel.CobbDouglasEconomy.calc_dynamics"><code class="docutils literal notranslate"><span class="pre">CobbDouglasEconomy.calc_dynamics()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsAggShockModel.html#HARK.ConsumptionSaving.ConsAggShockModel.CobbDouglasEconomy.get_PermGroFacAggLR"><code class="docutils literal notranslate"><span class="pre">CobbDouglasEconomy.get_PermGroFacAggLR()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsAggShockModel.html#HARK.ConsumptionSaving.ConsAggShockModel.CobbDouglasEconomy.make_AggShkDstn"><code class="docutils literal notranslate"><span class="pre">CobbDouglasEconomy.make_AggShkDstn()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsAggShockModel.html#HARK.ConsumptionSaving.ConsAggShockModel.CobbDouglasEconomy.make_AggShkHist"><code class="docutils literal notranslate"><span class="pre">CobbDouglasEconomy.make_AggShkHist()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsAggShockModel.html#HARK.ConsumptionSaving.ConsAggShockModel.CobbDouglasEconomy.mill_rule"><code class="docutils literal notranslate"><span class="pre">CobbDouglasEconomy.mill_rule()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsAggShockModel.html#HARK.ConsumptionSaving.ConsAggShockModel.CobbDouglasEconomy.reset"><code class="docutils literal notranslate"><span class="pre">CobbDouglasEconomy.reset()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsAggShockModel.html#HARK.ConsumptionSaving.ConsAggShockModel.CobbDouglasEconomy.update"><code class="docutils literal notranslate"><span class="pre">CobbDouglasEconomy.update()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ConsAggShockModel.html#HARK.ConsumptionSaving.ConsAggShockModel.CobbDouglasMarkovEconomy"><code class="docutils literal notranslate"><span class="pre">CobbDouglasMarkovEconomy</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ConsAggShockModel.html#HARK.ConsumptionSaving.ConsAggShockModel.CobbDouglasMarkovEconomy.calc_AFunc"><code class="docutils literal notranslate"><span class="pre">CobbDouglasMarkovEconomy.calc_AFunc()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsAggShockModel.html#HARK.ConsumptionSaving.ConsAggShockModel.CobbDouglasMarkovEconomy.get_PermGroFacAggLR"><code class="docutils literal notranslate"><span class="pre">CobbDouglasMarkovEconomy.get_PermGroFacAggLR()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsAggShockModel.html#HARK.ConsumptionSaving.ConsAggShockModel.CobbDouglasMarkovEconomy.make_AggShkDstn"><code class="docutils literal notranslate"><span class="pre">CobbDouglasMarkovEconomy.make_AggShkDstn()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsAggShockModel.html#HARK.ConsumptionSaving.ConsAggShockModel.CobbDouglasMarkovEconomy.make_AggShkHist"><code class="docutils literal notranslate"><span class="pre">CobbDouglasMarkovEconomy.make_AggShkHist()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsAggShockModel.html#HARK.ConsumptionSaving.ConsAggShockModel.CobbDouglasMarkovEconomy.make_Mrkv_history"><code class="docutils literal notranslate"><span class="pre">CobbDouglasMarkovEconomy.make_Mrkv_history()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsAggShockModel.html#HARK.ConsumptionSaving.ConsAggShockModel.CobbDouglasMarkovEconomy.mill_rule"><code class="docutils literal notranslate"><span class="pre">CobbDouglasMarkovEconomy.mill_rule()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsAggShockModel.html#HARK.ConsumptionSaving.ConsAggShockModel.CobbDouglasMarkovEconomy.update"><code class="docutils literal notranslate"><span class="pre">CobbDouglasMarkovEconomy.update()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ConsAggShockModel.html#HARK.ConsumptionSaving.ConsAggShockModel.SmallOpenEconomy"><code class="docutils literal notranslate"><span class="pre">SmallOpenEconomy</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ConsAggShockModel.html#HARK.ConsumptionSaving.ConsAggShockModel.SmallOpenEconomy.calc_dynamics"><code class="docutils literal notranslate"><span class="pre">SmallOpenEconomy.calc_dynamics()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsAggShockModel.html#HARK.ConsumptionSaving.ConsAggShockModel.SmallOpenEconomy.get_AggShocks"><code class="docutils literal notranslate"><span class="pre">SmallOpenEconomy.get_AggShocks()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsAggShockModel.html#HARK.ConsumptionSaving.ConsAggShockModel.SmallOpenEconomy.make_AggShkDstn"><code class="docutils literal notranslate"><span class="pre">SmallOpenEconomy.make_AggShkDstn()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsAggShockModel.html#HARK.ConsumptionSaving.ConsAggShockModel.SmallOpenEconomy.make_AggShkHist"><code class="docutils literal notranslate"><span class="pre">SmallOpenEconomy.make_AggShkHist()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsAggShockModel.html#HARK.ConsumptionSaving.ConsAggShockModel.SmallOpenEconomy.mill_rule"><code class="docutils literal notranslate"><span class="pre">SmallOpenEconomy.mill_rule()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsAggShockModel.html#HARK.ConsumptionSaving.ConsAggShockModel.SmallOpenEconomy.reset"><code class="docutils literal notranslate"><span class="pre">SmallOpenEconomy.reset()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsAggShockModel.html#HARK.ConsumptionSaving.ConsAggShockModel.SmallOpenEconomy.update"><code class="docutils literal notranslate"><span class="pre">SmallOpenEconomy.update()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ConsAggShockModel.html#HARK.ConsumptionSaving.ConsAggShockModel.SmallOpenMarkovEconomy"><code class="docutils literal notranslate"><span class="pre">SmallOpenMarkovEconomy</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ConsAggShockModel.html#HARK.ConsumptionSaving.ConsAggShockModel.SmallOpenMarkovEconomy.calc_dynamics"><code class="docutils literal notranslate"><span class="pre">SmallOpenMarkovEconomy.calc_dynamics()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsAggShockModel.html#HARK.ConsumptionSaving.ConsAggShockModel.SmallOpenMarkovEconomy.make_AggShkDstn"><code class="docutils literal notranslate"><span class="pre">SmallOpenMarkovEconomy.make_AggShkDstn()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsAggShockModel.html#HARK.ConsumptionSaving.ConsAggShockModel.SmallOpenMarkovEconomy.make_AggShkHist"><code class="docutils literal notranslate"><span class="pre">SmallOpenMarkovEconomy.make_AggShkHist()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsAggShockModel.html#HARK.ConsumptionSaving.ConsAggShockModel.SmallOpenMarkovEconomy.mill_rule"><code class="docutils literal notranslate"><span class="pre">SmallOpenMarkovEconomy.mill_rule()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsAggShockModel.html#HARK.ConsumptionSaving.ConsAggShockModel.SmallOpenMarkovEconomy.update"><code class="docutils literal notranslate"><span class="pre">SmallOpenMarkovEconomy.update()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ConsGenIncProcessModel.html">ConsGenIncProcessModel</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ConsGenIncProcessModel.html#HARK.ConsumptionSaving.ConsGenIncProcessModel.ConsGenIncProcessSolver"><code class="docutils literal notranslate"><span class="pre">ConsGenIncProcessSolver</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ConsGenIncProcessModel.html#HARK.ConsumptionSaving.ConsGenIncProcessModel.ConsGenIncProcessSolver.add_MPC_and_human_wealth"><code class="docutils literal notranslate"><span class="pre">ConsGenIncProcessSolver.add_MPC_and_human_wealth()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsGenIncProcessModel.html#HARK.ConsumptionSaving.ConsGenIncProcessModel.ConsGenIncProcessSolver.add_vPPfunc"><code class="docutils literal notranslate"><span class="pre">ConsGenIncProcessSolver.add_vPPfunc()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsGenIncProcessModel.html#HARK.ConsumptionSaving.ConsGenIncProcessModel.ConsGenIncProcessSolver.calc_EndOfPrdvP"><code class="docutils literal notranslate"><span class="pre">ConsGenIncProcessSolver.calc_EndOfPrdvP()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsGenIncProcessModel.html#HARK.ConsumptionSaving.ConsGenIncProcessModel.ConsGenIncProcessSolver.def_BoroCnst"><code class="docutils literal notranslate"><span class="pre">ConsGenIncProcessSolver.def_BoroCnst()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsGenIncProcessModel.html#HARK.ConsumptionSaving.ConsGenIncProcessModel.ConsGenIncProcessSolver.get_points_for_interpolation"><code class="docutils literal notranslate"><span class="pre">ConsGenIncProcessSolver.get_points_for_interpolation()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsGenIncProcessModel.html#HARK.ConsumptionSaving.ConsGenIncProcessModel.ConsGenIncProcessSolver.m_lvl_next"><code class="docutils literal notranslate"><span class="pre">ConsGenIncProcessSolver.m_lvl_next()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsGenIncProcessModel.html#HARK.ConsumptionSaving.ConsGenIncProcessModel.ConsGenIncProcessSolver.make_EndOfPrdvFunc"><code class="docutils literal notranslate"><span class="pre">ConsGenIncProcessSolver.make_EndOfPrdvFunc()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsGenIncProcessModel.html#HARK.ConsumptionSaving.ConsGenIncProcessModel.ConsGenIncProcessSolver.make_basic_solution"><code class="docutils literal notranslate"><span class="pre">ConsGenIncProcessSolver.make_basic_solution()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsGenIncProcessModel.html#HARK.ConsumptionSaving.ConsGenIncProcessModel.ConsGenIncProcessSolver.make_cubic_cFunc"><code class="docutils literal notranslate"><span class="pre">ConsGenIncProcessSolver.make_cubic_cFunc()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsGenIncProcessModel.html#HARK.ConsumptionSaving.ConsGenIncProcessModel.ConsGenIncProcessSolver.make_linear_cFunc"><code class="docutils literal notranslate"><span class="pre">ConsGenIncProcessSolver.make_linear_cFunc()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsGenIncProcessModel.html#HARK.ConsumptionSaving.ConsGenIncProcessModel.ConsGenIncProcessSolver.make_vFunc"><code class="docutils literal notranslate"><span class="pre">ConsGenIncProcessSolver.make_vFunc()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsGenIncProcessModel.html#HARK.ConsumptionSaving.ConsGenIncProcessModel.ConsGenIncProcessSolver.make_vPfunc"><code class="docutils literal notranslate"><span class="pre">ConsGenIncProcessSolver.make_vPfunc()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsGenIncProcessModel.html#HARK.ConsumptionSaving.ConsGenIncProcessModel.ConsGenIncProcessSolver.p_lvl_next"><code class="docutils literal notranslate"><span class="pre">ConsGenIncProcessSolver.p_lvl_next()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsGenIncProcessModel.html#HARK.ConsumptionSaving.ConsGenIncProcessModel.ConsGenIncProcessSolver.prepare_to_calc_EndOfPrdvP"><code class="docutils literal notranslate"><span class="pre">ConsGenIncProcessSolver.prepare_to_calc_EndOfPrdvP()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsGenIncProcessModel.html#HARK.ConsumptionSaving.ConsGenIncProcessModel.ConsGenIncProcessSolver.set_and_update_values"><code class="docutils literal notranslate"><span class="pre">ConsGenIncProcessSolver.set_and_update_values()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsGenIncProcessModel.html#HARK.ConsumptionSaving.ConsGenIncProcessModel.ConsGenIncProcessSolver.solve"><code class="docutils literal notranslate"><span class="pre">ConsGenIncProcessSolver.solve()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsGenIncProcessModel.html#HARK.ConsumptionSaving.ConsGenIncProcessModel.ConsGenIncProcessSolver.use_points_for_interpolation"><code class="docutils literal notranslate"><span class="pre">ConsGenIncProcessSolver.use_points_for_interpolation()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ConsGenIncProcessModel.html#HARK.ConsumptionSaving.ConsGenIncProcessModel.GenIncProcessConsumerType"><code class="docutils literal notranslate"><span class="pre">GenIncProcessConsumerType</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ConsGenIncProcessModel.html#HARK.ConsumptionSaving.ConsGenIncProcessModel.GenIncProcessConsumerType.cFunc_terminal_"><code class="docutils literal notranslate"><span class="pre">GenIncProcessConsumerType.cFunc_terminal_</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsGenIncProcessModel.html#HARK.ConsumptionSaving.ConsGenIncProcessModel.GenIncProcessConsumerType.get_controls"><code class="docutils literal notranslate"><span class="pre">GenIncProcessConsumerType.get_controls()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsGenIncProcessModel.html#HARK.ConsumptionSaving.ConsGenIncProcessModel.GenIncProcessConsumerType.get_poststates"><code class="docutils literal notranslate"><span class="pre">GenIncProcessConsumerType.get_poststates()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsGenIncProcessModel.html#HARK.ConsumptionSaving.ConsGenIncProcessModel.GenIncProcessConsumerType.install_retirement_func"><code class="docutils literal notranslate"><span class="pre">GenIncProcessConsumerType.install_retirement_func()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsGenIncProcessModel.html#HARK.ConsumptionSaving.ConsGenIncProcessModel.GenIncProcessConsumerType.pre_solve"><code class="docutils literal notranslate"><span class="pre">GenIncProcessConsumerType.pre_solve()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsGenIncProcessModel.html#HARK.ConsumptionSaving.ConsGenIncProcessModel.GenIncProcessConsumerType.sim_birth"><code class="docutils literal notranslate"><span class="pre">GenIncProcessConsumerType.sim_birth()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsGenIncProcessModel.html#HARK.ConsumptionSaving.ConsGenIncProcessModel.GenIncProcessConsumerType.solution_terminal_"><code class="docutils literal notranslate"><span class="pre">GenIncProcessConsumerType.solution_terminal_</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsGenIncProcessModel.html#HARK.ConsumptionSaving.ConsGenIncProcessModel.GenIncProcessConsumerType.state_vars"><code class="docutils literal notranslate"><span class="pre">GenIncProcessConsumerType.state_vars</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsGenIncProcessModel.html#HARK.ConsumptionSaving.ConsGenIncProcessModel.GenIncProcessConsumerType.transition"><code class="docutils literal notranslate"><span class="pre">GenIncProcessConsumerType.transition()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsGenIncProcessModel.html#HARK.ConsumptionSaving.ConsGenIncProcessModel.GenIncProcessConsumerType.update"><code class="docutils literal notranslate"><span class="pre">GenIncProcessConsumerType.update()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsGenIncProcessModel.html#HARK.ConsumptionSaving.ConsGenIncProcessModel.GenIncProcessConsumerType.update_pLvlGrid"><code class="docutils literal notranslate"><span class="pre">GenIncProcessConsumerType.update_pLvlGrid()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsGenIncProcessModel.html#HARK.ConsumptionSaving.ConsGenIncProcessModel.GenIncProcessConsumerType.update_pLvlNextFunc"><code class="docutils literal notranslate"><span class="pre">GenIncProcessConsumerType.update_pLvlNextFunc()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsGenIncProcessModel.html#HARK.ConsumptionSaving.ConsGenIncProcessModel.GenIncProcessConsumerType.update_solution_terminal"><code class="docutils literal notranslate"><span class="pre">GenIncProcessConsumerType.update_solution_terminal()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ConsGenIncProcessModel.html#HARK.ConsumptionSaving.ConsGenIncProcessModel.IndShockExplicitPermIncConsumerType"><code class="docutils literal notranslate"><span class="pre">IndShockExplicitPermIncConsumerType</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ConsGenIncProcessModel.html#HARK.ConsumptionSaving.ConsGenIncProcessModel.IndShockExplicitPermIncConsumerType.update_pLvlNextFunc"><code class="docutils literal notranslate"><span class="pre">IndShockExplicitPermIncConsumerType.update_pLvlNextFunc()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ConsGenIncProcessModel.html#HARK.ConsumptionSaving.ConsGenIncProcessModel.PersistentShockConsumerType"><code class="docutils literal notranslate"><span class="pre">PersistentShockConsumerType</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ConsGenIncProcessModel.html#HARK.ConsumptionSaving.ConsGenIncProcessModel.PersistentShockConsumerType.update_pLvlNextFunc"><code class="docutils literal notranslate"><span class="pre">PersistentShockConsumerType.update_pLvlNextFunc()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ConsGenIncProcessModel.html#HARK.ConsumptionSaving.ConsGenIncProcessModel.pLvlFuncAR1"><code class="docutils literal notranslate"><span class="pre">pLvlFuncAR1</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ConsIndShockModel.html">ConsIndShockModel</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.ConsIndShockSetup"><code class="docutils literal notranslate"><span class="pre">ConsIndShockSetup</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.ConsIndShockSetup.def_BoroCnst"><code class="docutils literal notranslate"><span class="pre">ConsIndShockSetup.def_BoroCnst()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.ConsIndShockSetup.prepare_to_solve"><code class="docutils literal notranslate"><span class="pre">ConsIndShockSetup.prepare_to_solve()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.ConsIndShockSetup.set_and_update_values"><code class="docutils literal notranslate"><span class="pre">ConsIndShockSetup.set_and_update_values()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.ConsIndShockSolver"><code class="docutils literal notranslate"><span class="pre">ConsIndShockSolver</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.ConsIndShockSolver.add_vFunc"><code class="docutils literal notranslate"><span class="pre">ConsIndShockSolver.add_vFunc()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.ConsIndShockSolver.add_vPPfunc"><code class="docutils literal notranslate"><span class="pre">ConsIndShockSolver.add_vPPfunc()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.ConsIndShockSolver.make_EndOfPrdvFunc"><code class="docutils literal notranslate"><span class="pre">ConsIndShockSolver.make_EndOfPrdvFunc()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.ConsIndShockSolver.make_cubic_cFunc"><code class="docutils literal notranslate"><span class="pre">ConsIndShockSolver.make_cubic_cFunc()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.ConsIndShockSolver.make_vFunc"><code class="docutils literal notranslate"><span class="pre">ConsIndShockSolver.make_vFunc()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.ConsIndShockSolver.solve"><code class="docutils literal notranslate"><span class="pre">ConsIndShockSolver.solve()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.ConsIndShockSolverBasic"><code class="docutils literal notranslate"><span class="pre">ConsIndShockSolverBasic</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.ConsIndShockSolverBasic.add_MPC_and_human_wealth"><code class="docutils literal notranslate"><span class="pre">ConsIndShockSolverBasic.add_MPC_and_human_wealth()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.ConsIndShockSolverBasic.add_stable_points"><code class="docutils literal notranslate"><span class="pre">ConsIndShockSolverBasic.add_stable_points()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.ConsIndShockSolverBasic.calc_EndOfPrdvP"><code class="docutils literal notranslate"><span class="pre">ConsIndShockSolverBasic.calc_EndOfPrdvP()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.ConsIndShockSolverBasic.get_points_for_interpolation"><code class="docutils literal notranslate"><span class="pre">ConsIndShockSolverBasic.get_points_for_interpolation()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.ConsIndShockSolverBasic.m_nrm_next"><code class="docutils literal notranslate"><span class="pre">ConsIndShockSolverBasic.m_nrm_next()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.ConsIndShockSolverBasic.make_basic_solution"><code class="docutils literal notranslate"><span class="pre">ConsIndShockSolverBasic.make_basic_solution()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.ConsIndShockSolverBasic.make_linear_cFunc"><code class="docutils literal notranslate"><span class="pre">ConsIndShockSolverBasic.make_linear_cFunc()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.ConsIndShockSolverBasic.prepare_to_calc_EndOfPrdvP"><code class="docutils literal notranslate"><span class="pre">ConsIndShockSolverBasic.prepare_to_calc_EndOfPrdvP()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.ConsIndShockSolverBasic.solve"><code class="docutils literal notranslate"><span class="pre">ConsIndShockSolverBasic.solve()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.ConsIndShockSolverBasic.use_points_for_interpolation"><code class="docutils literal notranslate"><span class="pre">ConsIndShockSolverBasic.use_points_for_interpolation()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.ConsKinkedRsolver"><code class="docutils literal notranslate"><span class="pre">ConsKinkedRsolver</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.ConsKinkedRsolver.add_stable_points"><code class="docutils literal notranslate"><span class="pre">ConsKinkedRsolver.add_stable_points()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.ConsKinkedRsolver.make_cubic_cFunc"><code class="docutils literal notranslate"><span class="pre">ConsKinkedRsolver.make_cubic_cFunc()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.ConsKinkedRsolver.prepare_to_calc_EndOfPrdvP"><code class="docutils literal notranslate"><span class="pre">ConsKinkedRsolver.prepare_to_calc_EndOfPrdvP()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.ConsPerfForesightSolver"><code class="docutils literal notranslate"><span class="pre">ConsPerfForesightSolver</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.ConsPerfForesightSolver.add_mNrmStE"><code class="docutils literal notranslate"><span class="pre">ConsPerfForesightSolver.add_mNrmStE()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.ConsPerfForesightSolver.add_mNrmTrg"><code class="docutils literal notranslate"><span class="pre">ConsPerfForesightSolver.add_mNrmTrg()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.ConsPerfForesightSolver.add_stable_points"><code class="docutils literal notranslate"><span class="pre">ConsPerfForesightSolver.add_stable_points()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.ConsPerfForesightSolver.def_utility_funcs"><code class="docutils literal notranslate"><span class="pre">ConsPerfForesightSolver.def_utility_funcs()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.ConsPerfForesightSolver.def_value_funcs"><code class="docutils literal notranslate"><span class="pre">ConsPerfForesightSolver.def_value_funcs()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.ConsPerfForesightSolver.make_cFunc_PF"><code class="docutils literal notranslate"><span class="pre">ConsPerfForesightSolver.make_cFunc_PF()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.ConsPerfForesightSolver.solve"><code class="docutils literal notranslate"><span class="pre">ConsPerfForesightSolver.solve()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.ConsumerSolution"><code class="docutils literal notranslate"><span class="pre">ConsumerSolution</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.ConsumerSolution.append_solution"><code class="docutils literal notranslate"><span class="pre">ConsumerSolution.append_solution()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.ConsumerSolution.distance_criteria"><code class="docutils literal notranslate"><span class="pre">ConsumerSolution.distance_criteria</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.IndShockConsumerType"><code class="docutils literal notranslate"><span class="pre">IndShockConsumerType</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.IndShockConsumerType.calc_bounding_values"><code class="docutils literal notranslate"><span class="pre">IndShockConsumerType.calc_bounding_values()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.IndShockConsumerType.calc_ergodic_dist"><code class="docutils literal notranslate"><span class="pre">IndShockConsumerType.calc_ergodic_dist()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.IndShockConsumerType.calc_jacobian"><code class="docutils literal notranslate"><span class="pre">IndShockConsumerType.calc_jacobian()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.IndShockConsumerType.calc_stable_points"><code class="docutils literal notranslate"><span class="pre">IndShockConsumerType.calc_stable_points()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.IndShockConsumerType.calc_transition_matrix"><code class="docutils literal notranslate"><span class="pre">IndShockConsumerType.calc_transition_matrix()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.IndShockConsumerType.check_FVAC"><code class="docutils literal notranslate"><span class="pre">IndShockConsumerType.check_FVAC()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.IndShockConsumerType.check_GICAggLivPrb"><code class="docutils literal notranslate"><span class="pre">IndShockConsumerType.check_GICAggLivPrb()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.IndShockConsumerType.check_GICNrm"><code class="docutils literal notranslate"><span class="pre">IndShockConsumerType.check_GICNrm()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.IndShockConsumerType.check_WRIC"><code class="docutils literal notranslate"><span class="pre">IndShockConsumerType.check_WRIC()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.IndShockConsumerType.check_conditions"><code class="docutils literal notranslate"><span class="pre">IndShockConsumerType.check_conditions()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.IndShockConsumerType.compute_steady_state"><code class="docutils literal notranslate"><span class="pre">IndShockConsumerType.compute_steady_state()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.IndShockConsumerType.construct_lognormal_income_process_unemployment"><code class="docutils literal notranslate"><span class="pre">IndShockConsumerType.construct_lognormal_income_process_unemployment()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.IndShockConsumerType.define_distribution_grid"><code class="docutils literal notranslate"><span class="pre">IndShockConsumerType.define_distribution_grid()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.IndShockConsumerType.get_shocks"><code class="docutils literal notranslate"><span class="pre">IndShockConsumerType.get_shocks()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.IndShockConsumerType.make_euler_error_func"><code class="docutils literal notranslate"><span class="pre">IndShockConsumerType.make_euler_error_func()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.IndShockConsumerType.pre_solve"><code class="docutils literal notranslate"><span class="pre">IndShockConsumerType.pre_solve()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.IndShockConsumerType.reset_rng"><code class="docutils literal notranslate"><span class="pre">IndShockConsumerType.reset_rng()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.IndShockConsumerType.shock_vars_"><code class="docutils literal notranslate"><span class="pre">IndShockConsumerType.shock_vars_</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.IndShockConsumerType.time_inv_"><code class="docutils literal notranslate"><span class="pre">IndShockConsumerType.time_inv_</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.IndShockConsumerType.update"><code class="docutils literal notranslate"><span class="pre">IndShockConsumerType.update()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.IndShockConsumerType.update_assets_grid"><code class="docutils literal notranslate"><span class="pre">IndShockConsumerType.update_assets_grid()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.IndShockConsumerType.update_income_process"><code class="docutils literal notranslate"><span class="pre">IndShockConsumerType.update_income_process()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.KinkedRconsumerType"><code class="docutils literal notranslate"><span class="pre">KinkedRconsumerType</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.KinkedRconsumerType.calc_bounding_values"><code class="docutils literal notranslate"><span class="pre">KinkedRconsumerType.calc_bounding_values()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.KinkedRconsumerType.check_conditions"><code class="docutils literal notranslate"><span class="pre">KinkedRconsumerType.check_conditions()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.KinkedRconsumerType.get_Rfree"><code class="docutils literal notranslate"><span class="pre">KinkedRconsumerType.get_Rfree()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.KinkedRconsumerType.make_euler_error_func"><code class="docutils literal notranslate"><span class="pre">KinkedRconsumerType.make_euler_error_func()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.KinkedRconsumerType.pre_solve"><code class="docutils literal notranslate"><span class="pre">KinkedRconsumerType.pre_solve()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.KinkedRconsumerType.time_inv_"><code class="docutils literal notranslate"><span class="pre">KinkedRconsumerType.time_inv_</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.PerfForesightConsumerType"><code class="docutils literal notranslate"><span class="pre">PerfForesightConsumerType</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.PerfForesightConsumerType.cFunc_terminal_"><code class="docutils literal notranslate"><span class="pre">PerfForesightConsumerType.cFunc_terminal_</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.PerfForesightConsumerType.check_AIC"><code class="docutils literal notranslate"><span class="pre">PerfForesightConsumerType.check_AIC()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.PerfForesightConsumerType.check_FHWC"><code class="docutils literal notranslate"><span class="pre">PerfForesightConsumerType.check_FHWC()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.PerfForesightConsumerType.check_GICRaw"><code class="docutils literal notranslate"><span class="pre">PerfForesightConsumerType.check_GICRaw()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.PerfForesightConsumerType.check_RIC"><code class="docutils literal notranslate"><span class="pre">PerfForesightConsumerType.check_RIC()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.PerfForesightConsumerType.check_condition"><code class="docutils literal notranslate"><span class="pre">PerfForesightConsumerType.check_condition()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.PerfForesightConsumerType.check_conditions"><code class="docutils literal notranslate"><span class="pre">PerfForesightConsumerType.check_conditions()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.PerfForesightConsumerType.check_restrictions"><code class="docutils literal notranslate"><span class="pre">PerfForesightConsumerType.check_restrictions()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.PerfForesightConsumerType.get_Rfree"><code class="docutils literal notranslate"><span class="pre">PerfForesightConsumerType.get_Rfree()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.PerfForesightConsumerType.get_controls"><code class="docutils literal notranslate"><span class="pre">PerfForesightConsumerType.get_controls()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.PerfForesightConsumerType.get_poststates"><code class="docutils literal notranslate"><span class="pre">PerfForesightConsumerType.get_poststates()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.PerfForesightConsumerType.get_shocks"><code class="docutils literal notranslate"><span class="pre">PerfForesightConsumerType.get_shocks()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.PerfForesightConsumerType.initialize_sim"><code class="docutils literal notranslate"><span class="pre">PerfForesightConsumerType.initialize_sim()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.PerfForesightConsumerType.pre_solve"><code class="docutils literal notranslate"><span class="pre">PerfForesightConsumerType.pre_solve()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.PerfForesightConsumerType.shock_vars_"><code class="docutils literal notranslate"><span class="pre">PerfForesightConsumerType.shock_vars_</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.PerfForesightConsumerType.sim_birth"><code class="docutils literal notranslate"><span class="pre">PerfForesightConsumerType.sim_birth()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.PerfForesightConsumerType.sim_death"><code class="docutils literal notranslate"><span class="pre">PerfForesightConsumerType.sim_death()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.PerfForesightConsumerType.solution_terminal_"><code class="docutils literal notranslate"><span class="pre">PerfForesightConsumerType.solution_terminal_</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.PerfForesightConsumerType.state_vars"><code class="docutils literal notranslate"><span class="pre">PerfForesightConsumerType.state_vars</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.PerfForesightConsumerType.time_inv_"><code class="docutils literal notranslate"><span class="pre">PerfForesightConsumerType.time_inv_</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.PerfForesightConsumerType.time_vary_"><code class="docutils literal notranslate"><span class="pre">PerfForesightConsumerType.time_vary_</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.PerfForesightConsumerType.transition"><code class="docutils literal notranslate"><span class="pre">PerfForesightConsumerType.transition()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.PerfForesightConsumerType.unpack_cFunc"><code class="docutils literal notranslate"><span class="pre">PerfForesightConsumerType.unpack_cFunc()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.PerfForesightConsumerType.update_Rfree"><code class="docutils literal notranslate"><span class="pre">PerfForesightConsumerType.update_Rfree()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.PerfForesightConsumerType.update_solution_terminal"><code class="docutils literal notranslate"><span class="pre">PerfForesightConsumerType.update_solution_terminal()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.PerfForesightConsumerType.vFunc_terminal_"><code class="docutils literal notranslate"><span class="pre">PerfForesightConsumerType.vFunc_terminal_</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ConsIndShockModelFast.html">ConsIndShockModelFast</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ConsIndShockModelFast.html#HARK.ConsumptionSaving.ConsIndShockModelFast.ConsIndShockSolverBasicFast"><code class="docutils literal notranslate"><span class="pre">ConsIndShockSolverBasicFast</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModelFast.html#HARK.ConsumptionSaving.ConsIndShockModelFast.ConsIndShockSolverBasicFast.prepare_to_solve"><code class="docutils literal notranslate"><span class="pre">ConsIndShockSolverBasicFast.prepare_to_solve()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModelFast.html#HARK.ConsumptionSaving.ConsIndShockModelFast.ConsIndShockSolverBasicFast.solve"><code class="docutils literal notranslate"><span class="pre">ConsIndShockSolverBasicFast.solve()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ConsIndShockModelFast.html#HARK.ConsumptionSaving.ConsIndShockModelFast.ConsIndShockSolverFast"><code class="docutils literal notranslate"><span class="pre">ConsIndShockSolverFast</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModelFast.html#HARK.ConsumptionSaving.ConsIndShockModelFast.ConsIndShockSolverFast.solve"><code class="docutils literal notranslate"><span class="pre">ConsIndShockSolverFast.solve()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ConsIndShockModelFast.html#HARK.ConsumptionSaving.ConsIndShockModelFast.ConsPerfForesightSolverFast"><code class="docutils literal notranslate"><span class="pre">ConsPerfForesightSolverFast</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModelFast.html#HARK.ConsumptionSaving.ConsIndShockModelFast.ConsPerfForesightSolverFast.solve"><code class="docutils literal notranslate"><span class="pre">ConsPerfForesightSolverFast.solve()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ConsIndShockModelFast.html#HARK.ConsumptionSaving.ConsIndShockModelFast.IndShockConsumerTypeFast"><code class="docutils literal notranslate"><span class="pre">IndShockConsumerTypeFast</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModelFast.html#HARK.ConsumptionSaving.ConsIndShockModelFast.IndShockConsumerTypeFast.post_solve"><code class="docutils literal notranslate"><span class="pre">IndShockConsumerTypeFast.post_solve()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModelFast.html#HARK.ConsumptionSaving.ConsIndShockModelFast.IndShockConsumerTypeFast.solution_terminal_"><code class="docutils literal notranslate"><span class="pre">IndShockConsumerTypeFast.solution_terminal_</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModelFast.html#HARK.ConsumptionSaving.ConsIndShockModelFast.IndShockConsumerTypeFast.update_solution_terminal"><code class="docutils literal notranslate"><span class="pre">IndShockConsumerTypeFast.update_solution_terminal()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ConsIndShockModelFast.html#HARK.ConsumptionSaving.ConsIndShockModelFast.IndShockSolution"><code class="docutils literal notranslate"><span class="pre">IndShockSolution</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModelFast.html#HARK.ConsumptionSaving.ConsIndShockModelFast.IndShockSolution.distance_criteria"><code class="docutils literal notranslate"><span class="pre">IndShockSolution.distance_criteria</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ConsIndShockModelFast.html#HARK.ConsumptionSaving.ConsIndShockModelFast.PerfForesightConsumerTypeFast"><code class="docutils literal notranslate"><span class="pre">PerfForesightConsumerTypeFast</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModelFast.html#HARK.ConsumptionSaving.ConsIndShockModelFast.PerfForesightConsumerTypeFast.post_solve"><code class="docutils literal notranslate"><span class="pre">PerfForesightConsumerTypeFast.post_solve()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModelFast.html#HARK.ConsumptionSaving.ConsIndShockModelFast.PerfForesightConsumerTypeFast.solution_terminal_"><code class="docutils literal notranslate"><span class="pre">PerfForesightConsumerTypeFast.solution_terminal_</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModelFast.html#HARK.ConsumptionSaving.ConsIndShockModelFast.PerfForesightConsumerTypeFast.update_solution_terminal"><code class="docutils literal notranslate"><span class="pre">PerfForesightConsumerTypeFast.update_solution_terminal()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ConsIndShockModelFast.html#HARK.ConsumptionSaving.ConsIndShockModelFast.PerfForesightSolution"><code class="docutils literal notranslate"><span class="pre">PerfForesightSolution</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ConsIndShockModelFast.html#HARK.ConsumptionSaving.ConsIndShockModelFast.PerfForesightSolution.distance_criteria"><code class="docutils literal notranslate"><span class="pre">PerfForesightSolution.distance_criteria</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ConsLaborModel.html">ConsLaborModel</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ConsLaborModel.html#HARK.ConsumptionSaving.ConsLaborModel.ConsumerLaborSolution"><code class="docutils literal notranslate"><span class="pre">ConsumerLaborSolution</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ConsLaborModel.html#HARK.ConsumptionSaving.ConsLaborModel.ConsumerLaborSolution.distance_criteria"><code class="docutils literal notranslate"><span class="pre">ConsumerLaborSolution.distance_criteria</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ConsLaborModel.html#HARK.ConsumptionSaving.ConsLaborModel.LaborIntMargConsumerType"><code class="docutils literal notranslate"><span class="pre">LaborIntMargConsumerType</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ConsLaborModel.html#HARK.ConsumptionSaving.ConsLaborModel.LaborIntMargConsumerType.calc_bounding_values"><code class="docutils literal notranslate"><span class="pre">LaborIntMargConsumerType.calc_bounding_values()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsLaborModel.html#HARK.ConsumptionSaving.ConsLaborModel.LaborIntMargConsumerType.get_controls"><code class="docutils literal notranslate"><span class="pre">LaborIntMargConsumerType.get_controls()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsLaborModel.html#HARK.ConsumptionSaving.ConsLaborModel.LaborIntMargConsumerType.get_poststates"><code class="docutils literal notranslate"><span class="pre">LaborIntMargConsumerType.get_poststates()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsLaborModel.html#HARK.ConsumptionSaving.ConsLaborModel.LaborIntMargConsumerType.get_states"><code class="docutils literal notranslate"><span class="pre">LaborIntMargConsumerType.get_states()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsLaborModel.html#HARK.ConsumptionSaving.ConsLaborModel.LaborIntMargConsumerType.make_euler_error_func"><code class="docutils literal notranslate"><span class="pre">LaborIntMargConsumerType.make_euler_error_func()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsLaborModel.html#HARK.ConsumptionSaving.ConsLaborModel.LaborIntMargConsumerType.plot_LbrFunc"><code class="docutils literal notranslate"><span class="pre">LaborIntMargConsumerType.plot_LbrFunc()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsLaborModel.html#HARK.ConsumptionSaving.ConsLaborModel.LaborIntMargConsumerType.plot_cFunc"><code class="docutils literal notranslate"><span class="pre">LaborIntMargConsumerType.plot_cFunc()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsLaborModel.html#HARK.ConsumptionSaving.ConsLaborModel.LaborIntMargConsumerType.time_inv_"><code class="docutils literal notranslate"><span class="pre">LaborIntMargConsumerType.time_inv_</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsLaborModel.html#HARK.ConsumptionSaving.ConsLaborModel.LaborIntMargConsumerType.time_vary_"><code class="docutils literal notranslate"><span class="pre">LaborIntMargConsumerType.time_vary_</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsLaborModel.html#HARK.ConsumptionSaving.ConsLaborModel.LaborIntMargConsumerType.update"><code class="docutils literal notranslate"><span class="pre">LaborIntMargConsumerType.update()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsLaborModel.html#HARK.ConsumptionSaving.ConsLaborModel.LaborIntMargConsumerType.update_LbrCost"><code class="docutils literal notranslate"><span class="pre">LaborIntMargConsumerType.update_LbrCost()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsLaborModel.html#HARK.ConsumptionSaving.ConsLaborModel.LaborIntMargConsumerType.update_TranShkGrid"><code class="docutils literal notranslate"><span class="pre">LaborIntMargConsumerType.update_TranShkGrid()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsLaborModel.html#HARK.ConsumptionSaving.ConsLaborModel.LaborIntMargConsumerType.update_solution_terminal"><code class="docutils literal notranslate"><span class="pre">LaborIntMargConsumerType.update_solution_terminal()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ConsLaborModel.html#HARK.ConsumptionSaving.ConsLaborModel.solve_ConsLaborIntMarg"><code class="docutils literal notranslate"><span class="pre">solve_ConsLaborIntMarg()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ConsMarkovModel.html">ConsMarkovModel</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ConsMarkovModel.html#HARK.ConsumptionSaving.ConsMarkovModel.ConsMarkovSolver"><code class="docutils literal notranslate"><span class="pre">ConsMarkovSolver</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ConsMarkovModel.html#HARK.ConsumptionSaving.ConsMarkovModel.ConsMarkovSolver.calc_EndOfPrdvP"><code class="docutils literal notranslate"><span class="pre">ConsMarkovSolver.calc_EndOfPrdvP()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsMarkovModel.html#HARK.ConsumptionSaving.ConsMarkovModel.ConsMarkovSolver.calc_EndOfPrdvPP"><code class="docutils literal notranslate"><span class="pre">ConsMarkovSolver.calc_EndOfPrdvPP()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsMarkovModel.html#HARK.ConsumptionSaving.ConsMarkovModel.ConsMarkovSolver.calc_EndOfPrdvPcond"><code class="docutils literal notranslate"><span class="pre">ConsMarkovSolver.calc_EndOfPrdvPcond()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsMarkovModel.html#HARK.ConsumptionSaving.ConsMarkovModel.ConsMarkovSolver.calc_HumWealth_and_BoundingMPCs"><code class="docutils literal notranslate"><span class="pre">ConsMarkovSolver.calc_HumWealth_and_BoundingMPCs()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsMarkovModel.html#HARK.ConsumptionSaving.ConsMarkovModel.ConsMarkovSolver.condition_on_state"><code class="docutils literal notranslate"><span class="pre">ConsMarkovSolver.condition_on_state()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsMarkovModel.html#HARK.ConsumptionSaving.ConsMarkovModel.ConsMarkovSolver.def_boundary"><code class="docutils literal notranslate"><span class="pre">ConsMarkovSolver.def_boundary()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsMarkovModel.html#HARK.ConsumptionSaving.ConsMarkovModel.ConsMarkovSolver.make_EndOfPrdvFuncCond"><code class="docutils literal notranslate"><span class="pre">ConsMarkovSolver.make_EndOfPrdvFuncCond()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsMarkovModel.html#HARK.ConsumptionSaving.ConsMarkovModel.ConsMarkovSolver.make_EndOfPrdvPfuncCond"><code class="docutils literal notranslate"><span class="pre">ConsMarkovSolver.make_EndOfPrdvPfuncCond()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsMarkovModel.html#HARK.ConsumptionSaving.ConsMarkovModel.ConsMarkovSolver.make_cubic_cFunc"><code class="docutils literal notranslate"><span class="pre">ConsMarkovSolver.make_cubic_cFunc()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsMarkovModel.html#HARK.ConsumptionSaving.ConsMarkovModel.ConsMarkovSolver.make_linear_cFunc"><code class="docutils literal notranslate"><span class="pre">ConsMarkovSolver.make_linear_cFunc()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsMarkovModel.html#HARK.ConsumptionSaving.ConsMarkovModel.ConsMarkovSolver.make_solution"><code class="docutils literal notranslate"><span class="pre">ConsMarkovSolver.make_solution()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsMarkovModel.html#HARK.ConsumptionSaving.ConsMarkovModel.ConsMarkovSolver.make_vFunc"><code class="docutils literal notranslate"><span class="pre">ConsMarkovSolver.make_vFunc()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsMarkovModel.html#HARK.ConsumptionSaving.ConsMarkovModel.ConsMarkovSolver.solve"><code class="docutils literal notranslate"><span class="pre">ConsMarkovSolver.solve()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ConsMarkovModel.html#HARK.ConsumptionSaving.ConsMarkovModel.MarkovConsumerType"><code class="docutils literal notranslate"><span class="pre">MarkovConsumerType</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ConsMarkovModel.html#HARK.ConsumptionSaving.ConsMarkovModel.MarkovConsumerType.calc_bounding_values"><code class="docutils literal notranslate"><span class="pre">MarkovConsumerType.calc_bounding_values()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsMarkovModel.html#HARK.ConsumptionSaving.ConsMarkovModel.MarkovConsumerType.check_markov_inputs"><code class="docutils literal notranslate"><span class="pre">MarkovConsumerType.check_markov_inputs()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsMarkovModel.html#HARK.ConsumptionSaving.ConsMarkovModel.MarkovConsumerType.get_Rfree"><code class="docutils literal notranslate"><span class="pre">MarkovConsumerType.get_Rfree()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsMarkovModel.html#HARK.ConsumptionSaving.ConsMarkovModel.MarkovConsumerType.get_controls"><code class="docutils literal notranslate"><span class="pre">MarkovConsumerType.get_controls()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsMarkovModel.html#HARK.ConsumptionSaving.ConsMarkovModel.MarkovConsumerType.get_markov_states"><code class="docutils literal notranslate"><span class="pre">MarkovConsumerType.get_markov_states()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsMarkovModel.html#HARK.ConsumptionSaving.ConsMarkovModel.MarkovConsumerType.get_shocks"><code class="docutils literal notranslate"><span class="pre">MarkovConsumerType.get_shocks()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsMarkovModel.html#HARK.ConsumptionSaving.ConsMarkovModel.MarkovConsumerType.initialize_sim"><code class="docutils literal notranslate"><span class="pre">MarkovConsumerType.initialize_sim()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsMarkovModel.html#HARK.ConsumptionSaving.ConsMarkovModel.MarkovConsumerType.make_euler_error_func"><code class="docutils literal notranslate"><span class="pre">MarkovConsumerType.make_euler_error_func()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsMarkovModel.html#HARK.ConsumptionSaving.ConsMarkovModel.MarkovConsumerType.pre_solve"><code class="docutils literal notranslate"><span class="pre">MarkovConsumerType.pre_solve()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsMarkovModel.html#HARK.ConsumptionSaving.ConsMarkovModel.MarkovConsumerType.read_shocks_from_history"><code class="docutils literal notranslate"><span class="pre">MarkovConsumerType.read_shocks_from_history()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsMarkovModel.html#HARK.ConsumptionSaving.ConsMarkovModel.MarkovConsumerType.reset_rng"><code class="docutils literal notranslate"><span class="pre">MarkovConsumerType.reset_rng()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsMarkovModel.html#HARK.ConsumptionSaving.ConsMarkovModel.MarkovConsumerType.shock_vars_"><code class="docutils literal notranslate"><span class="pre">MarkovConsumerType.shock_vars_</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsMarkovModel.html#HARK.ConsumptionSaving.ConsMarkovModel.MarkovConsumerType.sim_birth"><code class="docutils literal notranslate"><span class="pre">MarkovConsumerType.sim_birth()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsMarkovModel.html#HARK.ConsumptionSaving.ConsMarkovModel.MarkovConsumerType.sim_death"><code class="docutils literal notranslate"><span class="pre">MarkovConsumerType.sim_death()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsMarkovModel.html#HARK.ConsumptionSaving.ConsMarkovModel.MarkovConsumerType.state_vars"><code class="docutils literal notranslate"><span class="pre">MarkovConsumerType.state_vars</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsMarkovModel.html#HARK.ConsumptionSaving.ConsMarkovModel.MarkovConsumerType.time_vary_"><code class="docutils literal notranslate"><span class="pre">MarkovConsumerType.time_vary_</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsMarkovModel.html#HARK.ConsumptionSaving.ConsMarkovModel.MarkovConsumerType.update_solution_terminal"><code class="docutils literal notranslate"><span class="pre">MarkovConsumerType.update_solution_terminal()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ConsMedModel.html">ConsMedModel</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ConsMedModel.html#HARK.ConsumptionSaving.ConsMedModel.ConsMedShockSolver"><code class="docutils literal notranslate"><span class="pre">ConsMedShockSolver</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ConsMedModel.html#HARK.ConsumptionSaving.ConsMedModel.ConsMedShockSolver.add_vPPfunc"><code class="docutils literal notranslate"><span class="pre">ConsMedShockSolver.add_vPPfunc()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsMedModel.html#HARK.ConsumptionSaving.ConsMedModel.ConsMedShockSolver.def_BoroCnst"><code class="docutils literal notranslate"><span class="pre">ConsMedShockSolver.def_BoroCnst()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsMedModel.html#HARK.ConsumptionSaving.ConsMedModel.ConsMedShockSolver.def_utility_funcs"><code class="docutils literal notranslate"><span class="pre">ConsMedShockSolver.def_utility_funcs()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsMedModel.html#HARK.ConsumptionSaving.ConsMedModel.ConsMedShockSolver.get_points_for_interpolation"><code class="docutils literal notranslate"><span class="pre">ConsMedShockSolver.get_points_for_interpolation()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsMedModel.html#HARK.ConsumptionSaving.ConsMedModel.ConsMedShockSolver.make_basic_solution"><code class="docutils literal notranslate"><span class="pre">ConsMedShockSolver.make_basic_solution()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsMedModel.html#HARK.ConsumptionSaving.ConsMedModel.ConsMedShockSolver.make_cubic_xFunc"><code class="docutils literal notranslate"><span class="pre">ConsMedShockSolver.make_cubic_xFunc()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsMedModel.html#HARK.ConsumptionSaving.ConsMedModel.ConsMedShockSolver.make_linear_xFunc"><code class="docutils literal notranslate"><span class="pre">ConsMedShockSolver.make_linear_xFunc()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsMedModel.html#HARK.ConsumptionSaving.ConsMedModel.ConsMedShockSolver.make_v_and_vP_funcs"><code class="docutils literal notranslate"><span class="pre">ConsMedShockSolver.make_v_and_vP_funcs()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsMedModel.html#HARK.ConsumptionSaving.ConsMedModel.ConsMedShockSolver.set_and_update_values"><code class="docutils literal notranslate"><span class="pre">ConsMedShockSolver.set_and_update_values()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsMedModel.html#HARK.ConsumptionSaving.ConsMedModel.ConsMedShockSolver.solve"><code class="docutils literal notranslate"><span class="pre">ConsMedShockSolver.solve()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsMedModel.html#HARK.ConsumptionSaving.ConsMedModel.ConsMedShockSolver.use_points_for_interpolation"><code class="docutils literal notranslate"><span class="pre">ConsMedShockSolver.use_points_for_interpolation()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ConsMedModel.html#HARK.ConsumptionSaving.ConsMedModel.MedShockConsumerType"><code class="docutils literal notranslate"><span class="pre">MedShockConsumerType</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ConsMedModel.html#HARK.ConsumptionSaving.ConsMedModel.MedShockConsumerType.get_controls"><code class="docutils literal notranslate"><span class="pre">MedShockConsumerType.get_controls()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsMedModel.html#HARK.ConsumptionSaving.ConsMedModel.MedShockConsumerType.get_poststates"><code class="docutils literal notranslate"><span class="pre">MedShockConsumerType.get_poststates()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsMedModel.html#HARK.ConsumptionSaving.ConsMedModel.MedShockConsumerType.get_shocks"><code class="docutils literal notranslate"><span class="pre">MedShockConsumerType.get_shocks()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsMedModel.html#HARK.ConsumptionSaving.ConsMedModel.MedShockConsumerType.pre_solve"><code class="docutils literal notranslate"><span class="pre">MedShockConsumerType.pre_solve()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsMedModel.html#HARK.ConsumptionSaving.ConsMedModel.MedShockConsumerType.reset_rng"><code class="docutils literal notranslate"><span class="pre">MedShockConsumerType.reset_rng()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsMedModel.html#HARK.ConsumptionSaving.ConsMedModel.MedShockConsumerType.shock_vars_"><code class="docutils literal notranslate"><span class="pre">MedShockConsumerType.shock_vars_</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsMedModel.html#HARK.ConsumptionSaving.ConsMedModel.MedShockConsumerType.state_vars"><code class="docutils literal notranslate"><span class="pre">MedShockConsumerType.state_vars</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsMedModel.html#HARK.ConsumptionSaving.ConsMedModel.MedShockConsumerType.update"><code class="docutils literal notranslate"><span class="pre">MedShockConsumerType.update()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsMedModel.html#HARK.ConsumptionSaving.ConsMedModel.MedShockConsumerType.update_med_shock_process"><code class="docutils literal notranslate"><span class="pre">MedShockConsumerType.update_med_shock_process()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsMedModel.html#HARK.ConsumptionSaving.ConsMedModel.MedShockConsumerType.update_pLvlGrid"><code class="docutils literal notranslate"><span class="pre">MedShockConsumerType.update_pLvlGrid()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsMedModel.html#HARK.ConsumptionSaving.ConsMedModel.MedShockConsumerType.update_solution_terminal"><code class="docutils literal notranslate"><span class="pre">MedShockConsumerType.update_solution_terminal()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ConsMedModel.html#HARK.ConsumptionSaving.ConsMedModel.MedShockPolicyFunc"><code class="docutils literal notranslate"><span class="pre">MedShockPolicyFunc</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ConsMedModel.html#HARK.ConsumptionSaving.ConsMedModel.MedShockPolicyFunc.derivativeX"><code class="docutils literal notranslate"><span class="pre">MedShockPolicyFunc.derivativeX()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsMedModel.html#HARK.ConsumptionSaving.ConsMedModel.MedShockPolicyFunc.derivativeY"><code class="docutils literal notranslate"><span class="pre">MedShockPolicyFunc.derivativeY()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsMedModel.html#HARK.ConsumptionSaving.ConsMedModel.MedShockPolicyFunc.derivativeZ"><code class="docutils literal notranslate"><span class="pre">MedShockPolicyFunc.derivativeZ()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsMedModel.html#HARK.ConsumptionSaving.ConsMedModel.MedShockPolicyFunc.distance_criteria"><code class="docutils literal notranslate"><span class="pre">MedShockPolicyFunc.distance_criteria</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ConsMedModel.html#HARK.ConsumptionSaving.ConsMedModel.MedThruXfunc"><code class="docutils literal notranslate"><span class="pre">MedThruXfunc</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ConsMedModel.html#HARK.ConsumptionSaving.ConsMedModel.MedThruXfunc.derivativeX"><code class="docutils literal notranslate"><span class="pre">MedThruXfunc.derivativeX()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsMedModel.html#HARK.ConsumptionSaving.ConsMedModel.MedThruXfunc.derivativeY"><code class="docutils literal notranslate"><span class="pre">MedThruXfunc.derivativeY()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsMedModel.html#HARK.ConsumptionSaving.ConsMedModel.MedThruXfunc.derivativeZ"><code class="docutils literal notranslate"><span class="pre">MedThruXfunc.derivativeZ()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsMedModel.html#HARK.ConsumptionSaving.ConsMedModel.MedThruXfunc.distance_criteria"><code class="docutils literal notranslate"><span class="pre">MedThruXfunc.distance_criteria</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ConsMedModel.html#HARK.ConsumptionSaving.ConsMedModel.cThruXfunc"><code class="docutils literal notranslate"><span class="pre">cThruXfunc</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ConsMedModel.html#HARK.ConsumptionSaving.ConsMedModel.cThruXfunc.derivativeX"><code class="docutils literal notranslate"><span class="pre">cThruXfunc.derivativeX()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsMedModel.html#HARK.ConsumptionSaving.ConsMedModel.cThruXfunc.derivativeY"><code class="docutils literal notranslate"><span class="pre">cThruXfunc.derivativeY()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsMedModel.html#HARK.ConsumptionSaving.ConsMedModel.cThruXfunc.derivativeZ"><code class="docutils literal notranslate"><span class="pre">cThruXfunc.derivativeZ()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsMedModel.html#HARK.ConsumptionSaving.ConsMedModel.cThruXfunc.distance_criteria"><code class="docutils literal notranslate"><span class="pre">cThruXfunc.distance_criteria</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ConsPortfolioFrameModel.html">ConsPortfolioFrameModel</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ConsPortfolioFrameModel.html#HARK.ConsumptionSaving.ConsPortfolioFrameModel.PortfolioConsumerFrameType"><code class="docutils literal notranslate"><span class="pre">PortfolioConsumerFrameType</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ConsPortfolioFrameModel.html#HARK.ConsumptionSaving.ConsPortfolioFrameModel.PortfolioConsumerFrameType.birth_aNrmNow"><code class="docutils literal notranslate"><span class="pre">PortfolioConsumerFrameType.birth_aNrmNow()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsPortfolioFrameModel.html#HARK.ConsumptionSaving.ConsPortfolioFrameModel.PortfolioConsumerFrameType.birth_pLvlNow"><code class="docutils literal notranslate"><span class="pre">PortfolioConsumerFrameType.birth_pLvlNow()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsPortfolioFrameModel.html#HARK.ConsumptionSaving.ConsPortfolioFrameModel.PortfolioConsumerFrameType.model"><code class="docutils literal notranslate"><span class="pre">PortfolioConsumerFrameType.model</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsPortfolioFrameModel.html#HARK.ConsumptionSaving.ConsPortfolioFrameModel.PortfolioConsumerFrameType.solve"><code class="docutils literal notranslate"><span class="pre">PortfolioConsumerFrameType.solve()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ConsPortfolioModel.html">ConsPortfolioModel</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ConsPortfolioModel.html#HARK.ConsumptionSaving.ConsPortfolioModel.ConsPortfolioDiscreteSolver"><code class="docutils literal notranslate"><span class="pre">ConsPortfolioDiscreteSolver</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ConsPortfolioModel.html#HARK.ConsumptionSaving.ConsPortfolioModel.ConsPortfolioDiscreteSolver.make_ShareFuncAdj"><code class="docutils literal notranslate"><span class="pre">ConsPortfolioDiscreteSolver.make_ShareFuncAdj()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsPortfolioModel.html#HARK.ConsumptionSaving.ConsPortfolioModel.ConsPortfolioDiscreteSolver.optimize_share"><code class="docutils literal notranslate"><span class="pre">ConsPortfolioDiscreteSolver.optimize_share()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsPortfolioModel.html#HARK.ConsumptionSaving.ConsPortfolioModel.ConsPortfolioDiscreteSolver.solve"><code class="docutils literal notranslate"><span class="pre">ConsPortfolioDiscreteSolver.solve()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ConsPortfolioModel.html#HARK.ConsumptionSaving.ConsPortfolioModel.ConsPortfolioJointDistSolver"><code class="docutils literal notranslate"><span class="pre">ConsPortfolioJointDistSolver</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ConsPortfolioModel.html#HARK.ConsumptionSaving.ConsPortfolioModel.ConsPortfolioJointDistSolver.calc_EndOfPrdvP"><code class="docutils literal notranslate"><span class="pre">ConsPortfolioJointDistSolver.calc_EndOfPrdvP()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsPortfolioModel.html#HARK.ConsumptionSaving.ConsPortfolioModel.ConsPortfolioJointDistSolver.m_nrm_next"><code class="docutils literal notranslate"><span class="pre">ConsPortfolioJointDistSolver.m_nrm_next()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsPortfolioModel.html#HARK.ConsumptionSaving.ConsPortfolioModel.ConsPortfolioJointDistSolver.make_EndOfPrdvFunc"><code class="docutils literal notranslate"><span class="pre">ConsPortfolioJointDistSolver.make_EndOfPrdvFunc()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsPortfolioModel.html#HARK.ConsumptionSaving.ConsPortfolioModel.ConsPortfolioJointDistSolver.prepare_to_calc_EndOfPrdvP"><code class="docutils literal notranslate"><span class="pre">ConsPortfolioJointDistSolver.prepare_to_calc_EndOfPrdvP()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsPortfolioModel.html#HARK.ConsumptionSaving.ConsPortfolioModel.ConsPortfolioJointDistSolver.r_port"><code class="docutils literal notranslate"><span class="pre">ConsPortfolioJointDistSolver.r_port()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsPortfolioModel.html#HARK.ConsumptionSaving.ConsPortfolioModel.ConsPortfolioJointDistSolver.set_and_update_values"><code class="docutils literal notranslate"><span class="pre">ConsPortfolioJointDistSolver.set_and_update_values()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsPortfolioModel.html#HARK.ConsumptionSaving.ConsPortfolioModel.ConsPortfolioJointDistSolver.solve"><code class="docutils literal notranslate"><span class="pre">ConsPortfolioJointDistSolver.solve()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ConsPortfolioModel.html#HARK.ConsumptionSaving.ConsPortfolioModel.ConsPortfolioSolver"><code class="docutils literal notranslate"><span class="pre">ConsPortfolioSolver</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ConsPortfolioModel.html#HARK.ConsumptionSaving.ConsPortfolioModel.ConsPortfolioSolver.add_save_points"><code class="docutils literal notranslate"><span class="pre">ConsPortfolioSolver.add_save_points()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsPortfolioModel.html#HARK.ConsumptionSaving.ConsPortfolioModel.ConsPortfolioSolver.add_vFunc"><code class="docutils literal notranslate"><span class="pre">ConsPortfolioSolver.add_vFunc()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsPortfolioModel.html#HARK.ConsumptionSaving.ConsPortfolioModel.ConsPortfolioSolver.calc_EndOfPrdvP"><code class="docutils literal notranslate"><span class="pre">ConsPortfolioSolver.calc_EndOfPrdvP()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsPortfolioModel.html#HARK.ConsumptionSaving.ConsPortfolioModel.ConsPortfolioSolver.def_utility_funcs"><code class="docutils literal notranslate"><span class="pre">ConsPortfolioSolver.def_utility_funcs()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsPortfolioModel.html#HARK.ConsumptionSaving.ConsPortfolioModel.ConsPortfolioSolver.m_nrm_next"><code class="docutils literal notranslate"><span class="pre">ConsPortfolioSolver.m_nrm_next()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsPortfolioModel.html#HARK.ConsumptionSaving.ConsPortfolioModel.ConsPortfolioSolver.make_EndOfPrdvFunc"><code class="docutils literal notranslate"><span class="pre">ConsPortfolioSolver.make_EndOfPrdvFunc()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsPortfolioModel.html#HARK.ConsumptionSaving.ConsPortfolioModel.ConsPortfolioSolver.make_ShareFuncAdj"><code class="docutils literal notranslate"><span class="pre">ConsPortfolioSolver.make_ShareFuncAdj()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsPortfolioModel.html#HARK.ConsumptionSaving.ConsPortfolioModel.ConsPortfolioSolver.make_basic_solution"><code class="docutils literal notranslate"><span class="pre">ConsPortfolioSolver.make_basic_solution()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsPortfolioModel.html#HARK.ConsumptionSaving.ConsPortfolioModel.ConsPortfolioSolver.make_porfolio_solution"><code class="docutils literal notranslate"><span class="pre">ConsPortfolioSolver.make_porfolio_solution()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsPortfolioModel.html#HARK.ConsumptionSaving.ConsPortfolioModel.ConsPortfolioSolver.make_vFunc"><code class="docutils literal notranslate"><span class="pre">ConsPortfolioSolver.make_vFunc()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsPortfolioModel.html#HARK.ConsumptionSaving.ConsPortfolioModel.ConsPortfolioSolver.optimize_share"><code class="docutils literal notranslate"><span class="pre">ConsPortfolioSolver.optimize_share()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsPortfolioModel.html#HARK.ConsumptionSaving.ConsPortfolioModel.ConsPortfolioSolver.prepare_to_calc_EndOfPrdvP"><code class="docutils literal notranslate"><span class="pre">ConsPortfolioSolver.prepare_to_calc_EndOfPrdvP()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsPortfolioModel.html#HARK.ConsumptionSaving.ConsPortfolioModel.ConsPortfolioSolver.prepare_to_solve"><code class="docutils literal notranslate"><span class="pre">ConsPortfolioSolver.prepare_to_solve()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsPortfolioModel.html#HARK.ConsumptionSaving.ConsPortfolioModel.ConsPortfolioSolver.set_and_update_values"><code class="docutils literal notranslate"><span class="pre">ConsPortfolioSolver.set_and_update_values()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsPortfolioModel.html#HARK.ConsumptionSaving.ConsPortfolioModel.ConsPortfolioSolver.solve"><code class="docutils literal notranslate"><span class="pre">ConsPortfolioSolver.solve()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ConsPortfolioModel.html#HARK.ConsumptionSaving.ConsPortfolioModel.ConsSequentialPortfolioSolver"><code class="docutils literal notranslate"><span class="pre">ConsSequentialPortfolioSolver</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ConsPortfolioModel.html#HARK.ConsumptionSaving.ConsPortfolioModel.ConsSequentialPortfolioSolver.add_SequentialShareFuncAdj"><code class="docutils literal notranslate"><span class="pre">ConsSequentialPortfolioSolver.add_SequentialShareFuncAdj()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsPortfolioModel.html#HARK.ConsumptionSaving.ConsPortfolioModel.ConsSequentialPortfolioSolver.solve"><code class="docutils literal notranslate"><span class="pre">ConsSequentialPortfolioSolver.solve()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ConsPortfolioModel.html#HARK.ConsumptionSaving.ConsPortfolioModel.PortfolioConsumerType"><code class="docutils literal notranslate"><span class="pre">PortfolioConsumerType</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ConsPortfolioModel.html#HARK.ConsumptionSaving.ConsPortfolioModel.PortfolioConsumerType.get_controls"><code class="docutils literal notranslate"><span class="pre">PortfolioConsumerType.get_controls()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsPortfolioModel.html#HARK.ConsumptionSaving.ConsPortfolioModel.PortfolioConsumerType.initialize_sim"><code class="docutils literal notranslate"><span class="pre">PortfolioConsumerType.initialize_sim()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsPortfolioModel.html#HARK.ConsumptionSaving.ConsPortfolioModel.PortfolioConsumerType.pre_solve"><code class="docutils literal notranslate"><span class="pre">PortfolioConsumerType.pre_solve()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsPortfolioModel.html#HARK.ConsumptionSaving.ConsPortfolioModel.PortfolioConsumerType.sim_birth"><code class="docutils literal notranslate"><span class="pre">PortfolioConsumerType.sim_birth()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsPortfolioModel.html#HARK.ConsumptionSaving.ConsPortfolioModel.PortfolioConsumerType.time_inv_"><code class="docutils literal notranslate"><span class="pre">PortfolioConsumerType.time_inv_</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsPortfolioModel.html#HARK.ConsumptionSaving.ConsPortfolioModel.PortfolioConsumerType.update"><code class="docutils literal notranslate"><span class="pre">PortfolioConsumerType.update()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsPortfolioModel.html#HARK.ConsumptionSaving.ConsPortfolioModel.PortfolioConsumerType.update_solution_terminal"><code class="docutils literal notranslate"><span class="pre">PortfolioConsumerType.update_solution_terminal()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ConsPortfolioModel.html#HARK.ConsumptionSaving.ConsPortfolioModel.PortfolioSolution"><code class="docutils literal notranslate"><span class="pre">PortfolioSolution</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ConsPortfolioModel.html#HARK.ConsumptionSaving.ConsPortfolioModel.PortfolioSolution.distance_criteria"><code class="docutils literal notranslate"><span class="pre">PortfolioSolution.distance_criteria</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ConsPortfolioModel.html#HARK.ConsumptionSaving.ConsPortfolioModel.SequentialPortfolioConsumerType"><code class="docutils literal notranslate"><span class="pre">SequentialPortfolioConsumerType</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ConsPrefShochModel.html">ConsPrefShockModel</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ConsPrefShochModel.html#HARK.ConsumptionSaving.ConsPrefShockModel.ConsKinkyPrefSolver"><code class="docutils literal notranslate"><span class="pre">ConsKinkyPrefSolver</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ConsPrefShochModel.html#HARK.ConsumptionSaving.ConsPrefShockModel.ConsPrefShockSolver"><code class="docutils literal notranslate"><span class="pre">ConsPrefShockSolver</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ConsPrefShochModel.html#HARK.ConsumptionSaving.ConsPrefShockModel.ConsPrefShockSolver.get_points_for_interpolation"><code class="docutils literal notranslate"><span class="pre">ConsPrefShockSolver.get_points_for_interpolation()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsPrefShochModel.html#HARK.ConsumptionSaving.ConsPrefShockModel.ConsPrefShockSolver.make_vFunc"><code class="docutils literal notranslate"><span class="pre">ConsPrefShockSolver.make_vFunc()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsPrefShochModel.html#HARK.ConsumptionSaving.ConsPrefShockModel.ConsPrefShockSolver.use_points_for_interpolation"><code class="docutils literal notranslate"><span class="pre">ConsPrefShockSolver.use_points_for_interpolation()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ConsPrefShochModel.html#HARK.ConsumptionSaving.ConsPrefShockModel.KinkyPrefConsumerType"><code class="docutils literal notranslate"><span class="pre">KinkyPrefConsumerType</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ConsPrefShochModel.html#HARK.ConsumptionSaving.ConsPrefShockModel.KinkyPrefConsumerType.get_Rfree"><code class="docutils literal notranslate"><span class="pre">KinkyPrefConsumerType.get_Rfree()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsPrefShochModel.html#HARK.ConsumptionSaving.ConsPrefShockModel.KinkyPrefConsumerType.pre_solve"><code class="docutils literal notranslate"><span class="pre">KinkyPrefConsumerType.pre_solve()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ConsPrefShochModel.html#HARK.ConsumptionSaving.ConsPrefShockModel.PrefShockConsumerType"><code class="docutils literal notranslate"><span class="pre">PrefShockConsumerType</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ConsPrefShochModel.html#HARK.ConsumptionSaving.ConsPrefShockModel.PrefShockConsumerType.calc_bounding_values"><code class="docutils literal notranslate"><span class="pre">PrefShockConsumerType.calc_bounding_values()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsPrefShochModel.html#HARK.ConsumptionSaving.ConsPrefShockModel.PrefShockConsumerType.get_controls"><code class="docutils literal notranslate"><span class="pre">PrefShockConsumerType.get_controls()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsPrefShochModel.html#HARK.ConsumptionSaving.ConsPrefShockModel.PrefShockConsumerType.get_shocks"><code class="docutils literal notranslate"><span class="pre">PrefShockConsumerType.get_shocks()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsPrefShochModel.html#HARK.ConsumptionSaving.ConsPrefShockModel.PrefShockConsumerType.make_euler_error_func"><code class="docutils literal notranslate"><span class="pre">PrefShockConsumerType.make_euler_error_func()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsPrefShochModel.html#HARK.ConsumptionSaving.ConsPrefShockModel.PrefShockConsumerType.pre_solve"><code class="docutils literal notranslate"><span class="pre">PrefShockConsumerType.pre_solve()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsPrefShochModel.html#HARK.ConsumptionSaving.ConsPrefShockModel.PrefShockConsumerType.reset_rng"><code class="docutils literal notranslate"><span class="pre">PrefShockConsumerType.reset_rng()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsPrefShochModel.html#HARK.ConsumptionSaving.ConsPrefShockModel.PrefShockConsumerType.shock_vars_"><code class="docutils literal notranslate"><span class="pre">PrefShockConsumerType.shock_vars_</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsPrefShochModel.html#HARK.ConsumptionSaving.ConsPrefShockModel.PrefShockConsumerType.update"><code class="docutils literal notranslate"><span class="pre">PrefShockConsumerType.update()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsPrefShochModel.html#HARK.ConsumptionSaving.ConsPrefShockModel.PrefShockConsumerType.update_pref_shock_process"><code class="docutils literal notranslate"><span class="pre">PrefShockConsumerType.update_pref_shock_process()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ConsRepAgentModel.html">ConsRepAgentModel</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ConsRepAgentModel.html#HARK.ConsumptionSaving.ConsRepAgentModel.RepAgentConsumerType"><code class="docutils literal notranslate"><span class="pre">RepAgentConsumerType</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ConsRepAgentModel.html#HARK.ConsumptionSaving.ConsRepAgentModel.RepAgentConsumerType.get_states"><code class="docutils literal notranslate"><span class="pre">RepAgentConsumerType.get_states()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRepAgentModel.html#HARK.ConsumptionSaving.ConsRepAgentModel.RepAgentConsumerType.pre_solve"><code class="docutils literal notranslate"><span class="pre">RepAgentConsumerType.pre_solve()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRepAgentModel.html#HARK.ConsumptionSaving.ConsRepAgentModel.RepAgentConsumerType.time_inv_"><code class="docutils literal notranslate"><span class="pre">RepAgentConsumerType.time_inv_</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ConsRepAgentModel.html#HARK.ConsumptionSaving.ConsRepAgentModel.RepAgentMarkovConsumerType"><code class="docutils literal notranslate"><span class="pre">RepAgentMarkovConsumerType</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ConsRepAgentModel.html#HARK.ConsumptionSaving.ConsRepAgentModel.RepAgentMarkovConsumerType.get_controls"><code class="docutils literal notranslate"><span class="pre">RepAgentMarkovConsumerType.get_controls()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRepAgentModel.html#HARK.ConsumptionSaving.ConsRepAgentModel.RepAgentMarkovConsumerType.get_shocks"><code class="docutils literal notranslate"><span class="pre">RepAgentMarkovConsumerType.get_shocks()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRepAgentModel.html#HARK.ConsumptionSaving.ConsRepAgentModel.RepAgentMarkovConsumerType.initialize_sim"><code class="docutils literal notranslate"><span class="pre">RepAgentMarkovConsumerType.initialize_sim()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRepAgentModel.html#HARK.ConsumptionSaving.ConsRepAgentModel.RepAgentMarkovConsumerType.pre_solve"><code class="docutils literal notranslate"><span class="pre">RepAgentMarkovConsumerType.pre_solve()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRepAgentModel.html#HARK.ConsumptionSaving.ConsRepAgentModel.RepAgentMarkovConsumerType.reset_rng"><code class="docutils literal notranslate"><span class="pre">RepAgentMarkovConsumerType.reset_rng()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRepAgentModel.html#HARK.ConsumptionSaving.ConsRepAgentModel.RepAgentMarkovConsumerType.time_inv_"><code class="docutils literal notranslate"><span class="pre">RepAgentMarkovConsumerType.time_inv_</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRepAgentModel.html#HARK.ConsumptionSaving.ConsRepAgentModel.RepAgentMarkovConsumerType.update_solution_terminal"><code class="docutils literal notranslate"><span class="pre">RepAgentMarkovConsumerType.update_solution_terminal()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ConsRiskyAssetModel.html">ConsRiskyAssetModel</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsFixedPortfolioIndShkRiskyAssetSolver"><code class="docutils literal notranslate"><span class="pre">ConsFixedPortfolioIndShkRiskyAssetSolver</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsFixedPortfolioIndShkRiskyAssetSolver.BoroCnstArt"><code class="docutils literal notranslate"><span class="pre">ConsFixedPortfolioIndShkRiskyAssetSolver.BoroCnstArt</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsFixedPortfolioIndShkRiskyAssetSolver.CRRA"><code class="docutils literal notranslate"><span class="pre">ConsFixedPortfolioIndShkRiskyAssetSolver.CRRA</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsFixedPortfolioIndShkRiskyAssetSolver.CubicBool"><code class="docutils literal notranslate"><span class="pre">ConsFixedPortfolioIndShkRiskyAssetSolver.CubicBool</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsFixedPortfolioIndShkRiskyAssetSolver.DiscFac"><code class="docutils literal notranslate"><span class="pre">ConsFixedPortfolioIndShkRiskyAssetSolver.DiscFac</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsFixedPortfolioIndShkRiskyAssetSolver.IncShkDstn"><code class="docutils literal notranslate"><span class="pre">ConsFixedPortfolioIndShkRiskyAssetSolver.IncShkDstn</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsFixedPortfolioIndShkRiskyAssetSolver.IndepDstnBool"><code class="docutils literal notranslate"><span class="pre">ConsFixedPortfolioIndShkRiskyAssetSolver.IndepDstnBool</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsFixedPortfolioIndShkRiskyAssetSolver.LivPrb"><code class="docutils literal notranslate"><span class="pre">ConsFixedPortfolioIndShkRiskyAssetSolver.LivPrb</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsFixedPortfolioIndShkRiskyAssetSolver.PermGroFac"><code class="docutils literal notranslate"><span class="pre">ConsFixedPortfolioIndShkRiskyAssetSolver.PermGroFac</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsFixedPortfolioIndShkRiskyAssetSolver.PermShkDstn"><code class="docutils literal notranslate"><span class="pre">ConsFixedPortfolioIndShkRiskyAssetSolver.PermShkDstn</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsFixedPortfolioIndShkRiskyAssetSolver.Rfree"><code class="docutils literal notranslate"><span class="pre">ConsFixedPortfolioIndShkRiskyAssetSolver.Rfree</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsFixedPortfolioIndShkRiskyAssetSolver.RiskyDstn"><code class="docutils literal notranslate"><span class="pre">ConsFixedPortfolioIndShkRiskyAssetSolver.RiskyDstn</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsFixedPortfolioIndShkRiskyAssetSolver.RiskyShareFixed"><code class="docutils literal notranslate"><span class="pre">ConsFixedPortfolioIndShkRiskyAssetSolver.RiskyShareFixed</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsFixedPortfolioIndShkRiskyAssetSolver.ShockDstn"><code class="docutils literal notranslate"><span class="pre">ConsFixedPortfolioIndShkRiskyAssetSolver.ShockDstn</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsFixedPortfolioIndShkRiskyAssetSolver.TranShkDstn"><code class="docutils literal notranslate"><span class="pre">ConsFixedPortfolioIndShkRiskyAssetSolver.TranShkDstn</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsFixedPortfolioIndShkRiskyAssetSolver.aXtraGrid"><code class="docutils literal notranslate"><span class="pre">ConsFixedPortfolioIndShkRiskyAssetSolver.aXtraGrid</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsFixedPortfolioIndShkRiskyAssetSolver.calc_EndOfPrdvP"><code class="docutils literal notranslate"><span class="pre">ConsFixedPortfolioIndShkRiskyAssetSolver.calc_EndOfPrdvP()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsFixedPortfolioIndShkRiskyAssetSolver.def_BoroCnst"><code class="docutils literal notranslate"><span class="pre">ConsFixedPortfolioIndShkRiskyAssetSolver.def_BoroCnst()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsFixedPortfolioIndShkRiskyAssetSolver.make_EndOfPrdvFunc"><code class="docutils literal notranslate"><span class="pre">ConsFixedPortfolioIndShkRiskyAssetSolver.make_EndOfPrdvFunc()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsFixedPortfolioIndShkRiskyAssetSolver.r_port"><code class="docutils literal notranslate"><span class="pre">ConsFixedPortfolioIndShkRiskyAssetSolver.r_port()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsFixedPortfolioIndShkRiskyAssetSolver.set_and_update_values"><code class="docutils literal notranslate"><span class="pre">ConsFixedPortfolioIndShkRiskyAssetSolver.set_and_update_values()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsFixedPortfolioIndShkRiskyAssetSolver.solution_next"><code class="docutils literal notranslate"><span class="pre">ConsFixedPortfolioIndShkRiskyAssetSolver.solution_next</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsFixedPortfolioIndShkRiskyAssetSolver.vFuncBool"><code class="docutils literal notranslate"><span class="pre">ConsFixedPortfolioIndShkRiskyAssetSolver.vFuncBool</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver"><code class="docutils literal notranslate"><span class="pre">ConsIndShkRiskyAssetSolver</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.BoroCnstArt"><code class="docutils literal notranslate"><span class="pre">ConsIndShkRiskyAssetSolver.BoroCnstArt</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.CRRA"><code class="docutils literal notranslate"><span class="pre">ConsIndShkRiskyAssetSolver.CRRA</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.CubicBool"><code class="docutils literal notranslate"><span class="pre">ConsIndShkRiskyAssetSolver.CubicBool</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.DiscFac"><code class="docutils literal notranslate"><span class="pre">ConsIndShkRiskyAssetSolver.DiscFac</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.IncShkDstn"><code class="docutils literal notranslate"><span class="pre">ConsIndShkRiskyAssetSolver.IncShkDstn</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.IndepDstnBool"><code class="docutils literal notranslate"><span class="pre">ConsIndShkRiskyAssetSolver.IndepDstnBool</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.LivPrb"><code class="docutils literal notranslate"><span class="pre">ConsIndShkRiskyAssetSolver.LivPrb</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.PermGroFac"><code class="docutils literal notranslate"><span class="pre">ConsIndShkRiskyAssetSolver.PermGroFac</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.PermShkDstn"><code class="docutils literal notranslate"><span class="pre">ConsIndShkRiskyAssetSolver.PermShkDstn</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.Rfree"><code class="docutils literal notranslate"><span class="pre">ConsIndShkRiskyAssetSolver.Rfree</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.RiskyDstn"><code class="docutils literal notranslate"><span class="pre">ConsIndShkRiskyAssetSolver.RiskyDstn</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.ShockDstn"><code class="docutils literal notranslate"><span class="pre">ConsIndShkRiskyAssetSolver.ShockDstn</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.TranShkDstn"><code class="docutils literal notranslate"><span class="pre">ConsIndShkRiskyAssetSolver.TranShkDstn</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.aXtraGrid"><code class="docutils literal notranslate"><span class="pre">ConsIndShkRiskyAssetSolver.aXtraGrid</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.calc_EndOfPrdvP"><code class="docutils literal notranslate"><span class="pre">ConsIndShkRiskyAssetSolver.calc_EndOfPrdvP()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.calc_ExpMargValueFunc"><code class="docutils literal notranslate"><span class="pre">ConsIndShkRiskyAssetSolver.calc_ExpMargValueFunc()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.calc_ExpValueFunc"><code class="docutils literal notranslate"><span class="pre">ConsIndShkRiskyAssetSolver.calc_ExpValueFunc()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.calc_preIncShkvFunc"><code class="docutils literal notranslate"><span class="pre">ConsIndShkRiskyAssetSolver.calc_preIncShkvFunc()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.calc_preIncShkvPfunc"><code class="docutils literal notranslate"><span class="pre">ConsIndShkRiskyAssetSolver.calc_preIncShkvPfunc()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.calc_preRiskyShkvFunc"><code class="docutils literal notranslate"><span class="pre">ConsIndShkRiskyAssetSolver.calc_preRiskyShkvFunc()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.calc_preRiskyShkvPfunc"><code class="docutils literal notranslate"><span class="pre">ConsIndShkRiskyAssetSolver.calc_preRiskyShkvPfunc()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.def_BoroCnst"><code class="docutils literal notranslate"><span class="pre">ConsIndShkRiskyAssetSolver.def_BoroCnst()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.make_EndOfPrdvFunc"><code class="docutils literal notranslate"><span class="pre">ConsIndShkRiskyAssetSolver.make_EndOfPrdvFunc()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.prepare_to_calc_EndOfPrdvP"><code class="docutils literal notranslate"><span class="pre">ConsIndShkRiskyAssetSolver.prepare_to_calc_EndOfPrdvP()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.set_and_update_values"><code class="docutils literal notranslate"><span class="pre">ConsIndShkRiskyAssetSolver.set_and_update_values()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.solution_next"><code class="docutils literal notranslate"><span class="pre">ConsIndShkRiskyAssetSolver.solution_next</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.vFuncBool"><code class="docutils literal notranslate"><span class="pre">ConsIndShkRiskyAssetSolver.vFuncBool</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsPortfolioIndShkRiskyAssetSolver"><code class="docutils literal notranslate"><span class="pre">ConsPortfolioIndShkRiskyAssetSolver</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsPortfolioIndShkRiskyAssetSolver.PortfolioBisect"><code class="docutils literal notranslate"><span class="pre">ConsPortfolioIndShkRiskyAssetSolver.PortfolioBisect</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsPortfolioIndShkRiskyAssetSolver.ShareGrid"><code class="docutils literal notranslate"><span class="pre">ConsPortfolioIndShkRiskyAssetSolver.ShareGrid</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsPortfolioIndShkRiskyAssetSolver.ShareLimit"><code class="docutils literal notranslate"><span class="pre">ConsPortfolioIndShkRiskyAssetSolver.ShareLimit</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsPortfolioIndShkRiskyAssetSolver.add_ShareFunc"><code class="docutils literal notranslate"><span class="pre">ConsPortfolioIndShkRiskyAssetSolver.add_ShareFunc()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsPortfolioIndShkRiskyAssetSolver.calc_EndOfPrdvP"><code class="docutils literal notranslate"><span class="pre">ConsPortfolioIndShkRiskyAssetSolver.calc_EndOfPrdvP()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsPortfolioIndShkRiskyAssetSolver.calc_preRiskyShkvPfunc"><code class="docutils literal notranslate"><span class="pre">ConsPortfolioIndShkRiskyAssetSolver.calc_preRiskyShkvPfunc()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsPortfolioIndShkRiskyAssetSolver.optimize_share"><code class="docutils literal notranslate"><span class="pre">ConsPortfolioIndShkRiskyAssetSolver.optimize_share()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsPortfolioIndShkRiskyAssetSolver.prepare_to_calc_EndOfPrdvP"><code class="docutils literal notranslate"><span class="pre">ConsPortfolioIndShkRiskyAssetSolver.prepare_to_calc_EndOfPrdvP()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsPortfolioIndShkRiskyAssetSolver.set_and_update_values"><code class="docutils literal notranslate"><span class="pre">ConsPortfolioIndShkRiskyAssetSolver.set_and_update_values()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsPortfolioIndShkRiskyAssetSolver.solve"><code class="docutils literal notranslate"><span class="pre">ConsPortfolioIndShkRiskyAssetSolver.solve()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.FixedPortfolioShareRiskyAssetConsumerType"><code class="docutils literal notranslate"><span class="pre">FixedPortfolioShareRiskyAssetConsumerType</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.FixedPortfolioShareRiskyAssetConsumerType.time_vary_"><code class="docutils literal notranslate"><span class="pre">FixedPortfolioShareRiskyAssetConsumerType.time_vary_</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.IndShockRiskyAssetConsumerType"><code class="docutils literal notranslate"><span class="pre">IndShockRiskyAssetConsumerType</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.IndShockRiskyAssetConsumerType.get_Adjust"><code class="docutils literal notranslate"><span class="pre">IndShockRiskyAssetConsumerType.get_Adjust()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.IndShockRiskyAssetConsumerType.get_Rfree"><code class="docutils literal notranslate"><span class="pre">IndShockRiskyAssetConsumerType.get_Rfree()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.IndShockRiskyAssetConsumerType.get_Risky"><code class="docutils literal notranslate"><span class="pre">IndShockRiskyAssetConsumerType.get_Risky()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.IndShockRiskyAssetConsumerType.get_shocks"><code class="docutils literal notranslate"><span class="pre">IndShockRiskyAssetConsumerType.get_shocks()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.IndShockRiskyAssetConsumerType.initialize_sim"><code class="docutils literal notranslate"><span class="pre">IndShockRiskyAssetConsumerType.initialize_sim()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.IndShockRiskyAssetConsumerType.pre_solve"><code class="docutils literal notranslate"><span class="pre">IndShockRiskyAssetConsumerType.pre_solve()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.IndShockRiskyAssetConsumerType.shock_vars_"><code class="docutils literal notranslate"><span class="pre">IndShockRiskyAssetConsumerType.shock_vars_</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.IndShockRiskyAssetConsumerType.time_inv_"><code class="docutils literal notranslate"><span class="pre">IndShockRiskyAssetConsumerType.time_inv_</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.IndShockRiskyAssetConsumerType.update"><code class="docutils literal notranslate"><span class="pre">IndShockRiskyAssetConsumerType.update()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.IndShockRiskyAssetConsumerType.update_AdjustDstn"><code class="docutils literal notranslate"><span class="pre">IndShockRiskyAssetConsumerType.update_AdjustDstn()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.IndShockRiskyAssetConsumerType.update_RiskyDstn"><code class="docutils literal notranslate"><span class="pre">IndShockRiskyAssetConsumerType.update_RiskyDstn()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.IndShockRiskyAssetConsumerType.update_ShareGrid"><code class="docutils literal notranslate"><span class="pre">IndShockRiskyAssetConsumerType.update_ShareGrid()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.IndShockRiskyAssetConsumerType.update_ShareLimit"><code class="docutils literal notranslate"><span class="pre">IndShockRiskyAssetConsumerType.update_ShareLimit()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.IndShockRiskyAssetConsumerType.update_ShockDstn"><code class="docutils literal notranslate"><span class="pre">IndShockRiskyAssetConsumerType.update_ShockDstn()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ConsRiskyAssetModel.html#HARK.ConsumptionSaving.ConsRiskyAssetModel.RiskyAssetConsumerType"><code class="docutils literal notranslate"><span class="pre">RiskyAssetConsumerType</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ConsRiskyContribModel.html">ConsRiskyContribModel</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ConsRiskyContribModel.html#HARK.ConsumptionSaving.ConsRiskyContribModel.RiskyContribCnsSolution"><code class="docutils literal notranslate"><span class="pre">RiskyContribCnsSolution</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyContribModel.html#HARK.ConsumptionSaving.ConsRiskyContribModel.RiskyContribCnsSolution.distance_criteria"><code class="docutils literal notranslate"><span class="pre">RiskyContribCnsSolution.distance_criteria</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ConsRiskyContribModel.html#HARK.ConsumptionSaving.ConsRiskyContribModel.RiskyContribConsumerType"><code class="docutils literal notranslate"><span class="pre">RiskyContribConsumerType</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyContribModel.html#HARK.ConsumptionSaving.ConsRiskyContribModel.RiskyContribConsumerType.get_controls_Cns"><code class="docutils literal notranslate"><span class="pre">RiskyContribConsumerType.get_controls_Cns()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyContribModel.html#HARK.ConsumptionSaving.ConsRiskyContribModel.RiskyContribConsumerType.get_controls_Reb"><code class="docutils literal notranslate"><span class="pre">RiskyContribConsumerType.get_controls_Reb()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyContribModel.html#HARK.ConsumptionSaving.ConsRiskyContribModel.RiskyContribConsumerType.get_controls_Sha"><code class="docutils literal notranslate"><span class="pre">RiskyContribConsumerType.get_controls_Sha()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyContribModel.html#HARK.ConsumptionSaving.ConsRiskyContribModel.RiskyContribConsumerType.get_post_states"><code class="docutils literal notranslate"><span class="pre">RiskyContribConsumerType.get_post_states()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyContribModel.html#HARK.ConsumptionSaving.ConsRiskyContribModel.RiskyContribConsumerType.get_states_Cns"><code class="docutils literal notranslate"><span class="pre">RiskyContribConsumerType.get_states_Cns()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyContribModel.html#HARK.ConsumptionSaving.ConsRiskyContribModel.RiskyContribConsumerType.get_states_Reb"><code class="docutils literal notranslate"><span class="pre">RiskyContribConsumerType.get_states_Reb()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyContribModel.html#HARK.ConsumptionSaving.ConsRiskyContribModel.RiskyContribConsumerType.get_states_Sha"><code class="docutils literal notranslate"><span class="pre">RiskyContribConsumerType.get_states_Sha()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyContribModel.html#HARK.ConsumptionSaving.ConsRiskyContribModel.RiskyContribConsumerType.initialize_sim"><code class="docutils literal notranslate"><span class="pre">RiskyContribConsumerType.initialize_sim()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyContribModel.html#HARK.ConsumptionSaving.ConsRiskyContribModel.RiskyContribConsumerType.pre_solve"><code class="docutils literal notranslate"><span class="pre">RiskyContribConsumerType.pre_solve()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyContribModel.html#HARK.ConsumptionSaving.ConsRiskyContribModel.RiskyContribConsumerType.shock_vars_"><code class="docutils literal notranslate"><span class="pre">RiskyContribConsumerType.shock_vars_</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyContribModel.html#HARK.ConsumptionSaving.ConsRiskyContribModel.RiskyContribConsumerType.sim_birth"><code class="docutils literal notranslate"><span class="pre">RiskyContribConsumerType.sim_birth()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyContribModel.html#HARK.ConsumptionSaving.ConsRiskyContribModel.RiskyContribConsumerType.sim_one_period"><code class="docutils literal notranslate"><span class="pre">RiskyContribConsumerType.sim_one_period()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyContribModel.html#HARK.ConsumptionSaving.ConsRiskyContribModel.RiskyContribConsumerType.state_vars"><code class="docutils literal notranslate"><span class="pre">RiskyContribConsumerType.state_vars</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyContribModel.html#HARK.ConsumptionSaving.ConsRiskyContribModel.RiskyContribConsumerType.time_inv_"><code class="docutils literal notranslate"><span class="pre">RiskyContribConsumerType.time_inv_</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyContribModel.html#HARK.ConsumptionSaving.ConsRiskyContribModel.RiskyContribConsumerType.update"><code class="docutils literal notranslate"><span class="pre">RiskyContribConsumerType.update()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyContribModel.html#HARK.ConsumptionSaving.ConsRiskyContribModel.RiskyContribConsumerType.update_dfrac_grid"><code class="docutils literal notranslate"><span class="pre">RiskyContribConsumerType.update_dfrac_grid()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyContribModel.html#HARK.ConsumptionSaving.ConsRiskyContribModel.RiskyContribConsumerType.update_mNrm_grid"><code class="docutils literal notranslate"><span class="pre">RiskyContribConsumerType.update_mNrm_grid()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyContribModel.html#HARK.ConsumptionSaving.ConsRiskyContribModel.RiskyContribConsumerType.update_nNrm_grid"><code class="docutils literal notranslate"><span class="pre">RiskyContribConsumerType.update_nNrm_grid()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyContribModel.html#HARK.ConsumptionSaving.ConsRiskyContribModel.RiskyContribConsumerType.update_share_grid"><code class="docutils literal notranslate"><span class="pre">RiskyContribConsumerType.update_share_grid()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyContribModel.html#HARK.ConsumptionSaving.ConsRiskyContribModel.RiskyContribConsumerType.update_solution_terminal"><code class="docutils literal notranslate"><span class="pre">RiskyContribConsumerType.update_solution_terminal()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyContribModel.html#HARK.ConsumptionSaving.ConsRiskyContribModel.RiskyContribConsumerType.update_tau"><code class="docutils literal notranslate"><span class="pre">RiskyContribConsumerType.update_tau()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ConsRiskyContribModel.html#HARK.ConsumptionSaving.ConsRiskyContribModel.RiskyContribRebSolution"><code class="docutils literal notranslate"><span class="pre">RiskyContribRebSolution</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyContribModel.html#HARK.ConsumptionSaving.ConsRiskyContribModel.RiskyContribRebSolution.distance_criteria"><code class="docutils literal notranslate"><span class="pre">RiskyContribRebSolution.distance_criteria</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ConsRiskyContribModel.html#HARK.ConsumptionSaving.ConsRiskyContribModel.RiskyContribShaSolution"><code class="docutils literal notranslate"><span class="pre">RiskyContribShaSolution</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyContribModel.html#HARK.ConsumptionSaving.ConsRiskyContribModel.RiskyContribShaSolution.distance_criteria"><code class="docutils literal notranslate"><span class="pre">RiskyContribShaSolution.distance_criteria</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ConsRiskyContribModel.html#HARK.ConsumptionSaving.ConsRiskyContribModel.RiskyContribSolution"><code class="docutils literal notranslate"><span class="pre">RiskyContribSolution</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ConsRiskyContribModel.html#HARK.ConsumptionSaving.ConsRiskyContribModel.RiskyContribSolution.distance_criteria"><code class="docutils literal notranslate"><span class="pre">RiskyContribSolution.distance_criteria</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ConsRiskyContribModel.html#HARK.ConsumptionSaving.ConsRiskyContribModel.m_nrm_next"><code class="docutils literal notranslate"><span class="pre">m_nrm_next()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ConsRiskyContribModel.html#HARK.ConsumptionSaving.ConsRiskyContribModel.n_nrm_next"><code class="docutils literal notranslate"><span class="pre">n_nrm_next()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ConsRiskyContribModel.html#HARK.ConsumptionSaving.ConsRiskyContribModel.rebalance_assets"><code class="docutils literal notranslate"><span class="pre">rebalance_assets()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ConsRiskyContribModel.html#HARK.ConsumptionSaving.ConsRiskyContribModel.solveRiskyContrib"><code class="docutils literal notranslate"><span class="pre">solveRiskyContrib()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ConsRiskyContribModel.html#HARK.ConsumptionSaving.ConsRiskyContribModel.solve_RiskyContrib_Cns"><code class="docutils literal notranslate"><span class="pre">solve_RiskyContrib_Cns()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ConsRiskyContribModel.html#HARK.ConsumptionSaving.ConsRiskyContribModel.solve_RiskyContrib_Reb"><code class="docutils literal notranslate"><span class="pre">solve_RiskyContrib_Reb()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ConsRiskyContribModel.html#HARK.ConsumptionSaving.ConsRiskyContribModel.solve_RiskyContrib_Sha"><code class="docutils literal notranslate"><span class="pre">solve_RiskyContrib_Sha()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="TractableBufferStockModel.html">TractableBufferStockModel</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="TractableBufferStockModel.html#HARK.ConsumptionSaving.TractableBufferStockModel.TractableConsumerSolution"><code class="docutils literal notranslate"><span class="pre">TractableConsumerSolution</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="TractableBufferStockModel.html#HARK.ConsumptionSaving.TractableBufferStockModel.TractableConsumerType"><code class="docutils literal notranslate"><span class="pre">TractableConsumerType</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="TractableBufferStockModel.html#HARK.ConsumptionSaving.TractableBufferStockModel.TractableConsumerType.get_controls"><code class="docutils literal notranslate"><span class="pre">TractableConsumerType.get_controls()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="TractableBufferStockModel.html#HARK.ConsumptionSaving.TractableBufferStockModel.TractableConsumerType.get_poststates"><code class="docutils literal notranslate"><span class="pre">TractableConsumerType.get_poststates()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="TractableBufferStockModel.html#HARK.ConsumptionSaving.TractableBufferStockModel.TractableConsumerType.get_shocks"><code class="docutils literal notranslate"><span class="pre">TractableConsumerType.get_shocks()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="TractableBufferStockModel.html#HARK.ConsumptionSaving.TractableBufferStockModel.TractableConsumerType.post_solve"><code class="docutils literal notranslate"><span class="pre">TractableConsumerType.post_solve()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="TractableBufferStockModel.html#HARK.ConsumptionSaving.TractableBufferStockModel.TractableConsumerType.pre_solve"><code class="docutils literal notranslate"><span class="pre">TractableConsumerType.pre_solve()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="TractableBufferStockModel.html#HARK.ConsumptionSaving.TractableBufferStockModel.TractableConsumerType.sim_birth"><code class="docutils literal notranslate"><span class="pre">TractableConsumerType.sim_birth()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="TractableBufferStockModel.html#HARK.ConsumptionSaving.TractableBufferStockModel.TractableConsumerType.sim_death"><code class="docutils literal notranslate"><span class="pre">TractableConsumerType.sim_death()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="TractableBufferStockModel.html#HARK.ConsumptionSaving.TractableBufferStockModel.TractableConsumerType.state_vars"><code class="docutils literal notranslate"><span class="pre">TractableConsumerType.state_vars</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="TractableBufferStockModel.html#HARK.ConsumptionSaving.TractableBufferStockModel.TractableConsumerType.transition"><code class="docutils literal notranslate"><span class="pre">TractableConsumerType.transition()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../tools/validators.html" class="btn btn-neutral float-left" title="Validators" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ConsAggShockModel.html" class="btn btn-neutral float-right" title="ConsAggShockModel" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Econ-ARK team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

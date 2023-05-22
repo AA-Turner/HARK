@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ConsRiskyAssetModel &mdash; HARK latest documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="ConsRiskyContribModel" href="ConsRiskyContribModel.html" />
+    <link rel="prev" title="ConsRepAgentModel" href="ConsRepAgentModel.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            HARK
+          </a>
+              <div class="version">
+                latest
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick-start.html">Installing HARK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick-start.html#learning-hark">Learning HARK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick-start.html#making-changes-to-hark">Making changes to HARK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick-start.html#next-steps">Next steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ARKitecture.html">ARKitecture of Econ-ARK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/CONTRIBUTING.html">Contributing to Econ-ARK</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">API Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../index.html#tools">Tools</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#models">Models</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">Consumption Saving</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="ConsAggShockModel.html">ConsAggShockModel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ConsGenIncProcessModel.html">ConsGenIncProcessModel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ConsIndShockModel.html">ConsIndShockModel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ConsIndShockModelFast.html">ConsIndShockModelFast</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ConsLaborModel.html">ConsLaborModel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ConsMarkovModel.html">ConsMarkovModel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ConsMedModel.html">ConsMedModel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ConsPortfolioFrameModel.html">ConsPortfolioFrameModel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ConsPortfolioModel.html">ConsPortfolioModel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ConsPrefShochModel.html">ConsPrefShockModel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ConsRepAgentModel.html">ConsRepAgentModel</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">ConsRiskyAssetModel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ConsRiskyContribModel.html">ConsRiskyContribModel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="TractableBufferStockModel.html">TractableBufferStockModel</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../CHANGELOG.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../example_notebooks/Gentle-Intro-To-HARK.html">A Gentle Introduction to HARK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../example_notebooks/PerfForesightConsumerType.html">PerfForesightConsumerType: Perfect foresight consumption-saving</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../example_notebooks/IndShockConsumerType.html">IndShockConsumerType Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../example_notebooks/KinkedRconsumerType.html">KinkedRconsumerType: Consumption-saving model with idiosyncratic income shocks and different interest rates on borrowing and saving</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../example_notebooks/ConsPortfolioModel.html">Portfolio Models in HARK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../example_notebooks/GenIncProcessModel.html">Permanent versus Persistent Income Shocks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../example_notebooks/LifecycleModel.html">A Lifecycle Model: The Distribution of Assets By Age</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../example_notebooks/HowWeSolveIndShockConsumerType.html">How we solve a model defined by the <code class="docutils literal notranslate"><span class="pre">IndShockConsumerType</span></code> class</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">HARK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">API Documentation</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Consumption Saving</a></li>
+      <li class="breadcrumb-item active">ConsRiskyAssetModel</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/reference/ConsumptionSaving/ConsRiskyAssetModel.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-HARK.ConsumptionSaving.ConsRiskyAssetModel">
+<span id="consriskyassetmodel"></span><h1>ConsRiskyAssetModel<a class="headerlink" href="#module-HARK.ConsumptionSaving.ConsRiskyAssetModel" title="Permalink to this heading"></a></h1>
+<p>This file contains a class that adds a risky asset with a log-normal return
+factor to IndShockConsumerType.
+This class is not a fully specified model and therefore has no solution or
+simulation methods. It is meant as a container of methods for dealing with
+risky assets that will be useful to models what will inherit from it.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsFixedPortfolioIndShkRiskyAssetSolver">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">HARK.ConsumptionSaving.ConsRiskyAssetModel.</span></span><span class="sig-name descname"><span class="pre">ConsFixedPortfolioIndShkRiskyAssetSolver</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">solution_next:</span> <span class="pre">HARK.ConsumptionSaving.ConsIndShockModel.ConsumerSolution</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">IncShkDstn:</span> <span class="pre">HARK.distribution.DiscreteDistribution</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">TranShkDstn:</span> <span class="pre">HARK.distribution.DiscreteDistribution</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">PermShkDstn:</span> <span class="pre">HARK.distribution.DiscreteDistribution</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">RiskyDstn:</span> <span class="pre">HARK.distribution.DiscreteDistribution</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ShockDstn:</span> <span class="pre">HARK.distribution.DiscreteDistribution</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">LivPrb:</span> <span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DiscFac:</span> <span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">CRRA:</span> <span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Rfree:</span> <span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">RiskyShareFixed:</span> <span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">PermGroFac:</span> <span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">BoroCnstArt:</span> <span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aXtraGrid:</span> <span class="pre">&lt;built-in</span> <span class="pre">function</span> <span class="pre">array&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vFuncBool:</span> <span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">CubicBool:</span> <span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">IndepDstnBool:</span> <span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsFixedPortfolioIndShkRiskyAssetSolver" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.ConsIndShockSolver" title="HARK.ConsumptionSaving.ConsIndShockModel.ConsIndShockSolver"><code class="xref py py-class docutils literal notranslate"><span class="pre">ConsIndShockSolver</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsFixedPortfolioIndShkRiskyAssetSolver.BoroCnstArt">
+<span class="sig-name descname"><span class="pre">BoroCnstArt</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></em><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsFixedPortfolioIndShkRiskyAssetSolver.BoroCnstArt" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsFixedPortfolioIndShkRiskyAssetSolver.CRRA">
+<span class="sig-name descname"><span class="pre">CRRA</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></em><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsFixedPortfolioIndShkRiskyAssetSolver.CRRA" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsFixedPortfolioIndShkRiskyAssetSolver.CubicBool">
+<span class="sig-name descname"><span class="pre">CubicBool</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></em><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsFixedPortfolioIndShkRiskyAssetSolver.CubicBool" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsFixedPortfolioIndShkRiskyAssetSolver.DiscFac">
+<span class="sig-name descname"><span class="pre">DiscFac</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></em><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsFixedPortfolioIndShkRiskyAssetSolver.DiscFac" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsFixedPortfolioIndShkRiskyAssetSolver.IncShkDstn">
+<span class="sig-name descname"><span class="pre">IncShkDstn</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../tools/distribution.html#HARK.distribution.DiscreteDistribution" title="HARK.distribution.DiscreteDistribution"><span class="pre">DiscreteDistribution</span></a></em><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsFixedPortfolioIndShkRiskyAssetSolver.IncShkDstn" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsFixedPortfolioIndShkRiskyAssetSolver.IndepDstnBool">
+<span class="sig-name descname"><span class="pre">IndepDstnBool</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></em><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsFixedPortfolioIndShkRiskyAssetSolver.IndepDstnBool" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsFixedPortfolioIndShkRiskyAssetSolver.LivPrb">
+<span class="sig-name descname"><span class="pre">LivPrb</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></em><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsFixedPortfolioIndShkRiskyAssetSolver.LivPrb" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsFixedPortfolioIndShkRiskyAssetSolver.PermGroFac">
+<span class="sig-name descname"><span class="pre">PermGroFac</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></em><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsFixedPortfolioIndShkRiskyAssetSolver.PermGroFac" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsFixedPortfolioIndShkRiskyAssetSolver.PermShkDstn">
+<span class="sig-name descname"><span class="pre">PermShkDstn</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../tools/distribution.html#HARK.distribution.DiscreteDistribution" title="HARK.distribution.DiscreteDistribution"><span class="pre">DiscreteDistribution</span></a></em><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsFixedPortfolioIndShkRiskyAssetSolver.PermShkDstn" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsFixedPortfolioIndShkRiskyAssetSolver.Rfree">
+<span class="sig-name descname"><span class="pre">Rfree</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></em><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsFixedPortfolioIndShkRiskyAssetSolver.Rfree" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsFixedPortfolioIndShkRiskyAssetSolver.RiskyDstn">
+<span class="sig-name descname"><span class="pre">RiskyDstn</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../tools/distribution.html#HARK.distribution.DiscreteDistribution" title="HARK.distribution.DiscreteDistribution"><span class="pre">DiscreteDistribution</span></a></em><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsFixedPortfolioIndShkRiskyAssetSolver.RiskyDstn" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsFixedPortfolioIndShkRiskyAssetSolver.RiskyShareFixed">
+<span class="sig-name descname"><span class="pre">RiskyShareFixed</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></em><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsFixedPortfolioIndShkRiskyAssetSolver.RiskyShareFixed" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsFixedPortfolioIndShkRiskyAssetSolver.ShockDstn">
+<span class="sig-name descname"><span class="pre">ShockDstn</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../tools/distribution.html#HARK.distribution.DiscreteDistribution" title="HARK.distribution.DiscreteDistribution"><span class="pre">DiscreteDistribution</span></a></em><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsFixedPortfolioIndShkRiskyAssetSolver.ShockDstn" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsFixedPortfolioIndShkRiskyAssetSolver.TranShkDstn">
+<span class="sig-name descname"><span class="pre">TranShkDstn</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../tools/distribution.html#HARK.distribution.DiscreteDistribution" title="HARK.distribution.DiscreteDistribution"><span class="pre">DiscreteDistribution</span></a></em><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsFixedPortfolioIndShkRiskyAssetSolver.TranShkDstn" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsFixedPortfolioIndShkRiskyAssetSolver.aXtraGrid">
+<span class="sig-name descname"><span class="pre">aXtraGrid</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">array</span></em><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsFixedPortfolioIndShkRiskyAssetSolver.aXtraGrid" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsFixedPortfolioIndShkRiskyAssetSolver.calc_EndOfPrdvP">
+<span class="sig-name descname"><span class="pre">calc_EndOfPrdvP</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsFixedPortfolioIndShkRiskyAssetSolver.calc_EndOfPrdvP" title="Permalink to this definition"></a></dt>
+<dd><p>Calculate end-of-period marginal value of assets at each point in aNrmNow.
+Does so by taking a weighted sum of next period marginal values across
+income shocks (in a preconstructed grid self.mNrmNext).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>none</strong> – </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>EndOfPrdvP</strong> – A 1D array of end-of-period marginal value of assets</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsFixedPortfolioIndShkRiskyAssetSolver.def_BoroCnst">
+<span class="sig-name descname"><span class="pre">def_BoroCnst</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">BoroCnstArt</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsFixedPortfolioIndShkRiskyAssetSolver.def_BoroCnst" title="Permalink to this definition"></a></dt>
+<dd><p>Defines the constrained portion of the consumption function as cFuncNowCnst,
+an attribute of self.  Uses the artificial and natural borrowing constraints.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>BoroCnstArt</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em> or </em><em>None</em>) – Borrowing constraint for the minimum allowable assets to end the
+period with.  If it is less than the natural borrowing constraint,
+then it is irrelevant; BoroCnstArt=None indicates no artificial bor-
+rowing constraint.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>none</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsFixedPortfolioIndShkRiskyAssetSolver.make_EndOfPrdvFunc">
+<span class="sig-name descname"><span class="pre">make_EndOfPrdvFunc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">EndOfPrdvP</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsFixedPortfolioIndShkRiskyAssetSolver.make_EndOfPrdvFunc" title="Permalink to this definition"></a></dt>
+<dd><p>Construct the end-of-period value function for this period, storing it
+as an attribute of self for use by other methods.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>EndOfPrdvP</strong> (<em>np.array</em>) – Array of end-of-period marginal value of assets corresponding to the
+asset values in self.aNrmNow.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>none</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsFixedPortfolioIndShkRiskyAssetSolver.r_port">
+<span class="sig-name descname"><span class="pre">r_port</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shock</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsFixedPortfolioIndShkRiskyAssetSolver.r_port" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsFixedPortfolioIndShkRiskyAssetSolver.set_and_update_values">
+<span class="sig-name descname"><span class="pre">set_and_update_values</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">solution_next</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">IncShkDstn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">LivPrb</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DiscFac</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsFixedPortfolioIndShkRiskyAssetSolver.set_and_update_values" title="Permalink to this definition"></a></dt>
+<dd><p>Unpacks some of the inputs (and calculates simple objects based on them),
+storing the results in self for use by other methods.  These include:
+income shocks and probabilities, next period’s marginal value function
+(etc), the probability of getting the worst income shock next period,
+the patience factor, human wealth, and the bounding MPCs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>solution_next</strong> (<a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.ConsumerSolution" title="HARK.ConsumptionSaving.ConsIndShockModel.ConsumerSolution"><em>ConsumerSolution</em></a>) – The solution to next period’s one period problem.</p></li>
+<li><p><strong>IncShkDstn</strong> (<a class="reference internal" href="../tools/distribution.html#HARK.distribution.DiscreteDistribution" title="HARK.distribution.DiscreteDistribution"><em>distribution.DiscreteDistribution</em></a>) – A DiscreteDistribution with a pmv
+and two point value arrays in X, order:
+permanent shocks, transitory shocks.</p></li>
+<li><p><strong>LivPrb</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Survival probability; likelihood of being alive at the beginning of
+the succeeding period.</p></li>
+<li><p><strong>DiscFac</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Intertemporal discount factor for future utility.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsFixedPortfolioIndShkRiskyAssetSolver.solution_next">
+<span class="sig-name descname"><span class="pre">solution_next</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.ConsumerSolution" title="HARK.ConsumptionSaving.ConsIndShockModel.ConsumerSolution"><span class="pre">ConsumerSolution</span></a></em><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsFixedPortfolioIndShkRiskyAssetSolver.solution_next" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsFixedPortfolioIndShkRiskyAssetSolver.vFuncBool">
+<span class="sig-name descname"><span class="pre">vFuncBool</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></em><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsFixedPortfolioIndShkRiskyAssetSolver.vFuncBool" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">HARK.ConsumptionSaving.ConsRiskyAssetModel.</span></span><span class="sig-name descname"><span class="pre">ConsIndShkRiskyAssetSolver</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">solution_next</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.ConsumerSolution" title="HARK.ConsumptionSaving.ConsIndShockModel.ConsumerSolution"><span class="pre">ConsumerSolution</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">IncShkDstn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../tools/distribution.html#HARK.distribution.DiscreteDistribution" title="HARK.distribution.DiscreteDistribution"><span class="pre">DiscreteDistribution</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">TranShkDstn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../tools/distribution.html#HARK.distribution.DiscreteDistribution" title="HARK.distribution.DiscreteDistribution"><span class="pre">DiscreteDistribution</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">PermShkDstn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../tools/distribution.html#HARK.distribution.DiscreteDistribution" title="HARK.distribution.DiscreteDistribution"><span class="pre">DiscreteDistribution</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">RiskyDstn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../tools/distribution.html#HARK.distribution.DiscreteDistribution" title="HARK.distribution.DiscreteDistribution"><span class="pre">DiscreteDistribution</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">ShockDstn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../tools/distribution.html#HARK.distribution.DiscreteDistribution" title="HARK.distribution.DiscreteDistribution"><span class="pre">DiscreteDistribution</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">LivPrb</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">DiscFac</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">CRRA</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">Rfree</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">PermGroFac</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">BoroCnstArt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">aXtraGrid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vFuncBool</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">CubicBool</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">IndepDstnBool</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.ConsIndShockSolver" title="HARK.ConsumptionSaving.ConsIndShockModel.ConsIndShockSolver"><code class="xref py py-class docutils literal notranslate"><span class="pre">ConsIndShockSolver</span></code></a></p>
+<p>Solver for an agent that can save in an asset that has a risky return.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.BoroCnstArt">
+<span class="sig-name descname"><span class="pre">BoroCnstArt</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></em><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.BoroCnstArt" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.CRRA">
+<span class="sig-name descname"><span class="pre">CRRA</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></em><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.CRRA" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.CubicBool">
+<span class="sig-name descname"><span class="pre">CubicBool</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></em><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.CubicBool" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.DiscFac">
+<span class="sig-name descname"><span class="pre">DiscFac</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></em><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.DiscFac" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.IncShkDstn">
+<span class="sig-name descname"><span class="pre">IncShkDstn</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../tools/distribution.html#HARK.distribution.DiscreteDistribution" title="HARK.distribution.DiscreteDistribution"><span class="pre">DiscreteDistribution</span></a></em><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.IncShkDstn" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.IndepDstnBool">
+<span class="sig-name descname"><span class="pre">IndepDstnBool</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></em><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.IndepDstnBool" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.LivPrb">
+<span class="sig-name descname"><span class="pre">LivPrb</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></em><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.LivPrb" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.PermGroFac">
+<span class="sig-name descname"><span class="pre">PermGroFac</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></em><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.PermGroFac" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.PermShkDstn">
+<span class="sig-name descname"><span class="pre">PermShkDstn</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../tools/distribution.html#HARK.distribution.DiscreteDistribution" title="HARK.distribution.DiscreteDistribution"><span class="pre">DiscreteDistribution</span></a></em><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.PermShkDstn" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.Rfree">
+<span class="sig-name descname"><span class="pre">Rfree</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></em><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.Rfree" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.RiskyDstn">
+<span class="sig-name descname"><span class="pre">RiskyDstn</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../tools/distribution.html#HARK.distribution.DiscreteDistribution" title="HARK.distribution.DiscreteDistribution"><span class="pre">DiscreteDistribution</span></a></em><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.RiskyDstn" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.ShockDstn">
+<span class="sig-name descname"><span class="pre">ShockDstn</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../tools/distribution.html#HARK.distribution.DiscreteDistribution" title="HARK.distribution.DiscreteDistribution"><span class="pre">DiscreteDistribution</span></a></em><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.ShockDstn" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.TranShkDstn">
+<span class="sig-name descname"><span class="pre">TranShkDstn</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../tools/distribution.html#HARK.distribution.DiscreteDistribution" title="HARK.distribution.DiscreteDistribution"><span class="pre">DiscreteDistribution</span></a></em><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.TranShkDstn" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.aXtraGrid">
+<span class="sig-name descname"><span class="pre">aXtraGrid</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">array</span></em><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.aXtraGrid" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.calc_EndOfPrdvP">
+<span class="sig-name descname"><span class="pre">calc_EndOfPrdvP</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.calc_EndOfPrdvP" title="Permalink to this definition"></a></dt>
+<dd><p>Calculate end-of-period marginal value of assets at each point in aNrmNow.
+Does so by taking a weighted sum of next period marginal values across
+income shocks (in a preconstructed grid self.mNrmNext).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>none</strong> – </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>EndOfPrdvP</strong> – A 1D array of end-of-period marginal value of assets</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.calc_ExpMargValueFunc">
+<span class="sig-name descname"><span class="pre">calc_ExpMargValueFunc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dstn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">func</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grid</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.calc_ExpMargValueFunc" title="Permalink to this definition"></a></dt>
+<dd><p>Calculate Expected Marginal Value Function given a distribution,
+a function, and a set of interpolation nodes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.calc_ExpValueFunc">
+<span class="sig-name descname"><span class="pre">calc_ExpValueFunc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dstn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">func</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grid</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.calc_ExpValueFunc" title="Permalink to this definition"></a></dt>
+<dd><p>Calculate Expected Value Function given distribution,
+function, and interpolating nodes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.calc_preIncShkvFunc">
+<span class="sig-name descname"><span class="pre">calc_preIncShkvFunc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vFuncNext</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.calc_preIncShkvFunc" title="Permalink to this definition"></a></dt>
+<dd><p>Calculate Expected Value Function prior to realization
+of income uncertainty.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.calc_preIncShkvPfunc">
+<span class="sig-name descname"><span class="pre">calc_preIncShkvPfunc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vPfuncNext</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.calc_preIncShkvPfunc" title="Permalink to this definition"></a></dt>
+<dd><p>Calculate Expected Marginal Value Function before the
+realization of income shocks.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.calc_preRiskyShkvFunc">
+<span class="sig-name descname"><span class="pre">calc_preRiskyShkvFunc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">preIncShkvFunc</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.calc_preRiskyShkvFunc" title="Permalink to this definition"></a></dt>
+<dd><p>Calculate Expected Value Function prior to
+realization of risky return.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.calc_preRiskyShkvPfunc">
+<span class="sig-name descname"><span class="pre">calc_preRiskyShkvPfunc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">preIncShkvPfunc</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.calc_preRiskyShkvPfunc" title="Permalink to this definition"></a></dt>
+<dd><p>Calculate Expected Marginal Value Function before
+the realization of the risky return.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.def_BoroCnst">
+<span class="sig-name descname"><span class="pre">def_BoroCnst</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">BoroCnstArt</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.def_BoroCnst" title="Permalink to this definition"></a></dt>
+<dd><p>Defines the constrained portion of the consumption function as cFuncNowCnst,
+an attribute of self.  Uses the artificial and natural borrowing constraints.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>BoroCnstArt</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em> or </em><em>None</em>) – Borrowing constraint for the minimum allowable assets to end the
+period with.  If it is less than the natural borrowing constraint,
+then it is irrelevant; BoroCnstArt=None indicates no artificial bor-
+rowing constraint.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>none</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.make_EndOfPrdvFunc">
+<span class="sig-name descname"><span class="pre">make_EndOfPrdvFunc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">EndOfPrdvP</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.make_EndOfPrdvFunc" title="Permalink to this definition"></a></dt>
+<dd><p>Construct the end-of-period value function for this period, storing it
+as an attribute of self for use by other methods.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>EndOfPrdvP</strong> (<em>np.array</em>) – Array of end-of-period marginal value of assets corresponding to the
+asset values in self.aNrmNow.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>none</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.prepare_to_calc_EndOfPrdvP">
+<span class="sig-name descname"><span class="pre">prepare_to_calc_EndOfPrdvP</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.prepare_to_calc_EndOfPrdvP" title="Permalink to this definition"></a></dt>
+<dd><p>Prepare to calculate end-of-period marginal value by creating an array
+of market resources that the agent could have next period, considering
+the grid of end-of-period assets and the distribution of shocks he might
+experience next period.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>none</strong> – </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>aNrmNow</strong> – A 1D array of end-of-period assets; also stored as attribute of self.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.set_and_update_values">
+<span class="sig-name descname"><span class="pre">set_and_update_values</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">solution_next</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">IncShkDstn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">LivPrb</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DiscFac</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.set_and_update_values" title="Permalink to this definition"></a></dt>
+<dd><p>Unpacks some of the inputs (and calculates simple objects based on them),
+storing the results in self for use by other methods.  These include:
+income shocks and probabilities, next period’s marginal value function
+(etc), the probability of getting the worst income shock next period,
+the patience factor, human wealth, and the bounding MPCs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>solution_next</strong> (<a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.ConsumerSolution" title="HARK.ConsumptionSaving.ConsIndShockModel.ConsumerSolution"><em>ConsumerSolution</em></a>) – The solution to next period’s one period problem.</p></li>
+<li><p><strong>IncShkDstn</strong> (<a class="reference internal" href="../tools/distribution.html#HARK.distribution.DiscreteDistribution" title="HARK.distribution.DiscreteDistribution"><em>distribution.DiscreteDistribution</em></a>) – A DiscreteDistribution with a pmv
+and two point value arrays in X, order:
+permanent shocks, transitory shocks.</p></li>
+<li><p><strong>LivPrb</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Survival probability; likelihood of being alive at the beginning of
+the succeeding period.</p></li>
+<li><p><strong>DiscFac</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Intertemporal discount factor for future utility.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.solution_next">
+<span class="sig-name descname"><span class="pre">solution_next</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.ConsumerSolution" title="HARK.ConsumptionSaving.ConsIndShockModel.ConsumerSolution"><span class="pre">ConsumerSolution</span></a></em><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.solution_next" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.vFuncBool">
+<span class="sig-name descname"><span class="pre">vFuncBool</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></em><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver.vFuncBool" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsPortfolioIndShkRiskyAssetSolver">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">HARK.ConsumptionSaving.ConsRiskyAssetModel.</span></span><span class="sig-name descname"><span class="pre">ConsPortfolioIndShkRiskyAssetSolver</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">solution_next:</span> <span class="pre">HARK.ConsumptionSaving.ConsIndShockModel.ConsumerSolution</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">IncShkDstn:</span> <span class="pre">HARK.distribution.DiscreteDistribution</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">TranShkDstn:</span> <span class="pre">HARK.distribution.DiscreteDistribution</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">PermShkDstn:</span> <span class="pre">HARK.distribution.DiscreteDistribution</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">RiskyDstn:</span> <span class="pre">HARK.distribution.DiscreteDistribution</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ShockDstn:</span> <span class="pre">HARK.distribution.DiscreteDistribution</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">LivPrb:</span> <span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DiscFac:</span> <span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">CRRA:</span> <span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Rfree:</span> <span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">PermGroFac:</span> <span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">BoroCnstArt:</span> <span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aXtraGrid:</span> <span class="pre">&lt;built-in</span> <span class="pre">function</span> <span class="pre">array&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vFuncBool:</span> <span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">CubicBool:</span> <span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">IndepDstnBool:</span> <span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ShareGrid:</span> <span class="pre">&lt;built-in</span> <span class="pre">function</span> <span class="pre">array&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ShareLimit:</span> <span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">PortfolioBisect:</span> <span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsPortfolioIndShkRiskyAssetSolver" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver" title="HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsIndShkRiskyAssetSolver"><code class="xref py py-class docutils literal notranslate"><span class="pre">ConsIndShkRiskyAssetSolver</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsPortfolioIndShkRiskyAssetSolver.PortfolioBisect">
+<span class="sig-name descname"><span class="pre">PortfolioBisect</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></em><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsPortfolioIndShkRiskyAssetSolver.PortfolioBisect" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsPortfolioIndShkRiskyAssetSolver.ShareGrid">
+<span class="sig-name descname"><span class="pre">ShareGrid</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">array</span></em><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsPortfolioIndShkRiskyAssetSolver.ShareGrid" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsPortfolioIndShkRiskyAssetSolver.ShareLimit">
+<span class="sig-name descname"><span class="pre">ShareLimit</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></em><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsPortfolioIndShkRiskyAssetSolver.ShareLimit" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsPortfolioIndShkRiskyAssetSolver.add_ShareFunc">
+<span class="sig-name descname"><span class="pre">add_ShareFunc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">solution</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsPortfolioIndShkRiskyAssetSolver.add_ShareFunc" title="Permalink to this definition"></a></dt>
+<dd><p>Construct the risky share function twice, once with respect
+to End of Period which depends on Liquid assets, and another
+with respect to Beginning of Period which depends on Cash on Hand.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsPortfolioIndShkRiskyAssetSolver.calc_EndOfPrdvP">
+<span class="sig-name descname"><span class="pre">calc_EndOfPrdvP</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsPortfolioIndShkRiskyAssetSolver.calc_EndOfPrdvP" title="Permalink to this definition"></a></dt>
+<dd><p>Calculate end-of-period marginal value of assets at each point in aNrmNow.
+Does so by taking a weighted sum of next period marginal values across
+income shocks (in a preconstructed grid self.mNrmNext).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>none</strong> – </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>EndOfPrdvP</strong> – A 1D array of end-of-period marginal value of assets</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsPortfolioIndShkRiskyAssetSolver.calc_preRiskyShkvPfunc">
+<span class="sig-name descname"><span class="pre">calc_preRiskyShkvPfunc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">preIncShkvPfunc</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsPortfolioIndShkRiskyAssetSolver.calc_preRiskyShkvPfunc" title="Permalink to this definition"></a></dt>
+<dd><p>Calculate Expected Marginal Value Function before
+the realization of the risky return.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsPortfolioIndShkRiskyAssetSolver.optimize_share">
+<span class="sig-name descname"><span class="pre">optimize_share</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">EndOfPrddvds</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsPortfolioIndShkRiskyAssetSolver.optimize_share" title="Permalink to this definition"></a></dt>
+<dd><p>Optimize the risky share of portfolio given End of Period
+Marginal Value wrt a given risky share. Returns optimal share
+and End of Period Marginal Value of Liquid Assets at the optimal share.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsPortfolioIndShkRiskyAssetSolver.prepare_to_calc_EndOfPrdvP">
+<span class="sig-name descname"><span class="pre">prepare_to_calc_EndOfPrdvP</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsPortfolioIndShkRiskyAssetSolver.prepare_to_calc_EndOfPrdvP" title="Permalink to this definition"></a></dt>
+<dd><p>Prepare to calculate end-of-period marginal value by creating an array
+of market resources that the agent could have next period, considering
+the grid of end-of-period assets and the distribution of shocks he might
+experience next period.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>none</strong> – </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>aNrmNow</strong> – A 1D array of end-of-period assets; also stored as attribute of self.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsPortfolioIndShkRiskyAssetSolver.set_and_update_values">
+<span class="sig-name descname"><span class="pre">set_and_update_values</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">solution_next</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">IncShkDstn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">LivPrb</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DiscFac</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsPortfolioIndShkRiskyAssetSolver.set_and_update_values" title="Permalink to this definition"></a></dt>
+<dd><p>Unpacks some of the inputs (and calculates simple objects based on them),
+storing the results in self for use by other methods.  These include:
+income shocks and probabilities, next period’s marginal value function
+(etc), the probability of getting the worst income shock next period,
+the patience factor, human wealth, and the bounding MPCs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>solution_next</strong> (<a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.ConsumerSolution" title="HARK.ConsumptionSaving.ConsIndShockModel.ConsumerSolution"><em>ConsumerSolution</em></a>) – The solution to next period’s one period problem.</p></li>
+<li><p><strong>IncShkDstn</strong> (<a class="reference internal" href="../tools/distribution.html#HARK.distribution.DiscreteDistribution" title="HARK.distribution.DiscreteDistribution"><em>distribution.DiscreteDistribution</em></a>) – A DiscreteDistribution with a pmv
+and two point value arrays in X, order:
+permanent shocks, transitory shocks.</p></li>
+<li><p><strong>LivPrb</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Survival probability; likelihood of being alive at the beginning of
+the succeeding period.</p></li>
+<li><p><strong>DiscFac</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Intertemporal discount factor for future utility.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsPortfolioIndShkRiskyAssetSolver.solve">
+<span class="sig-name descname"><span class="pre">solve</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.ConsPortfolioIndShkRiskyAssetSolver.solve" title="Permalink to this definition"></a></dt>
+<dd><p>Solves the single period consumption-saving problem using the method of
+endogenous gridpoints.  Solution includes a consumption function cFunc
+(using cubic or linear splines), a marginal value function vPfunc, a min-
+imum acceptable level of normalized market resources mNrmMin, normalized
+human wealth hNrm, and bounding MPCs MPCmin and MPCmax.  It might also
+have a value function vFunc and marginal marginal value function vPPfunc.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>none</strong> – </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>solution</strong> – The solution to the single period consumption-saving problem.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.ConsumerSolution" title="HARK.ConsumptionSaving.ConsIndShockModel.ConsumerSolution">ConsumerSolution</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.FixedPortfolioShareRiskyAssetConsumerType">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">HARK.ConsumptionSaving.ConsRiskyAssetModel.</span></span><span class="sig-name descname"><span class="pre">FixedPortfolioShareRiskyAssetConsumerType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quiet</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwds</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.FixedPortfolioShareRiskyAssetConsumerType" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.IndShockRiskyAssetConsumerType" title="HARK.ConsumptionSaving.ConsRiskyAssetModel.IndShockRiskyAssetConsumerType"><code class="xref py py-class docutils literal notranslate"><span class="pre">IndShockRiskyAssetConsumerType</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.FixedPortfolioShareRiskyAssetConsumerType.time_vary_">
+<span class="sig-name descname"><span class="pre">time_vary_</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['LivPrb',</span> <span class="pre">'PermGroFac',</span> <span class="pre">'RiskyShareFixed']</span></em><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.FixedPortfolioShareRiskyAssetConsumerType.time_vary_" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.IndShockRiskyAssetConsumerType">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">HARK.ConsumptionSaving.ConsRiskyAssetModel.</span></span><span class="sig-name descname"><span class="pre">IndShockRiskyAssetConsumerType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quiet</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwds</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.IndShockRiskyAssetConsumerType" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="ConsIndShockModel.html#HARK.ConsumptionSaving.ConsIndShockModel.IndShockConsumerType" title="HARK.ConsumptionSaving.ConsIndShockModel.IndShockConsumerType"><code class="xref py py-class docutils literal notranslate"><span class="pre">IndShockConsumerType</span></code></a></p>
+<p>A consumer type that has access to a risky asset for his savings. The
+risky asset has lognormal returns that are possibly correlated with his
+income shocks.</p>
+<p>There is a friction that prevents the agent from adjusting his portfolio
+at any given period with an exogenously given probability.
+The meaning of “adjusting his portfolio” depends on the particular model.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.IndShockRiskyAssetConsumerType.get_Adjust">
+<span class="sig-name descname"><span class="pre">get_Adjust</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.IndShockRiskyAssetConsumerType.get_Adjust" title="Permalink to this definition"></a></dt>
+<dd><p>Sets the attribute Adjust as a boolean array of size AgentCount, indicating
+whether each agent is able to adjust their risky portfolio share this period.
+Uses the attribute AdjustPrb to draw from a Bernoulli distribution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>None</strong> – </p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.IndShockRiskyAssetConsumerType.get_Rfree">
+<span class="sig-name descname"><span class="pre">get_Rfree</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.IndShockRiskyAssetConsumerType.get_Rfree" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates realized return factor for each agent, using the attributes Rfree,
+RiskyNow, and ShareNow.  This method is a bit of a misnomer, as the return
+factor is not riskless, but would more accurately be labeled as Rport.  However,
+this method makes the portfolio model compatible with its parent class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>None</strong> – </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>Rport</strong> – Array of size AgentCount with each simulated agent’s realized portfolio
+return factor.  Will be used by get_states() to calculate mNrmNow, where it
+will be mislabeled as “Rfree”.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.IndShockRiskyAssetConsumerType.get_Risky">
+<span class="sig-name descname"><span class="pre">get_Risky</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.IndShockRiskyAssetConsumerType.get_Risky" title="Permalink to this definition"></a></dt>
+<dd><p>Draws a new risky return factor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>None</strong> – </p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.IndShockRiskyAssetConsumerType.get_shocks">
+<span class="sig-name descname"><span class="pre">get_shocks</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.IndShockRiskyAssetConsumerType.get_shocks" title="Permalink to this definition"></a></dt>
+<dd><p>Draw idiosyncratic income shocks, just as for IndShockConsumerType, then draw
+a single common value for the risky asset return.  Also draws whether each
+agent is able to adjust their portfolio this period.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>None</strong> – </p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.IndShockRiskyAssetConsumerType.initialize_sim">
+<span class="sig-name descname"><span class="pre">initialize_sim</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.IndShockRiskyAssetConsumerType.initialize_sim" title="Permalink to this definition"></a></dt>
+<dd><p>Initialize the state of simulation attributes.  Simply calls the same
+method for IndShockConsumerType, then initializes the new states/shocks
+Adjust and Share.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>None</strong> – </p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.IndShockRiskyAssetConsumerType.pre_solve">
+<span class="sig-name descname"><span class="pre">pre_solve</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.IndShockRiskyAssetConsumerType.pre_solve" title="Permalink to this definition"></a></dt>
+<dd><p>A method that is run immediately before the model is solved, to check inputs or to prepare
+the terminal solution, perhaps.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>none</strong> – </p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>none</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.IndShockRiskyAssetConsumerType.shock_vars_">
+<span class="sig-name descname"><span class="pre">shock_vars_</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['PermShk',</span> <span class="pre">'TranShk',</span> <span class="pre">'Adjust',</span> <span class="pre">'Risky']</span></em><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.IndShockRiskyAssetConsumerType.shock_vars_" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.IndShockRiskyAssetConsumerType.time_inv_">
+<span class="sig-name descname"><span class="pre">time_inv_</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['CRRA',</span> <span class="pre">'DiscFac',</span> <span class="pre">'BoroCnstArt',</span> <span class="pre">'BoroCnstArt',</span> <span class="pre">'vFuncBool',</span> <span class="pre">'CubicBool',</span> <span class="pre">'PortfolioBisect']</span></em><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.IndShockRiskyAssetConsumerType.time_inv_" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.IndShockRiskyAssetConsumerType.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.IndShockRiskyAssetConsumerType.update" title="Permalink to this definition"></a></dt>
+<dd><p>Update the income process, the assets grid, and the terminal solution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>None</strong> – </p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.IndShockRiskyAssetConsumerType.update_AdjustDstn">
+<span class="sig-name descname"><span class="pre">update_AdjustDstn</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.IndShockRiskyAssetConsumerType.update_AdjustDstn" title="Permalink to this definition"></a></dt>
+<dd><p>Checks and updates the exogenous probability of the agent being allowed
+to rebalance his portfolio/contribution scheme. It can be time varying.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>None.</strong> – </p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.IndShockRiskyAssetConsumerType.update_RiskyDstn">
+<span class="sig-name descname"><span class="pre">update_RiskyDstn</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.IndShockRiskyAssetConsumerType.update_RiskyDstn" title="Permalink to this definition"></a></dt>
+<dd><p>Creates the attributes RiskyDstn from the primitive attributes RiskyAvg,
+RiskyStd, and RiskyCount, approximating the (perceived) distribution of
+returns in each period of the cycle.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>None</strong> – </p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.IndShockRiskyAssetConsumerType.update_ShareGrid">
+<span class="sig-name descname"><span class="pre">update_ShareGrid</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.IndShockRiskyAssetConsumerType.update_ShareGrid" title="Permalink to this definition"></a></dt>
+<dd><p>Creates the attribute ShareGrid as an evenly spaced grid on [0.,1.], using
+the primitive parameter ShareCount.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>None</strong> – </p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.IndShockRiskyAssetConsumerType.update_ShareLimit">
+<span class="sig-name descname"><span class="pre">update_ShareLimit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.IndShockRiskyAssetConsumerType.update_ShareLimit" title="Permalink to this definition"></a></dt>
+<dd><p>Creates the attribute ShareLimit, representing the limiting lower bound of
+risky portfolio share as mNrm goes to infinity.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>None</strong> – </p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.IndShockRiskyAssetConsumerType.update_ShockDstn">
+<span class="sig-name descname"><span class="pre">update_ShockDstn</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.IndShockRiskyAssetConsumerType.update_ShockDstn" title="Permalink to this definition"></a></dt>
+<dd><p>Combine the income shock distribution (over PermShk and TranShk) with the
+risky return distribution (RiskyDstn) to make a new attribute called ShockDstn.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>None</strong> – </p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.ConsRiskyAssetModel.RiskyAssetConsumerType">
+<span class="sig-prename descclassname"><span class="pre">HARK.ConsumptionSaving.ConsRiskyAssetModel.</span></span><span class="sig-name descname"><span class="pre">RiskyAssetConsumerType</span></span><a class="headerlink" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.RiskyAssetConsumerType" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="#HARK.ConsumptionSaving.ConsRiskyAssetModel.IndShockRiskyAssetConsumerType" title="HARK.ConsumptionSaving.ConsRiskyAssetModel.IndShockRiskyAssetConsumerType"><code class="xref py py-class docutils literal notranslate"><span class="pre">IndShockRiskyAssetConsumerType</span></code></a></p>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="ConsRepAgentModel.html" class="btn btn-neutral float-left" title="ConsRepAgentModel" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ConsRiskyContribModel.html" class="btn btn-neutral float-right" title="ConsRiskyContribModel" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Econ-ARK team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

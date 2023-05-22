@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>dcegm &mdash; HARK latest documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Distribution" href="distribution.html" />
+    <link rel="prev" title="Core" href="core.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            HARK
+          </a>
+              <div class="version">
+                latest
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick-start.html">Installing HARK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick-start.html#learning-hark">Learning HARK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick-start.html#making-changes-to-hark">Making changes to HARK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick-start.html#next-steps">Next steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ARKitecture.html">ARKitecture of Econ-ARK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/CONTRIBUTING.html">Contributing to Econ-ARK</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">API Documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#tools">Tools</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">Tools</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="core.html">Core</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">dcegm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="distribution.html">Distribution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="econforgeinterp.html">Econforgeinterp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="estimation.html">Estimation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="frame.html">Frame</a></li>
+<li class="toctree-l4"><a class="reference internal" href="helpers.html">Helpers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="interpolation.html">Interpolation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="numba.html">Numba</a></li>
+<li class="toctree-l4"><a class="reference internal" href="parallel.html">Parallel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rewards.html">Rewards</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simulation.html">Simulation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="utilities.html">Utilities</a></li>
+<li class="toctree-l4"><a class="reference internal" href="validators.html">Validators</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#models">Models</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../CHANGELOG.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../example_notebooks/Gentle-Intro-To-HARK.html">A Gentle Introduction to HARK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../example_notebooks/PerfForesightConsumerType.html">PerfForesightConsumerType: Perfect foresight consumption-saving</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../example_notebooks/IndShockConsumerType.html">IndShockConsumerType Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../example_notebooks/KinkedRconsumerType.html">KinkedRconsumerType: Consumption-saving model with idiosyncratic income shocks and different interest rates on borrowing and saving</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../example_notebooks/ConsPortfolioModel.html">Portfolio Models in HARK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../example_notebooks/GenIncProcessModel.html">Permanent versus Persistent Income Shocks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../example_notebooks/LifecycleModel.html">A Lifecycle Model: The Distribution of Assets By Age</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../example_notebooks/HowWeSolveIndShockConsumerType.html">How we solve a model defined by the <code class="docutils literal notranslate"><span class="pre">IndShockConsumerType</span></code> class</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">HARK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">API Documentation</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Tools</a></li>
+      <li class="breadcrumb-item active">dcegm</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/reference/tools/dcegm.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-HARK.dcegm">
+<span id="dcegm"></span><h1>dcegm<a class="headerlink" href="#module-HARK.dcegm" title="Permalink to this heading"></a></h1>
+<p>Functions for working with the discrete-continuous EGM (DCEGM) algorithm as
+described in “The endogenous grid method for discrete-continuous dynamic
+choice models with (or without) taste shocks” by Iskhakov et al. (2016)
+[<a class="reference external" href="https://doi.org/10.3982/QE643">https://doi.org/10.3982/QE643</a> and ijrsDCEGM2017 in our Zotero]</p>
+<p>Example can be found in <a class="reference external" href="https://github.com/econ-ark/DemARK/blob/master/notebooks/DCEGM-Upper-Envelope.ipynb">https://github.com/econ-ark/DemARK/blob/master/notebooks/DCEGM-Upper-Envelope.ipynb</a></p>
+<dl class="py function">
+<dt class="sig sig-object py" id="HARK.dcegm.calc_cross_points">
+<span class="sig-prename descclassname"><span class="pre">HARK.dcegm.</span></span><span class="sig-name descname"><span class="pre">calc_cross_points</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x_grid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cond_ys</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">opt_idx</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#HARK.dcegm.calc_cross_points" title="Permalink to this definition"></a></dt>
+<dd><p>Given a grid of x values, a matrix with the values of different line segments
+evaluated on the x grid, and a vector indicating the choice of a segment
+at each grid point, this function computes the coordinates of the
+crossing points that happen when the choice of segment changes.</p>
+<p>The purpose of the function is to take (x,y) lines that are defined piece-
+wise, and at every gap in x where the “piece” changes, find the point where
+the two “pieces” involved in the change would intercept.</p>
+<p>Adding these points to our piece-wise approximation will improve it, since
+it will eliminate interpolation between points that belong to different
+“pieces”.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x_grid</strong> (<em>np.array</em>) – Grid of x values.</p></li>
+<li><p><strong>cond_ys</strong> (<em>2-D np.array. Must have as many rows as possible segments</em><em>, </em><em>and</em>) – len(x_grid) columns.
+cond_ys[i,j] contains the value of segment (or “piece”) i at x_grid[j].
+Entries can be nan if the segment is not defined at a particular point.</p></li>
+<li><p><strong>opt_idx</strong> (<em>np.array</em><em> of </em><em>indices</em><em>, </em><em>must have length len</em><em>(</em><em>x_grid</em><em>)</em><em>.</em>) – Indicates what segment is to be used at each x gridpoint. The value
+of the piecewise function at x_grid[k] is cond_ys[opt_idx[k],k].</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>xing_points</strong> (<em>2D np.array</em>) – Crossing points, each in its own row as an [x, y] pair.</p></li>
+<li><p><strong>segments</strong> (<em>np.array with two columns and as many rows as xing points.</em>) – Each row represents a crossing point. The first column is the index
+of the segment used to the left, and the second, to the right.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="HARK.dcegm.calc_linear_crossing">
+<span class="sig-prename descclassname"><span class="pre">HARK.dcegm.</span></span><span class="sig-name descname"><span class="pre">calc_linear_crossing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">left_y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">right_y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#HARK.dcegm.calc_linear_crossing" title="Permalink to this definition"></a></dt>
+<dd><p>Computes the intersection between two line segments, defined by two common
+x points, and the values of both segments at both x points. The intercept
+is only found if it happens between the two x coordinates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>np.array</em><em>, </em><em>length 2</em>) – The two common x coordinates. x[0] &lt; x[1] is assumed</p></li>
+<li><p><strong>left_y</strong> (<em>np.array</em><em>, </em><em>length 2</em>) – y values of the two segments at x[0]</p></li>
+<li><p><strong>right_y</strong> (<em>np.array</em><em>, </em><em>length 2</em>) – y values of the two segments at x[1]</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>(m_int, v_int)</strong> (<em>a tuple with the corrdinates of the intercept.</em>)</p></li>
+<li><p><em>if there is no intercept in the interval [x[0],x[1]], (nan,nan)</em></p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="HARK.dcegm.calc_nondecreasing_segments">
+<span class="sig-prename descclassname"><span class="pre">HARK.dcegm.</span></span><span class="sig-name descname"><span class="pre">calc_nondecreasing_segments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#HARK.dcegm.calc_nondecreasing_segments" title="Permalink to this definition"></a></dt>
+<dd><p>Given a sequence of (x,y) points, this function finds the start and end
+indices of its largest non-decreasing segments.</p>
+<p>A non-decreasing segment is a sub-sequence of points
+{(x_0, y_0),…,(x_n,y_n)} such that for all 0 &lt;= i,j &lt;= n,
+If j&gt;=i then x_j &gt;= x_i and y_j &gt;= y_i</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>1D np.array</em><em> of </em><em>floats</em>) – x coordinates of the sequence of points.</p></li>
+<li><p><strong>y</strong> (<em>1D np.array</em><em> of </em><em>floats</em>) – y coordinates of the sequence of points.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>starts</strong> (<em>1D np.array of ints</em>) – Indices where a new non-decreasing segment starts.</p></li>
+<li><p><strong>ends</strong> (<em>1D np.array of ints</em>) – Indices where a non-decreasing segment ends.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="HARK.dcegm.upper_envelope">
+<span class="sig-prename descclassname"><span class="pre">HARK.dcegm.</span></span><span class="sig-name descname"><span class="pre">upper_envelope</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">segments</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calc_crossings</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#HARK.dcegm.upper_envelope" title="Permalink to this definition"></a></dt>
+<dd><p>Finds the upper envelope of a list of non-decreasing segments</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>segments</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><em>list</em></a><em> of </em><em>segments. Segments are tuples</em><em> of </em><em>arrays</em><em>, </em><em>with item</em><em>[</em><em>0</em><em>]</em>) – containing the x coordninates and item[1] the y coordinates of the
+points that confrom the segment item.</p></li>
+<li><p><strong>calc_crossings</strong> (<em>Bool</em><em>, </em><em>optional</em>) – Indicates whether the crossing points at which the “upper” segment
+changes should be computed. The default is True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>x</strong> (<em>np.array of floats</em>) – x coordinates of the points that conform the upper envelope.</p></li>
+<li><p><strong>y</strong> (<em>np.array of floats</em>) – y coordinates of the points that conform the upper envelope.</p></li>
+<li><p><strong>env_inds</strong> (<em>np array of ints</em>) – Array of the same length as x and y. It indicates which of the
+provided segments is the “upper” one at every returned (x,y) point.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="core.html" class="btn btn-neutral float-left" title="Core" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="distribution.html" class="btn btn-neutral float-right" title="Distribution" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Econ-ARK team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

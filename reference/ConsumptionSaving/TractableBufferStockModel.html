@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TractableBufferStockModel &mdash; HARK latest documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Release Notes" href="../../CHANGELOG.html" />
+    <link rel="prev" title="ConsRiskyContribModel" href="ConsRiskyContribModel.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            HARK
+          </a>
+              <div class="version">
+                latest
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick-start.html">Installing HARK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick-start.html#learning-hark">Learning HARK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick-start.html#making-changes-to-hark">Making changes to HARK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick-start.html#next-steps">Next steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ARKitecture.html">ARKitecture of Econ-ARK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/CONTRIBUTING.html">Contributing to Econ-ARK</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">API Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../index.html#tools">Tools</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#models">Models</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">Consumption Saving</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="ConsAggShockModel.html">ConsAggShockModel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ConsGenIncProcessModel.html">ConsGenIncProcessModel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ConsIndShockModel.html">ConsIndShockModel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ConsIndShockModelFast.html">ConsIndShockModelFast</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ConsLaborModel.html">ConsLaborModel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ConsMarkovModel.html">ConsMarkovModel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ConsMedModel.html">ConsMedModel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ConsPortfolioFrameModel.html">ConsPortfolioFrameModel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ConsPortfolioModel.html">ConsPortfolioModel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ConsPrefShochModel.html">ConsPrefShockModel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ConsRepAgentModel.html">ConsRepAgentModel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ConsRiskyAssetModel.html">ConsRiskyAssetModel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ConsRiskyContribModel.html">ConsRiskyContribModel</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">TractableBufferStockModel</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../CHANGELOG.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../example_notebooks/Gentle-Intro-To-HARK.html">A Gentle Introduction to HARK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../example_notebooks/PerfForesightConsumerType.html">PerfForesightConsumerType: Perfect foresight consumption-saving</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../example_notebooks/IndShockConsumerType.html">IndShockConsumerType Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../example_notebooks/KinkedRconsumerType.html">KinkedRconsumerType: Consumption-saving model with idiosyncratic income shocks and different interest rates on borrowing and saving</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../example_notebooks/ConsPortfolioModel.html">Portfolio Models in HARK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../example_notebooks/GenIncProcessModel.html">Permanent versus Persistent Income Shocks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../example_notebooks/LifecycleModel.html">A Lifecycle Model: The Distribution of Assets By Age</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../example_notebooks/HowWeSolveIndShockConsumerType.html">How we solve a model defined by the <code class="docutils literal notranslate"><span class="pre">IndShockConsumerType</span></code> class</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">HARK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">API Documentation</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Consumption Saving</a></li>
+      <li class="breadcrumb-item active">TractableBufferStockModel</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/reference/ConsumptionSaving/TractableBufferStockModel.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-HARK.ConsumptionSaving.TractableBufferStockModel">
+<span id="tractablebufferstockmodel"></span><h1>TractableBufferStockModel<a class="headerlink" href="#module-HARK.ConsumptionSaving.TractableBufferStockModel" title="Permalink to this heading"></a></h1>
+<p>Defines and solves the Tractable Buffer Stock model described in lecture notes
+for “A Tractable Model of Buffer Stock Saving” (henceforth, TBS) available at
+<a class="reference external" href="https://www.econ2.jhu.edu/people/ccarroll/public/lecturenotes/consumption/TractableBufferStock">https://www.econ2.jhu.edu/people/ccarroll/public/lecturenotes/consumption/TractableBufferStock</a>
+The model concerns an agent with constant relative risk aversion utility making
+decisions over consumption and saving.  He is subject to only a very particular
+sort of risk: the possibility that he will become permanently unemployed until
+the day he dies; barring this, his income is certain and grows at a constant rate.</p>
+<p>The model has an infinite horizon, but is not solved by backward iteration in a
+traditional sense.  Because of the very specific assumptions about risk, it is
+possible to find the agent’s steady state or target level of market resources
+when employed, as well as information about the optimal consumption rule at this
+target level.  The full consumption function can then be constructed by “back-
+shooting”, inverting the Euler equation to find what consumption <em>must have been</em>
+in the previous period.  The consumption function is thus constructed by repeat-
+edly adding “stable arm” points to either end of a growing list until specified
+bounds are exceeded.</p>
+<p>Despite the non-standard solution method, the iterative process can be embedded
+in the HARK framework, as shown below.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.TractableBufferStockModel.TractableConsumerSolution">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">HARK.ConsumptionSaving.TractableBufferStockModel.</span></span><span class="sig-name descname"><span class="pre">TractableConsumerSolution</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mNrm_list=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cNrm_list=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">MPC_list=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cFunc_U=&lt;class</span> <span class="pre">'HARK.utilities.NullFunc'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cFunc=&lt;class</span> <span class="pre">'HARK.utilities.NullFunc'&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#HARK.ConsumptionSaving.TractableBufferStockModel.TractableConsumerSolution" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">MetricObject</span></code></p>
+<p>A class representing the solution to a tractable buffer saving problem.
+Attributes include a list of money points mNrm_list, a list of consumption points
+cNrm_list, a list of MPCs MPC_list, a perfect foresight consumption function
+while employed, and a perfect foresight consumption function while unemployed.
+The solution includes a consumption function constructed from the lists.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mNrm_list</strong> (<em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>]</em>) – List of normalized market resources points on the stable arm.</p></li>
+<li><p><strong>cNrm_list</strong> (<em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>]</em>) – List of normalized consumption points on the stable arm.</p></li>
+<li><p><strong>MPC_list</strong> (<em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>]</em>) – List of marginal propensities to consume on the stable arm, corres-
+ponding to the (mNrm,cNrm) points.</p></li>
+<li><p><strong>cFunc_U</strong> (<em>function</em>) – The (linear) consumption function when permanently unemployed.</p></li>
+<li><p><strong>cFunc</strong> (<em>function</em>) – The consumption function when employed.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.TractableBufferStockModel.TractableConsumerType">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">HARK.ConsumptionSaving.TractableBufferStockModel.</span></span><span class="sig-name descname"><span class="pre">TractableConsumerType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwds</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#HARK.ConsumptionSaving.TractableBufferStockModel.TractableConsumerType" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../tools/core.html#HARK.core.AgentType" title="HARK.core.AgentType"><code class="xref py py-class docutils literal notranslate"><span class="pre">AgentType</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>AgentType</strong> (<em>Same as</em>) – </p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.TractableBufferStockModel.TractableConsumerType.get_controls">
+<span class="sig-name descname"><span class="pre">get_controls</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#HARK.ConsumptionSaving.TractableBufferStockModel.TractableConsumerType.get_controls" title="Permalink to this definition"></a></dt>
+<dd><p>Calculate consumption for each agent this period.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>None</strong> – </p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.TractableBufferStockModel.TractableConsumerType.get_poststates">
+<span class="sig-name descname"><span class="pre">get_poststates</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#HARK.ConsumptionSaving.TractableBufferStockModel.TractableConsumerType.get_poststates" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates end-of-period assets for each consumer of this type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>None</strong> – </p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.TractableBufferStockModel.TractableConsumerType.get_shocks">
+<span class="sig-name descname"><span class="pre">get_shocks</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#HARK.ConsumptionSaving.TractableBufferStockModel.TractableConsumerType.get_shocks" title="Permalink to this definition"></a></dt>
+<dd><p>Determine which agents switch from employment to unemployment.  All unemployed agents remain
+unemployed until death.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>None</strong> – </p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.TractableBufferStockModel.TractableConsumerType.post_solve">
+<span class="sig-name descname"><span class="pre">post_solve</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#HARK.ConsumptionSaving.TractableBufferStockModel.TractableConsumerType.post_solve" title="Permalink to this definition"></a></dt>
+<dd><p>This method adds consumption at m=0 to the list of stable arm points,
+then constructs the consumption function as a cubic interpolation over
+those points.  Should be run after the backshooting routine is complete.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>none</strong> – </p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>none</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.TractableBufferStockModel.TractableConsumerType.pre_solve">
+<span class="sig-name descname"><span class="pre">pre_solve</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#HARK.ConsumptionSaving.TractableBufferStockModel.TractableConsumerType.pre_solve" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates all of the solution objects that can be obtained before con-
+ducting the backshooting routine, including the target levels, the per-
+fect foresight solution, (marginal) consumption at m=0, and the small
+perturbations around the steady state.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>none</strong> – </p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>none</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.TractableBufferStockModel.TractableConsumerType.sim_birth">
+<span class="sig-name descname"><span class="pre">sim_birth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">which_agents</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#HARK.ConsumptionSaving.TractableBufferStockModel.TractableConsumerType.sim_birth" title="Permalink to this definition"></a></dt>
+<dd><p>Makes new consumers for the given indices.  Initialized variables include aNrm, as
+well as time variables t_age and t_cycle.  Normalized assets are drawn from a lognormal
+distributions given by aLvlInitMean and aLvlInitStd.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>which_agents</strong> (<em>np.array</em><em>(</em><em>Bool</em><em>)</em>) – Boolean array of size self.AgentCount indicating which agents should be “born”.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.TractableBufferStockModel.TractableConsumerType.sim_death">
+<span class="sig-name descname"><span class="pre">sim_death</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#HARK.ConsumptionSaving.TractableBufferStockModel.TractableConsumerType.sim_death" title="Permalink to this definition"></a></dt>
+<dd><p>Trivial function that returns boolean array of all False, as there is no death.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>None</strong> – </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>which_agents</strong> – Boolean array of size AgentCount indicating which agents die.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.array(<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)">bool</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.TractableBufferStockModel.TractableConsumerType.state_vars">
+<span class="sig-name descname"><span class="pre">state_vars</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['bLvl',</span> <span class="pre">'mLvl',</span> <span class="pre">'aLvl']</span></em><a class="headerlink" href="#HARK.ConsumptionSaving.TractableBufferStockModel.TractableConsumerType.state_vars" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="HARK.ConsumptionSaving.TractableBufferStockModel.TractableConsumerType.transition">
+<span class="sig-name descname"><span class="pre">transition</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#HARK.ConsumptionSaving.TractableBufferStockModel.TractableConsumerType.transition" title="Permalink to this definition"></a></dt>
+<dd><p>Calculate market resources for all agents this period.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>None</strong> – </p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="ConsRiskyContribModel.html" class="btn btn-neutral float-left" title="ConsRiskyContribModel" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../CHANGELOG.html" class="btn btn-neutral float-right" title="Release Notes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Econ-ARK team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

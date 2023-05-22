@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Utilities &mdash; HARK latest documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Validators" href="validators.html" />
+    <link rel="prev" title="Simulation" href="simulation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            HARK
+          </a>
+              <div class="version">
+                latest
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick-start.html">Installing HARK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick-start.html#learning-hark">Learning HARK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick-start.html#making-changes-to-hark">Making changes to HARK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick-start.html#next-steps">Next steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ARKitecture.html">ARKitecture of Econ-ARK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/CONTRIBUTING.html">Contributing to Econ-ARK</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">API Documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#tools">Tools</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">Tools</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="core.html">Core</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dcegm.html">dcegm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="distribution.html">Distribution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="econforgeinterp.html">Econforgeinterp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="estimation.html">Estimation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="frame.html">Frame</a></li>
+<li class="toctree-l4"><a class="reference internal" href="helpers.html">Helpers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="interpolation.html">Interpolation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="numba.html">Numba</a></li>
+<li class="toctree-l4"><a class="reference internal" href="parallel.html">Parallel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rewards.html">Rewards</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simulation.html">Simulation</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Utilities</a></li>
+<li class="toctree-l4"><a class="reference internal" href="validators.html">Validators</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#models">Models</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../CHANGELOG.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../example_notebooks/Gentle-Intro-To-HARK.html">A Gentle Introduction to HARK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../example_notebooks/PerfForesightConsumerType.html">PerfForesightConsumerType: Perfect foresight consumption-saving</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../example_notebooks/IndShockConsumerType.html">IndShockConsumerType Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../example_notebooks/KinkedRconsumerType.html">KinkedRconsumerType: Consumption-saving model with idiosyncratic income shocks and different interest rates on borrowing and saving</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../example_notebooks/ConsPortfolioModel.html">Portfolio Models in HARK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../example_notebooks/GenIncProcessModel.html">Permanent versus Persistent Income Shocks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../example_notebooks/LifecycleModel.html">A Lifecycle Model: The Distribution of Assets By Age</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../example_notebooks/HowWeSolveIndShockConsumerType.html">How we solve a model defined by the <code class="docutils literal notranslate"><span class="pre">IndShockConsumerType</span></code> class</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">HARK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">API Documentation</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Tools</a></li>
+      <li class="breadcrumb-item active">Utilities</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/reference/tools/utilities.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-HARK.utilities">
+<span id="utilities"></span><h1>Utilities<a class="headerlink" href="#module-HARK.utilities" title="Permalink to this heading"></a></h1>
+<p>General purpose  / miscellaneous functions.  Includes functions to approximate
+continuous distributions with discrete ones, utility functions (and their
+derivatives), manipulation of discrete distributions, and basic plotting tools.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="HARK.utilities.NullFunc">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">HARK.utilities.</span></span><span class="sig-name descname"><span class="pre">NullFunc</span></span><a class="headerlink" href="#HARK.utilities.NullFunc" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>A trivial class that acts as a placeholder “do nothing” function.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="HARK.utilities.NullFunc.distance">
+<span class="sig-name descname"><span class="pre">distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#HARK.utilities.NullFunc.distance" title="Permalink to this definition"></a></dt>
+<dd><p>Trivial distance metric that only cares whether the other object is also
+an instance of NullFunc.  Intentionally does not inherit from HARKobject
+as this might create dependency problems.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>other</strong> (<em>any</em>) – Any object for comparison to this instance of NullFunc.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>(unnamed)</strong> – The distance between self and other.  Returns 0 if other is also a
+NullFunc; otherwise returns an arbitrary high number.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)">float</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="HARK.utilities.benchmark">
+<span class="sig-prename descclassname"><span class="pre">HARK.utilities.</span></span><span class="sig-name descname"><span class="pre">benchmark</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort_by</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'tottime'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_print</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'restats'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_output</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#HARK.utilities.benchmark" title="Permalink to this definition"></a></dt>
+<dd><p>Profiling tool for HARK models. Calling <cite>benchmark</cite> on agents calls the solver for
+the agents and provides time to solve as well as the top <cite>max_print</cite> function calls
+in terms of  <cite>sort_by</cite>. Optionally allows for saving a text copy of the profile
+as well as returning the <cite>Stats</cite> object for further inspection.</p>
+<p>For more details on the python profilers, see
+<a class="reference external" href="https://docs.python.org/3/library/profile.html#the-stats-class">https://docs.python.org/3/library/profile.html#the-stats-class</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>agent_type</strong> (<a class="reference internal" href="core.html#HARK.core.AgentType" title="HARK.core.AgentType"><em>AgentType</em></a>) – A HARK AgentType with a solve() method.</p></li>
+<li><p><strong>sort_by</strong> (<em>string</em>) – A string to sort the stats by.</p></li>
+<li><p><strong>max_print</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – Number of lines to print</p></li>
+<li><p><strong>filename</strong> (<em>string</em>) – Optional filename to save output.</p></li>
+<li><p><strong>return_output</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – Boolean to determine whether Stats object should be returned.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>stats</strong> – Profiling object with call statistics.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Stats (optional)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="HARK.utilities.calc_subpop_avg">
+<span class="sig-prename descclassname"><span class="pre">HARK.utilities.</span></span><span class="sig-name descname"><span class="pre">calc_subpop_avg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reference</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cutoffs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#HARK.utilities.calc_subpop_avg" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates the average of (weighted) data between cutoff percentiles of a
+reference variable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>numpy.array</em>) – A 1D array of float data.</p></li>
+<li><p><strong>reference</strong> (<em>numpy.array</em>) – A 1D array of float data of the same length as data.</p></li>
+<li><p><strong>cutoffs</strong> (<em>[</em><em>(</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>,</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>)</em><em>]</em>) – A list of doubles with the lower and upper percentile bounds (should be
+in [0,1]).</p></li>
+<li><p><strong>weights</strong> (<em>numpy.array</em>) – A weighting vector for the data.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The (weighted) average of data that falls within the cutoff percentiles
+of reference.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>slice_avg</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="HARK.utilities.calc_weighted_avg">
+<span class="sig-prename descclassname"><span class="pre">HARK.utilities.</span></span><span class="sig-name descname"><span class="pre">calc_weighted_avg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#HARK.utilities.calc_weighted_avg" title="Permalink to this definition"></a></dt>
+<dd><p>Generates a weighted average of simulated data.  The Nth row of data is averaged
+and then weighted by the Nth element of weights in an aggregate average.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>numpy.array</em>) – An array of data with N rows of J floats</p></li>
+<li><p><strong>weights</strong> (<em>numpy.array</em>) – A length N array of weights for the N rows of data.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>weighted_sum</strong> – The weighted sum of the data.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)">float</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="HARK.utilities.construct_assets_grid">
+<span class="sig-prename descclassname"><span class="pre">HARK.utilities.</span></span><span class="sig-name descname"><span class="pre">construct_assets_grid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#HARK.utilities.construct_assets_grid" title="Permalink to this definition"></a></dt>
+<dd><p>Constructs the base grid of post-decision states, representing end-of-period
+assets above the absolute minimum.</p>
+<p>All parameters are passed as attributes of the single input parameters.  The
+input can be an instance of a ConsumerType, or a custom Parameters class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>aXtraMin</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Minimum value for the a-grid</p></li>
+<li><p><strong>aXtraMax</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Maximum value for the a-grid</p></li>
+<li><p><strong>aXtraCount</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – Size of the a-grid</p></li>
+<li><p><strong>aXtraExtra</strong> (<em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>]</em>) – Extra values for the a-grid.</p></li>
+<li><p><strong>exp_nest</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – Level of nesting for the exponentially spaced grid.
+If -1, the grid is linearly spaced.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>aXtraGrid</strong> – Base array of values for the post-decision-state grid.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="HARK.utilities.determine_platform">
+<span class="sig-prename descclassname"><span class="pre">HARK.utilities.</span></span><span class="sig-name descname"><span class="pre">determine_platform</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#HARK.utilities.determine_platform" title="Permalink to this definition"></a></dt>
+<dd><p>Untility function to return the platform currenlty in use.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>pf</strong> – ‘darwin’ (MacOS), ‘debian’(debian Linux) or ‘win’ (windows)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="HARK.utilities.epanechnikov_kernel">
+<span class="sig-prename descclassname"><span class="pre">HARK.utilities.</span></span><span class="sig-name descname"><span class="pre">epanechnikov_kernel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ref_x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#HARK.utilities.epanechnikov_kernel" title="Permalink to this definition"></a></dt>
+<dd><p>The Epanechnikov kernel.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>np.array</em>) – Values at which to evaluate the kernel</p></li>
+<li><p><strong>x_ref</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – The reference point</p></li>
+<li><p><strong>h</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Kernel bandwidth</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>out</strong> – Kernel values at each value of x</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="HARK.utilities.files_in_dir">
+<span class="sig-prename descclassname"><span class="pre">HARK.utilities.</span></span><span class="sig-name descname"><span class="pre">files_in_dir</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mypath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#HARK.utilities.files_in_dir" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="HARK.utilities.find_gui">
+<span class="sig-prename descclassname"><span class="pre">HARK.utilities.</span></span><span class="sig-name descname"><span class="pre">find_gui</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#HARK.utilities.find_gui" title="Permalink to this definition"></a></dt>
+<dd><p>Quick fix to check if matplotlib is running in a GUI environment.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>bool</strong> – True if it’s a GUI environment, False if not.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Boolean</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="HARK.utilities.gen_tran_matrix_1D">
+<span class="sig-prename descclassname"><span class="pre">HARK.utilities.</span></span><span class="sig-name descname"><span class="pre">gen_tran_matrix_1D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dist_mGrid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bNext</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shk_prbs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">perm_shks</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tran_shks</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">LivPrb</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">NewBornDist</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#HARK.utilities.gen_tran_matrix_1D" title="Permalink to this definition"></a></dt>
+<dd><p>Computes Transition Matrix across normalized market resources.
+This function is built to non-stochastic simulate the IndShockConsumerType.
+This function is used exclusively when Harmenberg Neutral Measure is applied and/or if permanent income is not a state variable
+For more information, see <a class="reference external" href="https://econ-ark.org/materials/harmenberg-aggregation?launch">https://econ-ark.org/materials/harmenberg-aggregation?launch</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dist_mGrid</strong> (<em>np.array</em>) – Grid over normalized market resources</p></li>
+<li><p><strong>bNext</strong> (<em>np.array</em>) – Grid over bank balances</p></li>
+<li><p><strong>shk_prbs</strong> (<em>np.array</em>) – Array of shock probabilities over combinations of permanent and transitory shocks</p></li>
+<li><p><strong>perm_shks</strong> (<em>np.array</em>) – Array of shocks to permanent income. Shocks should follow Harmenberg neutral measure</p></li>
+<li><p><strong>tran_shks</strong> (<em>np.array</em>) – Array of shocks to transitory</p></li>
+<li><p><strong>LivPrb</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Probability of not dying</p></li>
+<li><p><strong>NewBornDist</strong> (<em>np.array</em>) – array representing distribution of newborns across grid of normalized market resources and grid of permanent income.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>TranMatrix</strong> – Transition Matrix over normalized market resources grid.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="HARK.utilities.gen_tran_matrix_2D">
+<span class="sig-prename descclassname"><span class="pre">HARK.utilities.</span></span><span class="sig-name descname"><span class="pre">gen_tran_matrix_2D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dist_mGrid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dist_pGrid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bNext</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shk_prbs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">perm_shks</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tran_shks</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">LivPrb</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">NewBornDist</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#HARK.utilities.gen_tran_matrix_2D" title="Permalink to this definition"></a></dt>
+<dd><p>Computes Transition Matrix over normalized market resources and permanent income.
+This function is built to non-stochastic simulate the IndShockConsumerType.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dist_mGrid</strong> (<em>np.array</em>) – Grid over normalized market resources</p></li>
+<li><p><strong>dist_pGrid</strong> (<em>np.array</em>) – Grid over permanent income</p></li>
+<li><p><strong>bNext</strong> (<em>np.array</em>) – Grid over bank balances</p></li>
+<li><p><strong>shk_prbs</strong> (<em>np.array</em>) – Array of shock probabilities over combinations of perm and tran shocks</p></li>
+<li><p><strong>perm_shks</strong> (<em>np.array</em>) – Array of shocks to permanent income</p></li>
+<li><p><strong>tran_shks</strong> (<em>np.array</em>) – Array of shocks to transitory income</p></li>
+<li><p><strong>LivPrb</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Probability of not dying</p></li>
+<li><p><strong>NewBornDist</strong> (<em>np.array</em>) – array representing distribution of newborns across grid of normalized market resources and grid of permanent income.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>TranMatrix</strong> – Transition Matrix over normalized market resources grid and permanent income grid</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="HARK.utilities.get_arg_names">
+<span class="sig-prename descclassname"><span class="pre">HARK.utilities.</span></span><span class="sig-name descname"><span class="pre">get_arg_names</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">function</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#HARK.utilities.get_arg_names" title="Permalink to this definition"></a></dt>
+<dd><p>Returns a list of strings naming all of the arguments for the passed function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>function</strong> (<em>function</em>) – A function whose argument names are wanted.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>argNames</strong> – The names of the arguments of function.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>[string]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="HARK.utilities.get_lorenz_shares">
+<span class="sig-prename descclassname"><span class="pre">HARK.utilities.</span></span><span class="sig-name descname"><span class="pre">get_lorenz_shares</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percentiles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">presorted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#HARK.utilities.get_lorenz_shares" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates the Lorenz curve at the requested percentiles of (weighted) data.
+Median by default.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>numpy.array</em>) – A 1D array of float data.</p></li>
+<li><p><strong>weights</strong> (<em>numpy.array</em>) – A weighting vector for the data.</p></li>
+<li><p><strong>percentiles</strong> (<em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>]</em>) – A list or numpy.array of percentiles to calculate for the data.  Each element should
+be in (0,1).</p></li>
+<li><p><strong>presorted</strong> (<em>boolean</em>) – Indicator for whether data has already been sorted.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>lorenz_out</strong> – The requested Lorenz curve points of the data.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="HARK.utilities.get_percentiles">
+<span class="sig-prename descclassname"><span class="pre">HARK.utilities.</span></span><span class="sig-name descname"><span class="pre">get_percentiles</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percentiles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">presorted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#HARK.utilities.get_percentiles" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates the requested percentiles of (weighted) data.  Median by default.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>numpy.array</em>) – A 1D array of float data.</p></li>
+<li><p><strong>weights</strong> (<em>np.array</em>) – A weighting vector for the data.</p></li>
+<li><p><strong>percentiles</strong> (<em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>]</em>) – A list or numpy.array of percentiles to calculate for the data.  Each element should
+be in (0,1).</p></li>
+<li><p><strong>presorted</strong> (<em>boolean</em>) – Indicator for whether data has already been sorted.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>pctl_out</strong> – The requested percentiles of the data.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="HARK.utilities.in_ipynb">
+<span class="sig-prename descclassname"><span class="pre">HARK.utilities.</span></span><span class="sig-name descname"><span class="pre">in_ipynb</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#HARK.utilities.in_ipynb" title="Permalink to this definition"></a></dt>
+<dd><p>If the ipython process contains ‘terminal’ assume not in a notebook.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>bool</strong> – True if called from a jupyter notebook, else False</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Boolean</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="HARK.utilities.jump_to_grid_1D">
+<span class="sig-prename descclassname"><span class="pre">HARK.utilities.</span></span><span class="sig-name descname"><span class="pre">jump_to_grid_1D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m_vals</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">probs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Dist_mGrid</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#HARK.utilities.jump_to_grid_1D" title="Permalink to this definition"></a></dt>
+<dd><p>Distributes values onto a predefined grid, maintaining the means.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>m_vals</strong> (<em>np.array</em>) – Market resource values</p></li>
+<li><p><strong>probs</strong> (<em>np.array</em>) – Shock probabilities associated with combinations of m_vals.
+Can be thought of as the probability mass function  of (m_vals).</p></li>
+<li><p><strong>dist_mGrid</strong> (<em>np.array</em>) – Grid over normalized market resources</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>probGrid.flatten()</strong> – Probabilities of each gridpoint on the combined grid of market resources</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="HARK.utilities.jump_to_grid_2D">
+<span class="sig-prename descclassname"><span class="pre">HARK.utilities.</span></span><span class="sig-name descname"><span class="pre">jump_to_grid_2D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m_vals</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">perm_vals</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">probs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dist_mGrid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dist_pGrid</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#HARK.utilities.jump_to_grid_2D" title="Permalink to this definition"></a></dt>
+<dd><p>Distributes values onto a predefined grid, maintaining the means. m_vals and perm_vals are realizations of market resources and permanent income while
+dist_mGrid and dist_pGrid are the predefined grids of market resources and permanent income, respectively. That is, m_vals and perm_vals do not necesarily lie on their
+respective grids. Returns probabilities of each gridpoint on the combined grid of market resources and permanent income.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>m_vals</strong> (<em>np.array</em>) – Market resource values</p></li>
+<li><p><strong>perm_vals</strong> (<em>np.array</em>) – Permanent income values</p></li>
+<li><p><strong>probs</strong> (<em>np.array</em>) – Shock probabilities associated with combinations of m_vals and perm_vals.
+Can be thought of as the probability mass function  of (m_vals, perm_vals).</p></li>
+<li><p><strong>dist_mGrid</strong> (<em>np.array</em>) – Grid over normalized market resources</p></li>
+<li><p><strong>dist_pGrid</strong> (<em>np.array</em>) – Grid over permanent income</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>probGrid.flatten()</strong> – Probabilities of each gridpoint on the combined grid of market resources and permanent income</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="HARK.utilities.kernel_regression">
+<span class="sig-prename descclassname"><span class="pre">HARK.utilities.</span></span><span class="sig-name descname"><span class="pre">kernel_regression</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">500</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#HARK.utilities.kernel_regression" title="Permalink to this definition"></a></dt>
+<dd><p>Performs a non-parametric Nadaraya-Watson 1D kernel regression on given data
+with optionally specified range, number of points, and kernel bandwidth.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>np.array</em>) – The independent variable in the kernel regression.</p></li>
+<li><p><strong>y</strong> (<em>np.array</em>) – The dependent variable in the kernel regression.</p></li>
+<li><p><strong>bot</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Minimum value of interest in the regression; defaults to min(x).</p></li>
+<li><p><strong>top</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Maximum value of interest in the regression; defaults to max(y).</p></li>
+<li><p><strong>N</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – Number of points to compute.</p></li>
+<li><p><strong>h</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – The bandwidth of the (Epanechnikov) kernel. To-do: GENERALIZE.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>regression</strong> – A piecewise locally linear kernel regression: y = f(x).</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="interpolation.html#HARK.interpolation.LinearInterp" title="HARK.interpolation.LinearInterp">LinearInterp</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="HARK.utilities.make_figs">
+<span class="sig-prename descclassname"><span class="pre">HARK.utilities.</span></span><span class="sig-name descname"><span class="pre">make_figs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">figure_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">saveFigs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drawFigs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Figures'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#HARK.utilities.make_figs" title="Permalink to this definition"></a></dt>
+<dd><p>Utility function to save figure in multiple formats and display the image.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>figure_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – name of the figure</p></li>
+<li><p><strong>saveFigs</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – True if the figure needs to be written to disk else False</p></li>
+<li><p><strong>drawFigs</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – True if the figure should be displayed using plt.draw()</p></li>
+<li><p><strong>target_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>default = 'Figures/'</em>) – Name of folder to save figures to in the current directory</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="HARK.utilities.make_grid_exp_mult">
+<span class="sig-prename descclassname"><span class="pre">HARK.utilities.</span></span><span class="sig-name descname"><span class="pre">make_grid_exp_mult</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ming</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ng</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timestonest</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#HARK.utilities.make_grid_exp_mult" title="Permalink to this definition"></a></dt>
+<dd><p>Make a multi-exponentially spaced grid.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ming</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Minimum value of the grid</p></li>
+<li><p><strong>maxg</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Maximum value of the grid</p></li>
+<li><p><strong>ng</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – The number of grid points</p></li>
+<li><p><strong>timestonest</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – the number of times to nest the exponentiation</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>points</strong> (<em>np.array</em>) – A multi-exponentially spaced grid</p></li>
+<li><p><em>Original Matab code can be found in Chris Carroll’s</em></p></li>
+<li><p><em>[Solution Methods for Microeconomic Dynamic Optimization Problems]</em></p></li>
+<li><p><strong>(http</strong> (<em>//www.econ2.jhu.edu/people/ccarroll/solvingmicrodsops/) toolkit.</em>)</p></li>
+<li><p><strong>Latest update</strong> (<em>01 May 2015</em>)</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="HARK.utilities.memoize">
+<span class="sig-prename descclassname"><span class="pre">HARK.utilities.</span></span><span class="sig-name descname"><span class="pre">memoize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#HARK.utilities.memoize" title="Permalink to this definition"></a></dt>
+<dd><p>A decorator to (potentially) make functions more efficient.</p>
+<p>With this decorator, functions will “remember” if they have been evaluated with given inputs
+before.  If they have, they will “remember” the outputs that have already been calculated
+for those inputs, rather than calculating them again.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="HARK.utilities.mround">
+<span class="sig-prename descclassname"><span class="pre">HARK.utilities.</span></span><span class="sig-name descname"><span class="pre">mround</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">match</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#HARK.utilities.mround" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="HARK.utilities.plot_funcs">
+<span class="sig-prename descclassname"><span class="pre">HARK.utilities.</span></span><span class="sig-name descname"><span class="pre">plot_funcs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">functions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bottom</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">legend_kwds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#HARK.utilities.plot_funcs" title="Permalink to this definition"></a></dt>
+<dd><p>Plots 1D function(s) over a given range.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>functions</strong> (<em>[</em><em>function</em><em>] or </em><em>function</em>) – A single function, or a list of functions, to be plotted.</p></li>
+<li><p><strong>bottom</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – The lower limit of the domain to be plotted.</p></li>
+<li><p><strong>top</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – The upper limit of the domain to be plotted.</p></li>
+<li><p><strong>N</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – Number of points in the domain to evaluate.</p></li>
+<li><p><strong>legend_kwds</strong> (<em>None</em><em>, or </em><em>dictionary</em>) – If not None, the keyword dictionary to pass to plt.legend</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>none</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="HARK.utilities.plot_funcs_der">
+<span class="sig-prename descclassname"><span class="pre">HARK.utilities.</span></span><span class="sig-name descname"><span class="pre">plot_funcs_der</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">functions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bottom</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">legend_kwds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#HARK.utilities.plot_funcs_der" title="Permalink to this definition"></a></dt>
+<dd><p>Plots the first derivative of 1D function(s) over a given range.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>function</strong> (<em>function</em>) – A function or list of functions, the derivatives of which are to be plotted.</p></li>
+<li><p><strong>bottom</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – The lower limit of the domain to be plotted.</p></li>
+<li><p><strong>top</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – The upper limit of the domain to be plotted.</p></li>
+<li><p><strong>N</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – Number of points in the domain to evaluate.</p></li>
+<li><p><strong>legend_kwds</strong> (<em>None</em><em>, or </em><em>dictionary</em>) – If not None, the keyword dictionary to pass to plt.legend</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>none</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="HARK.utilities.round_in_file">
+<span class="sig-prename descclassname"><span class="pre">HARK.utilities.</span></span><span class="sig-name descname"><span class="pre">round_in_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#HARK.utilities.round_in_file" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="HARK.utilities.setup_latex_env_notebook">
+<span class="sig-prename descclassname"><span class="pre">HARK.utilities.</span></span><span class="sig-name descname"><span class="pre">setup_latex_env_notebook</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">latexExists</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#HARK.utilities.setup_latex_env_notebook" title="Permalink to this definition"></a></dt>
+<dd><p>This is needed for use of the latex_envs notebook extension
+which allows the use of environments in Markdown.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>pf</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> (</em><em>platform</em><em>)</em>) – output of determine_platform()</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="HARK.utilities.test_latex_installation">
+<span class="sig-prename descclassname"><span class="pre">HARK.utilities.</span></span><span class="sig-name descname"><span class="pre">test_latex_installation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pf</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#HARK.utilities.test_latex_installation" title="Permalink to this definition"></a></dt>
+<dd><p>Test to check if latex is installed on the machine.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>pf</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> (</em><em>platform</em><em>)</em>) – output of determine_platform()</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>bool</strong> – True if latex found, else installed in the case of debian
+otherwise ImportError raised to direct user to install latex manually</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Boolean</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="simulation.html" class="btn btn-neutral float-left" title="Simulation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="validators.html" class="btn btn-neutral float-right" title="Validators" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Econ-ARK team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

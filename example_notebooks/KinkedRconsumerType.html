@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KinkedRconsumerType: Consumption-saving model with idiosyncratic income shocks and different interest rates on borrowing and saving &mdash; HARK latest documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/nbsphinx-code-cells.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Portfolio Models in HARK" href="ConsPortfolioModel.html" />
+    <link rel="prev" title="IndShockConsumerType Documentation" href="IndShockConsumerType.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            HARK
+          </a>
+              <div class="version">
+                latest
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick-start.html">Installing HARK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick-start.html#learning-hark">Learning HARK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick-start.html#making-changes-to-hark">Making changes to HARK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick-start.html#next-steps">Next steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ARKitecture.html">ARKitecture of Econ-ARK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/CONTRIBUTING.html">Contributing to Econ-ARK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">API Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CHANGELOG.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Gentle-Intro-To-HARK.html">A Gentle Introduction to HARK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PerfForesightConsumerType.html">PerfForesightConsumerType: Perfect foresight consumption-saving</a></li>
+<li class="toctree-l1"><a class="reference internal" href="IndShockConsumerType.html">IndShockConsumerType Documentation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">KinkedRconsumerType: Consumption-saving model with idiosyncratic income shocks and different interest rates on borrowing and saving</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Statement-of-%22kinked-R%22-model">Statement of “kinked R” model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Solving-the-%22kinked-R%22-model">Solving the “kinked R” model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Example-parameter-values-to-construct-an-instance-of-KinkedRconsumerType">Example parameter values to construct an instance of KinkedRconsumerType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Solving-and-examining-the-solution-of-the-%22kinked-R%22-model">Solving and examining the solution of the “kinked R” model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Simulating-the-%22kinked-R%22-model">Simulating the “kinked R” model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ConsPortfolioModel.html">Portfolio Models in HARK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GenIncProcessModel.html">Permanent versus Persistent Income Shocks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LifecycleModel.html">A Lifecycle Model: The Distribution of Assets By Age</a></li>
+<li class="toctree-l1"><a class="reference internal" href="HowWeSolveIndShockConsumerType.html">How we solve a model defined by the <code class="docutils literal notranslate"><span class="pre">IndShockConsumerType</span></code> class</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">HARK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">KinkedRconsumerType: Consumption-saving model with idiosyncratic income shocks and different interest rates on borrowing and saving</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/example_notebooks/KinkedRconsumerType.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="KinkedRconsumerType:-Consumption-saving-model-with-idiosyncratic-income-shocks-and-different-interest-rates-on-borrowing-and-saving">
+<h1>KinkedRconsumerType: Consumption-saving model with idiosyncratic income shocks and different interest rates on borrowing and saving<a class="headerlink" href="#KinkedRconsumerType:-Consumption-saving-model-with-idiosyncratic-income-shocks-and-different-interest-rates-on-borrowing-and-saving" title="Permalink to this heading"></a></h1>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initial imports and notebook setup, click arrow to show</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">HARK.ConsumptionSaving.ConsIndShockModel</span> <span class="kn">import</span> <span class="n">KinkedRconsumerType</span>
+<span class="kn">from</span> <span class="nn">HARK.utilities</span> <span class="kn">import</span> <span class="n">plot_funcs_der</span><span class="p">,</span> <span class="n">plot_funcs</span>
+
+<span class="n">mystr</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">number</span><span class="p">:</span> <span class="s2">&quot;</span><span class="si">{:.4f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>The module <code class="docutils literal notranslate"><span class="pre">HARK.ConsumptionSaving.ConsIndShockModel</span></code> concerns consumption-saving models with idiosyncratic shocks to (non-capital) income. All of the models assume CRRA utility with geometric discounting, no bequest motive, and income shocks are fully transitory or fully permanent.</p>
+<p><code class="docutils literal notranslate"><span class="pre">ConsIndShockModel</span></code> currently includes three models: 1. A very basic “perfect foresight” model with no uncertainty. 2. A model with risk over transitory and permanent income shocks. 3. The model described in (2), with an interest rate for debt that differs from the interest rate for savings.</p>
+<p>This notebook provides documentation for the third of these models. <span class="math notranslate nohighlight">\(\newcommand{\CRRA}{\rho}\)</span> <span class="math notranslate nohighlight">\(\newcommand{\DiePrb}{\mathsf{D}}\)</span> <span class="math notranslate nohighlight">\(\newcommand{\PermGroFac}{\Gamma}\)</span> <span class="math notranslate nohighlight">\(\newcommand{\Rfree}{\mathsf{R}}\)</span> <span class="math notranslate nohighlight">\(\newcommand{\DiscFac}{\beta}\)</span></p>
+<section id="Statement-of-%22kinked-R%22-model">
+<h2>Statement of “kinked R” model<a class="headerlink" href="#Statement-of-%22kinked-R%22-model" title="Permalink to this heading"></a></h2>
+<p>Consider a small extension to the model faced by <code class="docutils literal notranslate"><span class="pre">IndShockConsumerType</span></code>s: that the interest rate on borrowing <span class="math notranslate nohighlight">\(a_t &lt; 0\)</span> is greater than the interest rate on saving <span class="math notranslate nohighlight">\(a_t &gt; 0\)</span>. Consumers who face this kind of problem are represented by the <span class="math notranslate nohighlight">\(\texttt{KinkedRconsumerType}\)</span> class.</p>
+<p>For a full theoretical treatment, this model analyzed in <a class="reference external" href="http://www.econ2.jhu.edu/people/ccarroll/ATheoryv3JEP.pdf">A Theory of the Consumption Function, With and Without Liquidity Constraints</a> and its <a class="reference external" href="http://www.econ2.jhu.edu/people/ccarroll/ATheoryv3NBER.pdf">expanded edition</a>.</p>
+<p>Continuing to work with <em>normalized</em> variables (e.g. <span class="math notranslate nohighlight">\(m_t\)</span> represents the level of market resources divided by permanent income), the “kinked R” model can be stated as:</p>
+<p>:nbsphinx-math:<a href="#id1"><span class="problematic" id="id2">`</span></a>begin{eqnarray*}
+v_t(m_t) &amp;=&amp; max_{c_t} {~} U(c_t) + DiscFac (1-DiePrb_{t+1})  mathbb{E}_{t} left[ (PermGroFac_{t+1}psi_{t+1})^{1-CRRA} v_{t+1}(m_{t+1}) right], \
+a_t &amp;=&amp; m_t - c_t, \
+a_t &amp;geq&amp; underline{a}, \
+m_{t+1} &amp;=&amp; Rfree_t/(PermGroFac_{t+1} psi_{t+1}) a_t + theta_{t+1}, \
+Rfree_t &amp;=&amp; cases{Rfree_{boro} texttt{ if } a_t &lt; 0 \</p>
+<blockquote>
+<div><p>Rfree_{save} texttt{ if } a_t geq 0},\</p>
+</div></blockquote>
+<p>Rfree_{boro} &amp;&gt;&amp; Rfree_{save}, \
+(psi_{t+1},theta_{t+1}) &amp;sim&amp; F_{t+1}, \
+mathbb{E}[psi]=mathbb{E}[theta] &amp;=&amp; 1.
+end{eqnarray*}`</p>
+</section>
+<section id="Solving-the-%22kinked-R%22-model">
+<h2>Solving the “kinked R” model<a class="headerlink" href="#Solving-the-%22kinked-R%22-model" title="Permalink to this heading"></a></h2>
+<p>The solution method for the “kinked R” model is nearly identical to that of the <code class="docutils literal notranslate"><span class="pre">IndShockConsumerType</span></code> on which it is based, using the endogenous grid method; see the notebook for that model for more information. The only significant difference is that the interest factor varies by <span class="math notranslate nohighlight">\(a_t\)</span> across the exogenously chosen grid of end-of-period assets, with a discontinuity in <span class="math notranslate nohighlight">\(\Rfree\)</span> at <span class="math notranslate nohighlight">\(a_t=0\)</span>.</p>
+<p>To correctly handle this, the <code class="docutils literal notranslate"><span class="pre">solveConsKinkedR</span></code> function inserts <em>two</em> instances of <span class="math notranslate nohighlight">\(a_t=0\)</span> into the grid of <span class="math notranslate nohighlight">\(a_t\)</span> values: the first corresponding to <span class="math notranslate nohighlight">\(\Rfree_{boro}\)</span> (<span class="math notranslate nohighlight">\(a_t = -0\)</span>) and the other corresponding to <span class="math notranslate nohighlight">\(\Rfree_{save}\)</span> (<span class="math notranslate nohighlight">\(a_t = +0\)</span>). The two consumption levels (and corresponding endogenous <span class="math notranslate nohighlight">\(m_t\)</span> gridpoints) represent points at which the agent’s first order condition is satisfied at <em>exactly</em> <span class="math notranslate nohighlight">\(a_t=0\)</span> at the two different interest factors.
+In between these two points, the first order condition <em>does not hold with equality</em>: the consumer will end the period with exactly <span class="math notranslate nohighlight">\(a_t=0\)</span>, consuming <span class="math notranslate nohighlight">\(c_t=m_t\)</span>, but his marginal utility of consumption exceeds the marginal value of saving and is less than the marginal value of borrowing. This generates a consumption function with <em>two</em> kinks: two concave portions (for borrowing and saving) with a linear segment of slope 1 in between.</p>
+</section>
+<section id="Example-parameter-values-to-construct-an-instance-of-KinkedRconsumerType">
+<h2>Example parameter values to construct an instance of KinkedRconsumerType<a class="headerlink" href="#Example-parameter-values-to-construct-an-instance-of-KinkedRconsumerType" title="Permalink to this heading"></a></h2>
+<p>The parameters required to create an instance of <code class="docutils literal notranslate"><span class="pre">KinkedRconsumerType</span></code> are nearly identical to those for <code class="docutils literal notranslate"><span class="pre">IndShockConsumerType</span></code>. The only difference is that the parameter <span class="math notranslate nohighlight">\(\texttt{Rfree}\)</span> is replaced with <span class="math notranslate nohighlight">\(\texttt{Rboro}\)</span> and <span class="math notranslate nohighlight">\(\texttt{Rsave}\)</span>.</p>
+<p>While the parameter <span class="math notranslate nohighlight">\(\texttt{CubicBool}\)</span> is required to create a valid <code class="docutils literal notranslate"><span class="pre">KinkedRconsumerType</span></code> instance, it must be set to <code class="docutils literal notranslate"><span class="pre">False</span></code>; cubic spline interpolation has not yet been implemented for this model. In the future, this restriction will be lifted.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Code</p></th>
+<th class="head"><p>Example value</p></th>
+<th class="head"><p>Time-varying?</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\DiscFac\)</span></p></td>
+<td><p>Intertemporal discount factor</p></td>
+<td><p><span class="math notranslate nohighlight">\(\texttt{DiscFac}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0.96\)</span></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>$:nbsphinx-math:<a href="#id3"><span class="problematic" id="id4">`</span></a>CRRA <a href="#id5"><span class="problematic" id="id6">`</span></a>$</p></td>
+<td><p>Coefficient of relative risk aversion</p></td>
+<td><p><span class="math notranslate nohighlight">\(\texttt{CRRA}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(2.0\)</span></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\Rfree_{boro}\)</span></p></td>
+<td><p>Risk free interest factor for borrowing</p></td>
+<td><p><span class="math notranslate nohighlight">\(\texttt{Rboro}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1.20\)</span></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\Rfree_{save}\)</span></p></td>
+<td><p>Risk free interest factor for saving</p></td>
+<td><p><span class="math notranslate nohighlight">\(\texttt{Rsave}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1.01\)</span></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(1 - \DiePrb_{t+1}\)</span></p></td>
+<td><p>Survival probability</p></td>
+<td><p><span class="math notranslate nohighlight">\(\texttt{LivPrb}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\([0.98]\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\surd\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\PermGroFac_{t+1}\)</span></p></td>
+<td><p>Permanent income growth factor</p></td>
+<td><p><span class="math notranslate nohighlight">\(\texttt{PermGroFac}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\([1.01]\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\surd\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>$:nbsphinx-math:<cite>sigma</cite>_:nbsphinx-math:<a href="#id7"><span class="problematic" id="id8">`</span></a>psi <a href="#id9"><span class="problematic" id="id10">`</span></a>$</p></td>
+<td><p>Standard deviation of log permanent income shocks</p></td>
+<td><p><span class="math notranslate nohighlight">\(\texttt{PermShkStd}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\([0.1]\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\surd\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>$N_:nbsphinx-math:<a href="#id11"><span class="problematic" id="id12">`</span></a>psi <a href="#id13"><span class="problematic" id="id14">`</span></a>$</p></td>
+<td><p>Number of discrete permanent income shocks</p></td>
+<td><p><span class="math notranslate nohighlight">\(\texttt{PermShkCount}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(7\)</span></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>$:nbsphinx-math:<cite>sigma</cite>_:nbsphinx-math:<a href="#id15"><span class="problematic" id="id16">`</span></a>theta <a href="#id17"><span class="problematic" id="id18">`</span></a>$</p></td>
+<td><p>Standard deviation of log transitory income shocks</p></td>
+<td><p><span class="math notranslate nohighlight">\(\texttt{TranShkStd}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\([0.2]\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\surd\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>$N_:nbsphinx-math:<a href="#id19"><span class="problematic" id="id20">`</span></a>theta <a href="#id21"><span class="problematic" id="id22">`</span></a>$</p></td>
+<td><p>Number of discrete transitory income shocks</p></td>
+<td><p><span class="math notranslate nohighlight">\(\texttt{TranShkCount}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(7\)</span></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\mho\)</span></p></td>
+<td><p>Probability of being unemployed and getting <span class="math notranslate nohighlight">\(\theta=\underline{\theta}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\texttt{UnempPrb}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0.05\)</span></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>$:nbsphinx-math:<cite>underline{theta}</cite> $</p></td>
+<td><p>Transitory shock when unemployed</p></td>
+<td><p><span class="math notranslate nohighlight">\(\texttt{IncUnemp}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0.3\)</span></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\mho^{Ret}\)</span></p></td>
+<td><p>Probability of being “unemployed” when retired</p></td>
+<td><p><span class="math notranslate nohighlight">\(\texttt{UnempPrb}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0.0005\)</span></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>$:nbsphinx-math:<a href="#id23"><span class="problematic" id="id24">`</span></a>underline{theta}`^{Ret} $</p></td>
+<td><p>Transitory shock when “unemployed” and retired</p></td>
+<td><p><span class="math notranslate nohighlight">\(\texttt{IncUnemp}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0.0\)</span></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\((none)\)</span></p></td>
+<td><p>Period of the lifecycle model when retirement begins</p></td>
+<td><p><span class="math notranslate nohighlight">\(\texttt{T_retire}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\((none)\)</span></p></td>
+<td><p>Minimum value in assets-above-minimum grid</p></td>
+<td><p><span class="math notranslate nohighlight">\(\texttt{aXtraMin}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0.001\)</span></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\((none)\)</span></p></td>
+<td><p>Maximum value in assets-above-minimum grid</p></td>
+<td><p><span class="math notranslate nohighlight">\(\texttt{aXtraMax}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(20.0\)</span></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\((none)\)</span></p></td>
+<td><p>Number of points in base assets-above-minimum grid</p></td>
+<td><p><span class="math notranslate nohighlight">\(\texttt{aXtraCount}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(48\)</span></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\((none)\)</span></p></td>
+<td><p>Exponential nesting factor for base assets-above-minimum grid</p></td>
+<td><p><span class="math notranslate nohighlight">\(\texttt{aXtraNestFac}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(3\)</span></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\((none)\)</span></p></td>
+<td><p>Additional values to add to assets-above-minimum grid</p></td>
+<td><p><span class="math notranslate nohighlight">\(\texttt{aXtraExtra}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(None\)</span></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>$:nbsphinx-math:<cite>underline{a}</cite> $</p></td>
+<td><p>Artificial borrowing constraint (normalized)</p></td>
+<td><p><span class="math notranslate nohighlight">\(\texttt{BoroCnstArt}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(None\)</span></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>$(none) $</p></td>
+<td><p>Indicator for whether <span class="math notranslate nohighlight">\(\texttt{vFunc}\)</span> should be computed</p></td>
+<td><p><span class="math notranslate nohighlight">\(\texttt{vFuncBool}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(True\)</span></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\((none)\)</span></p></td>
+<td><p>Indicator for whether <span class="math notranslate nohighlight">\(\texttt{cFunc}\)</span> should use cubic splines</p></td>
+<td><p><span class="math notranslate nohighlight">\(\texttt{CubicBool}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(False\)</span></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(T\)</span></p></td>
+<td><p>Number of periods in this type’s “cycle”</p></td>
+<td><p><span class="math notranslate nohighlight">\(\texttt{T_cycle}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>(none)</p></td>
+<td><p>Number of times the “cycle” occurs</p></td>
+<td><p><span class="math notranslate nohighlight">\(\texttt{cycles}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>These example parameters are almost identical to those used for <code class="docutils literal notranslate"><span class="pre">IndShockExample</span></code> in the prior notebook, except that the interest rate on borrowing is 20% (like a credit card), and the interest rate on saving is 1%. Moreover, the artificial borrowing constraint has been set to <code class="docutils literal notranslate"><span class="pre">None</span></code>. The cell below defines a parameter dictionary with these example values.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">KinkedRdict</span> <span class="o">=</span> <span class="p">{</span>  <span class="c1"># Click the arrow to expand this parameter dictionary</span>
+    <span class="c1"># Parameters shared with the perfect foresight model</span>
+    <span class="s2">&quot;CRRA&quot;</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span>  <span class="c1"># Coefficient of relative risk aversion</span>
+    <span class="s2">&quot;DiscFac&quot;</span><span class="p">:</span> <span class="mf">0.96</span><span class="p">,</span>  <span class="c1"># Intertemporal discount factor</span>
+    <span class="s2">&quot;LivPrb&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.98</span><span class="p">],</span>  <span class="c1"># Survival probability</span>
+    <span class="s2">&quot;PermGroFac&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.01</span><span class="p">],</span>  <span class="c1"># Permanent income growth factor</span>
+    <span class="s2">&quot;BoroCnstArt&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>  <span class="c1"># Artificial borrowing constraint; imposed minimum level of end-of period assets</span>
+    <span class="c1"># New parameters unique to the &quot;kinked R&quot; model</span>
+    <span class="s2">&quot;Rboro&quot;</span><span class="p">:</span> <span class="mf">1.20</span><span class="p">,</span>  <span class="c1"># Interest factor on borrowing (a &lt; 0)</span>
+    <span class="s2">&quot;Rsave&quot;</span><span class="p">:</span> <span class="mf">1.01</span><span class="p">,</span>  <span class="c1"># Interest factor on saving (a &gt; 0)</span>
+    <span class="c1"># Parameters that specify the income distribution over the lifecycle (shared with IndShockConsumerType)</span>
+    <span class="s2">&quot;PermShkStd&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">],</span>  <span class="c1"># Standard deviation of log permanent shocks to income</span>
+    <span class="s2">&quot;PermShkCount&quot;</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span>  <span class="c1"># Number of points in discrete approximation to permanent income shocks</span>
+    <span class="s2">&quot;TranShkStd&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.2</span><span class="p">],</span>  <span class="c1"># Standard deviation of log transitory shocks to income</span>
+    <span class="s2">&quot;TranShkCount&quot;</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span>  <span class="c1"># Number of points in discrete approximation to transitory income shocks</span>
+    <span class="s2">&quot;UnempPrb&quot;</span><span class="p">:</span> <span class="mf">0.05</span><span class="p">,</span>  <span class="c1"># Probability of unemployment while working</span>
+    <span class="s2">&quot;IncUnemp&quot;</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">,</span>  <span class="c1"># Unemployment benefits replacement rate</span>
+    <span class="s2">&quot;UnempPrbRet&quot;</span><span class="p">:</span> <span class="mf">0.0005</span><span class="p">,</span>  <span class="c1"># Probability of &quot;unemployment&quot; while retired</span>
+    <span class="s2">&quot;IncUnempRet&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>  <span class="c1"># &quot;Unemployment&quot; benefits when retired</span>
+    <span class="s2">&quot;T_retire&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>  <span class="c1"># Period of retirement (0 --&gt; no retirement)</span>
+    <span class="s2">&quot;tax_rate&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>  <span class="c1"># Flat income tax rate (legacy parameter, will be removed in future)</span>
+    <span class="c1"># Parameters for constructing the &quot;assets above minimum&quot; grid (shared with IndShockConsumerType)</span>
+    <span class="s2">&quot;aXtraMin&quot;</span><span class="p">:</span> <span class="mf">0.001</span><span class="p">,</span>  <span class="c1"># Minimum end-of-period &quot;assets above minimum&quot; value</span>
+    <span class="s2">&quot;aXtraMax&quot;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>  <span class="c1"># Maximum end-of-period &quot;assets above minimum&quot; value</span>
+    <span class="s2">&quot;aXtraCount&quot;</span><span class="p">:</span> <span class="mi">48</span><span class="p">,</span>  <span class="c1"># Number of points in the base grid of &quot;assets above minimum&quot;</span>
+    <span class="s2">&quot;aXtraNestFac&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>  <span class="c1"># Exponential nesting factor when constructing &quot;assets above minimum&quot; grid</span>
+    <span class="s2">&quot;aXtraExtra&quot;</span><span class="p">:</span> <span class="p">[</span><span class="kc">None</span><span class="p">],</span>  <span class="c1"># Additional values to add to aXtraGrid</span>
+    <span class="c1"># A few other paramaters (shared with IndShockConsumerType)</span>
+    <span class="s2">&quot;vFuncBool&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>  <span class="c1"># Whether to calculate the value function during solution</span>
+    <span class="s2">&quot;CubicBool&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>  <span class="c1"># Preference shocks currently only compatible with linear cFunc</span>
+    <span class="s2">&quot;T_cycle&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>  <span class="c1"># Number of periods in the cycle for this agent type</span>
+    <span class="c1"># Parameters only used in simulation (shared with PerfForesightConsumerType)</span>
+    <span class="s2">&quot;AgentCount&quot;</span><span class="p">:</span> <span class="mi">10000</span><span class="p">,</span>  <span class="c1"># Number of agents of this type</span>
+    <span class="s2">&quot;T_sim&quot;</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span>  <span class="c1"># Number of periods to simulate</span>
+    <span class="s2">&quot;aNrmInitMean&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">6.0</span><span class="p">,</span>  <span class="c1"># Mean of log initial assets</span>
+    <span class="s2">&quot;aNrmInitStd&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>  <span class="c1"># Standard deviation of log initial assets</span>
+    <span class="s2">&quot;pLvlInitMean&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>  <span class="c1"># Mean of log initial permanent income</span>
+    <span class="s2">&quot;pLvlInitStd&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>  <span class="c1"># Standard deviation of log initial permanent income</span>
+    <span class="s2">&quot;PermGroFacAgg&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>  <span class="c1"># Aggregate permanent income growth factor</span>
+    <span class="s2">&quot;T_age&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>  <span class="c1"># Age after which simulated agents are automatically killed</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Solving-and-examining-the-solution-of-the-%22kinked-R%22-model">
+<h2>Solving and examining the solution of the “kinked R” model<a class="headerlink" href="#Solving-and-examining-the-solution-of-the-%22kinked-R%22-model" title="Permalink to this heading"></a></h2>
+<p>The cell below creates an infinite horizon instance of <code class="docutils literal notranslate"><span class="pre">KinkedRconsumerType</span></code> and solves its model by calling its <code class="docutils literal notranslate"><span class="pre">solve</span></code> method.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">KinkyExample</span> <span class="o">=</span> <span class="n">KinkedRconsumerType</span><span class="p">(</span><span class="o">**</span><span class="n">KinkedRdict</span><span class="p">)</span>
+<span class="n">KinkyExample</span><span class="o">.</span><span class="n">cycles</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># Make the example infinite horizon</span>
+<span class="n">KinkyExample</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<p>An element of a <code class="docutils literal notranslate"><span class="pre">KinkedRconsumerType</span></code>’s solution will have all the same attributes as that of a <code class="docutils literal notranslate"><span class="pre">IndShockConsumerType</span></code>; see that notebook for details.</p>
+<p>We can plot the consumption function of our “kinked R” example, as well as the MPC:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Kinked R consumption function:&quot;</span><span class="p">)</span>
+<span class="n">plot_funcs</span><span class="p">(</span><span class="n">KinkyExample</span><span class="o">.</span><span class="n">solution</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">cFunc</span><span class="p">,</span> <span class="n">KinkyExample</span><span class="o">.</span><span class="n">solution</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">mNrmMin</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Kinked R marginal propensity to consume:&quot;</span><span class="p">)</span>
+<span class="n">plot_funcs_der</span><span class="p">(</span><span class="n">KinkyExample</span><span class="o">.</span><span class="n">solution</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">cFunc</span><span class="p">,</span> <span class="n">KinkyExample</span><span class="o">.</span><span class="n">solution</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">mNrmMin</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Kinked R consumption function:
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/example_notebooks_KinkedRconsumerType_10_1.png" src="../_images/example_notebooks_KinkedRconsumerType_10_1.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Kinked R marginal propensity to consume:
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/example_notebooks_KinkedRconsumerType_10_3.png" src="../_images/example_notebooks_KinkedRconsumerType_10_3.png" />
+</div>
+</div>
+</section>
+<section id="Simulating-the-%22kinked-R%22-model">
+<h2>Simulating the “kinked R” model<a class="headerlink" href="#Simulating-the-%22kinked-R%22-model" title="Permalink to this heading"></a></h2>
+<p>In order to generate simulated data, an instance of <code class="docutils literal notranslate"><span class="pre">KinkedRconsumerType</span></code> needs to know how many agents there are that share these particular parameters (and are thus <em>ex ante</em> homogeneous), the distribution of states for newly “born” agents, and how many periods to simulated. These simulation parameters are described in the table below, along with example values.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Description</p></th>
+<th class="head"><p>Code</p></th>
+<th class="head"><p>Example value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Number of consumers of this type</p></td>
+<td><p><span class="math notranslate nohighlight">\(\texttt{AgentCount}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(10000\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Number of periods to simulate</p></td>
+<td><p><span class="math notranslate nohighlight">\(\texttt{T_sim}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(500\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Mean of initial log (normalized) assets</p></td>
+<td><p><span class="math notranslate nohighlight">\(\texttt{aNrmInitMean}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(-6.0\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Stdev of initial log (normalized) assets</p></td>
+<td><p><span class="math notranslate nohighlight">\(\texttt{aNrmInitStd}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1.0\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Mean of initial log permanent income</p></td>
+<td><p><span class="math notranslate nohighlight">\(\texttt{pLvlInitMean}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0.0\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Stdev of initial log permanent income</p></td>
+<td><p><span class="math notranslate nohighlight">\(\texttt{pLvlInitStd}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0.0\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Aggregrate productivity growth factor</p></td>
+<td><p><span class="math notranslate nohighlight">\(\texttt{PermGroFacAgg}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1.0\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Age after which consumers are automatically killed</p></td>
+<td><p><span class="math notranslate nohighlight">\(\texttt{T_age}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(None\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>Here, we will simulate 10,000 consumers for 500 periods. All newly born agents will start with permanent income of exactly <span class="math notranslate nohighlight">\(P_t = 1.0 = \exp(\texttt{pLvlInitMean})\)</span>, as <span class="math notranslate nohighlight">\(\texttt{pLvlInitStd}\)</span> has been set to zero; they will have essentially zero assets at birth, as <span class="math notranslate nohighlight">\(\texttt{aNrmInitMean}\)</span> is <span class="math notranslate nohighlight">\(-6.0\)</span>; assets will be less than <span class="math notranslate nohighlight">\(1\%\)</span> of permanent income at birth.</p>
+<p>These example parameter values were already passed as part of the parameter dictionary that we used to create <code class="docutils literal notranslate"><span class="pre">KinkyExample</span></code>, so it is ready to simulate. We need to set the <code class="docutils literal notranslate"><span class="pre">track_vars</span></code> attribute to indicate the variables for which we want to record a <em>history</em>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">KinkyExample</span><span class="o">.</span><span class="n">track_vars</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;mNrm&quot;</span><span class="p">,</span> <span class="s2">&quot;cNrm&quot;</span><span class="p">,</span> <span class="s2">&quot;pLvl&quot;</span><span class="p">]</span>
+<span class="n">KinkyExample</span><span class="o">.</span><span class="n">initialize_sim</span><span class="p">()</span>
+<span class="n">KinkyExample</span><span class="o">.</span><span class="n">simulate</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;mNrm&#39;: array([[1.00087317, 1.00256882, 1.00119482, ..., 1.00169123, 1.0003737 ,
+         1.00441586],
+        [1.13302033, 0.79429517, 0.99000089, ..., 1.44926553, 1.1327061 ,
+         0.34432404],
+        [1.22634734, 1.13318775, 0.90522013, ..., 1.80965641, 1.22613254,
+         0.69730725],
+        ...,
+        [1.26119232, 1.83660642, 1.34165692, ..., 0.87710388, 1.32535358,
+         2.00912226],
+        [1.64167997, 2.14315942, 1.27855146, ..., 0.94435908, 1.22752974,
+         1.67972355],
+        [1.54481246, 2.17309355, 1.16278819, ..., 1.02002071, 1.26869299,
+         1.82746211]]),
+ &#39;cNrm&#39;: array([[0.95569259, 0.95614394, 0.95577821, ..., 0.95591034, 0.95555964,
+         0.95663559],
+        [0.99066076, 0.8406199 , 0.95279859, ..., 1.05582281, 0.99057808,
+         0.70450109],
+        [1.01283485, 0.99070482, 0.90522013, ..., 1.11891917, 1.01278984,
+         0.81052359],
+        ...,
+        [1.02013673, 1.12330606, 1.03603333, ..., 0.87710388, 1.03300437,
+         1.14932235],
+        [1.09008958, 1.16800389, 1.0237744 , ..., 0.94028736, 1.01308263,
+         1.09698631],
+        [1.07264597, 1.17200813, 0.99849331, ..., 0.96078931, 1.02170853,
+         1.12181756]]),
+ &#39;pLvl&#39;: array([[1.08875607, 1.08875607, 0.92780942, ..., 1.08875607, 1.17807023,
+         1.00501665],
+        [1.28263111, 1.01015813, 0.93246391, ..., 1.01015813, 1.38784946,
+         1.09421797],
+        [1.3964724 , 0.93723423, 0.90325499, ..., 0.97851549, 1.51102952,
+         1.19133645],
+        ...,
+        [0.97203001, 3.11901254, 0.31172034, ..., 0.88846645, 0.52675374,
+         0.27083222],
+        [0.97690634, 3.02131119, 0.36722845, ..., 0.82432754, 0.54926595,
+         0.25128068],
+        [0.9063829 , 3.03646804, 0.43262091, ..., 0.97111573, 0.47178345,
+         0.23314058]])}
+</pre></div></div>
+</div>
+<p>We can plot the average (normalized) market resources in each simulated period:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">KinkyExample</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s2">&quot;mNrm&quot;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Mean market resources&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/example_notebooks_KinkedRconsumerType_14_0.png" src="../_images/example_notebooks_KinkedRconsumerType_14_0.png" />
+</div>
+</div>
+<p>Now let’s plot the distribution of (normalized) assets <span class="math notranslate nohighlight">\(a_t\)</span> for the current population, after simulating for <span class="math notranslate nohighlight">\(500\)</span> periods; this should be fairly close to the long run distribution:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">KinkyExample</span><span class="o">.</span><span class="n">state_now</span><span class="p">[</span><span class="s2">&quot;aNrm&quot;</span><span class="p">]),</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">KinkyExample</span><span class="o">.</span><span class="n">AgentCount</span><span class="p">),</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;End-of-period assets&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Cumulative distribution&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">1.01</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/example_notebooks_KinkedRconsumerType_16_0.png" src="../_images/example_notebooks_KinkedRconsumerType_16_0.png" />
+</div>
+</div>
+<p>We can see there’s a significant point mass of consumers with <em>exactly</em> <span class="math notranslate nohighlight">\(a_t=0\)</span>; these are consumers who do not find it worthwhile to give up a bit of consumption to begin saving (because <span class="math notranslate nohighlight">\(\Rfree_{save}\)</span> is too low), and also are not willing to finance additional consumption by borrowing (because <span class="math notranslate nohighlight">\(\Rfree_{boro}\)</span> is too high).</p>
+<p>The smaller point masses in this distribution are due to <span class="math notranslate nohighlight">\(\texttt{HARK}\)</span> drawing simulated income shocks from the discretized distribution, rather than the “true” lognormal distributions of shocks. For consumers who ended <span class="math notranslate nohighlight">\(t-1\)</span> with <span class="math notranslate nohighlight">\(a_{t-1}=0\)</span> in assets, there are only 8 values the transitory shock <span class="math notranslate nohighlight">\(\theta_{t}\)</span> can take on, and thus only 8 values of <span class="math notranslate nohighlight">\(m_t\)</span> thus <span class="math notranslate nohighlight">\(a_t\)</span> they can achieve; the value of <span class="math notranslate nohighlight">\(\psi_t\)</span> is immaterial to <span class="math notranslate nohighlight">\(m_t\)</span> when
+<span class="math notranslate nohighlight">\(a_{t-1}=0\)</span>. You can verify this by changing <span class="math notranslate nohighlight">\(\texttt{TranShkCount}\)</span> to some higher value, like 25, in the dictionary above, then running the subsequent cells; the smaller point masses will not be visible to the naked eye.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="IndShockConsumerType.html" class="btn btn-neutral float-left" title="IndShockConsumerType Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ConsPortfolioModel.html" class="btn btn-neutral float-right" title="Portfolio Models in HARK" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Econ-ARK team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
