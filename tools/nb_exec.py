@@ -12,12 +12,12 @@ per processor in the host machine.
 
 from pathlib import Path
 import sys
-from concurrent.futures import ProcessPoolExecutor
+import multiprocessing
 
 import nbformat
 from nbclient import NotebookClient
 
-ROOT_DIR = Path(__file__).parent.parent
+ROOT_DIR = Path(__file__).resolve().parent.parent
 
 
 def run_notebook(notebook_file):
@@ -35,9 +35,9 @@ def run_notebook(notebook_file):
 
 if __name__ == '__main__':
     if len(sys.argv) > 1:
-        notebooks = sys.argv[1:]
+        notebooks = (Path(p).resolve() for p in sys.argv[1:])
     else:
         notebooks = ROOT_DIR.joinpath('examples').rglob('*.ipynb')
 
-    with ProcessPoolExecutor() as pool:
+    with multiprocessing.Pool() as pool:
         pool.map(run_notebook, notebooks)

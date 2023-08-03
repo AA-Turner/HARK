@@ -1,8 +1,12 @@
-name: Execute notebooks
+name: Re-execute notebooks
 
-# Run on demand
 on:
+  # Run on demand
   workflow_dispatch:
+  # 6.49 am (GMT) every Monday; time chosen at random
+  schedule:
+  - cron: "49 6 * * MON"
+  push:
 
 # Limit workflow permissions
 permissions:
@@ -18,10 +22,11 @@ env:
 
 jobs:
   execute:
-    name: Execute
+    name: Update notebooks
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      pull-requests: write
 
     steps:
     - uses: actions/checkout@v3
@@ -33,15 +38,21 @@ jobs:
         cache-dependency-path: |
           requirements/base.txt
 
-    - name: Install HARK
+    - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         python -m pip install .
-        python -m pip install nbformat nbclient nbstripout 
+        # For LabeledModels.ipynb
+        python -m pip install estimagic
+        # For nbstripout
+        python -m pip install nbstripout
+        # For nb_exec.py
+        python -m pip install nbclient nbformat ipykernel
 
     - name: Strip output
       run: nbstripout examples/**/*.ipynb
 
+    # This step takes c. 20 minutes
     - name: Execute notebooks
       run: python tools/nb_exec.py examples/**/*.ipynb
 
@@ -50,7 +61,6 @@ jobs:
       with:
         author: "Econ-ARK Bot <noreply@econ-ark.org>"
         branch: "bot/update-notebooks"
-        token: ${{ secrets.GITHUB_TOKEN }}
         commit-message: "[bot] updated notebooks"
         delete-branch: true
         title: "[bot] Execute example notebooks"
