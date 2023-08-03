@@ -14,32 +14,31 @@ from pathlib import Path
 import sys
 from concurrent.futures import ProcessPoolExecutor
 
-# import nbformat
-# from nbclient import NotebookClient
-#
-# ROOT_DIR = Path(__file__).parent.parent
-#
-#
-# def run_notebook(notebook_file):
-#     rel_file_name = notebook_file.relative_to(ROOT_DIR).as_posix()
-#     print(f'{rel_file_name}: Loading notebook')
-#     nb = nbformat.read(notebook_file, as_version=4)
-#     client = NotebookClient(nb, timeout=600, kernel_name='python3', record_timing=False)
-#     print(f'{rel_file_name}: Executing')
-#     client.execute()
-#     print(f'{rel_file_name}: Writing')
-#     nbformat.write(nb, notebook_file)
-#     print(f'{rel_file_name}: Finished')
-#     del nb, client
+import nbformat
+from nbclient import NotebookClient
+
+ROOT_DIR = Path(__file__).parent.parent.resolve()
+
+
+def run_notebook(notebook_file):
+    rel_file_name = notebook_file.relative_to(ROOT_DIR).as_posix()
+    print(f'{rel_file_name}: Loading notebook')
+    nb = nbformat.read(notebook_file, as_version=4)
+    client = NotebookClient(nb, timeout=600, kernel_name='python3', record_timing=False)
+    print(f'{rel_file_name}: Executing')
+    client.execute()
+    print(f'{rel_file_name}: Writing')
+    nbformat.write(nb, notebook_file)
+    print(f'{rel_file_name}: Finished')
+    del nb, client
 
 
 if __name__ == '__main__':
-    print("\n".join(sys.argv[1:]))
+    if len(sys.argv) > 1:
+        notebooks = (Path(p).resolve() for p in sys.argv[1:])
+    else:
+        notebooks = list(ROOT_DIR.joinpath('examples').rglob('*.ipynb'))
+    print("\n".join(map(str, notebooks)))
 
-    # if len(sys.argv) > 1:
-    #     notebooks = sys.argv[1:]
-    # else:
-    #     notebooks = list(ROOT_DIR.joinpath('examples').rglob('*.ipynb'))
-    #
-    # with ProcessPoolExecutor() as pool:
-    #     pool.map(run_notebook, notebooks)
+    with ProcessPoolExecutor() as pool:
+        pool.map(run_notebook, notebooks)
