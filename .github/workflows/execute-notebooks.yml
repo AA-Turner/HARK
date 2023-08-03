@@ -3,6 +3,7 @@ name: Execute notebooks
 # Run on demand
 on:
   workflow_dispatch:
+  push:
 
 # Limit workflow permissions
 permissions:
