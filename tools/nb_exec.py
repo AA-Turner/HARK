@@ -35,7 +35,7 @@ def run_notebook(notebook_file):
 
 if __name__ == '__main__':
     if len(sys.argv) > 1:
-        notebooks = (Path(p).resolve() for p in sys.argv[1:])
+        notebooks = list(Path(p).resolve() for p in sys.argv[1:])
     else:
         notebooks = list(ROOT_DIR.joinpath('examples').rglob('*.ipynb'))
     print("\n".join(map(str, notebooks)))
