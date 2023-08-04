@@ -22,15 +22,19 @@ ROOT_DIR = Path(__file__).resolve().parent.parent
 
 def run_notebook(notebook_file):
     rel_file_name = notebook_file.relative_to(ROOT_DIR).as_posix()
+
     print(f'{rel_file_name}: Loading notebook')
-    nb = nbformat.read(notebook_file, as_version=4)
-    client = NotebookClient(nb, timeout=600, kernel_name='python3', record_timing=False)
-    print(f'{rel_file_name}: Executing')
-    client.execute()
-    print(f'{rel_file_name}: Writing')
-    nbformat.write(nb, notebook_file)
-    print(f'{rel_file_name}: Finished')
-    del nb, client
+    try:
+        nb = nbformat.read(notebook_file, as_version=4)
+        client = NotebookClient(nb, timeout=600, kernel_name='python3', record_timing=False)
+        print(f'{rel_file_name}: Executing')
+        client.execute()
+        print(f'{rel_file_name}: Writing')
+        nbformat.write(nb, notebook_file)
+        print(f'{rel_file_name}: Finished')
+        del nb, client
+    except Exception as err:
+        print(f'{rel_file_name}: Failed to execute\n   {err}', file=sys.stderr)
 
 
 if __name__ == '__main__':

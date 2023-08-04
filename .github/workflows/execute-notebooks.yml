@@ -55,6 +55,8 @@ jobs:
     # This step takes c. 20 minutes
     - name: Execute notebooks
       run: python tools/nb_exec.py examples/**/*.ipynb
+      env:
+        PYTHONUNBUFFERED: "1"
 
     - name: Open PR
       uses: peter-evans/create-pull-request@v5
