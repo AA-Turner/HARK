@@ -46,6 +46,7 @@ jobs:
     - name: Strip output
       run: nbstripout examples/**/*.ipynb
 
+    # This step takes c. 20 minutes
     - name: Execute notebooks
       run: python tools/nb_exec.py examples/**/*.ipynb
 
