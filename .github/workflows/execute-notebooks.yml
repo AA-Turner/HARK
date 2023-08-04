@@ -6,6 +6,7 @@ on:
   # 6.49 am (GMT) every Monday; time chosen at random
   schedule:
   - cron: "49 6 * * MON"
+  push:
 
 # Limit workflow permissions
 permissions:
