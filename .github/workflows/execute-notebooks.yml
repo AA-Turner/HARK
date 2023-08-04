@@ -1,9 +1,11 @@
-name: Execute notebooks
+name: Re-execute notebooks
 
-# Run on demand
 on:
+  # Run on demand
   workflow_dispatch:
-  push:
+  # 6.49 am (GMT) every Monday; time chosen at random
+  schedule:
+  - cron: "49 6 * * MON"
 
 # Limit workflow permissions
 permissions:
@@ -19,7 +21,7 @@ env:
 
 jobs:
   execute:
-    name: Execute
+    name: Update notebooks
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -46,15 +48,15 @@ jobs:
     - name: Execute notebooks
       run: python tools/nb_exec.py examples/**/*.ipynb
 
-#    - name: Open PR
-#      uses: peter-evans/create-pull-request@v5
-#      with:
-#        author: "Econ-ARK Bot <noreply@econ-ark.org>"
-#        branch: "bot/update-notebooks"
-#        token: ${{ secrets.GITHUB_TOKEN }}
-#        commit-message: "[bot] updated notebooks"
-#        delete-branch: true
-#        title: "[bot] Execute example notebooks"
-#        body: |
-#          This PR was automatically generated to re-execute
-#          the example notebooks for use in the documentation.
+    - name: Open PR
+      uses: peter-evans/create-pull-request@v5
+      with:
+        author: "Econ-ARK Bot <noreply@econ-ark.org>"
+        branch: "bot/update-notebooks"
+        token: ${{ secrets.GITHUB_TOKEN }}
+        commit-message: "[bot] updated notebooks"
+        delete-branch: true
+        title: "[bot] Execute example notebooks"
+        body: |
+          This PR was automatically generated to re-execute
+          the example notebooks for use in the documentation.
