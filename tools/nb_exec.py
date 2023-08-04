@@ -9,6 +9,7 @@ in the examples directory are executed.
 Notebooks are executed in parallel, with one worker
 per processor in the host machine.
 """
+import os
 import time
 from pathlib import Path
 import sys
@@ -25,6 +26,8 @@ def run_notebook(notebook_file: Path):
 
     print(f'{rel_file_name}: Loading notebook')
     try:
+        # Journey-PhD and LifecycleModel expect execution from their own directory
+        os.chdir(notebook_file.parent)
         nb = nbformat.read(notebook_file, as_version=4)
         client = NotebookClient(nb, timeout=600, kernel_name='python3', record_timing=False)
         print(f'{rel_file_name}: Executing')
