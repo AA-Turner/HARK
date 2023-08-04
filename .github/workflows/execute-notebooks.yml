@@ -26,6 +26,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      pull-requests: write
 
     steps:
     - uses: actions/checkout@v3
@@ -37,11 +38,16 @@ jobs:
         cache-dependency-path: |
           requirements/base.txt
 
-    - name: Install HARK
+    - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         python -m pip install .
-        python -m pip install nbclient nbformat nbstripout ipykernel
+        # For LabeledModels.ipynb
+        python -m pip install estimagic
+        # For nbstripout
+        python -m pip install nbstripout
+        # For nb_exec.py
+        python -m pip install nbclient nbformat ipykernel
 
     - name: Strip output
       run: nbstripout examples/**/*.ipynb
@@ -55,7 +61,6 @@ jobs:
       with:
         author: "Econ-ARK Bot <noreply@econ-ark.org>"
         branch: "bot/update-notebooks"
-        token: ${{ secrets.GITHUB_TOKEN }}
         commit-message: "[bot] updated notebooks"
         delete-branch: true
         title: "[bot] Execute example notebooks"
