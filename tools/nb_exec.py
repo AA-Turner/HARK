@@ -9,7 +9,7 @@ in the examples directory are executed.
 Notebooks are executed in parallel, with one worker
 per processor in the host machine.
 """
-
+import time
 from pathlib import Path
 import sys
 import multiprocessing
@@ -20,7 +20,7 @@ from nbclient import NotebookClient
 ROOT_DIR = Path(__file__).resolve().parent.parent
 
 
-def run_notebook(notebook_file):
+def run_notebook(notebook_file: Path):
     rel_file_name = notebook_file.relative_to(ROOT_DIR).as_posix()
 
     print(f'{rel_file_name}: Loading notebook')
@@ -28,11 +28,13 @@ def run_notebook(notebook_file):
         nb = nbformat.read(notebook_file, as_version=4)
         client = NotebookClient(nb, timeout=600, kernel_name='python3', record_timing=False)
         print(f'{rel_file_name}: Executing')
+        start = time.perf_counter()
         client.execute()
+        elapsed = time.perf_counter() - start
         print(f'{rel_file_name}: Writing')
         nbformat.write(nb, notebook_file)
-        print(f'{rel_file_name}: Finished')
-        del nb, client
+        print(f'{rel_file_name}: Finished (executed in {elapsed:.2f}s)')
+        del nb, client, start, elapsed
     except Exception as err:
         print(f'{rel_file_name}: Failed to execute\n   {err}', file=sys.stderr)
 
