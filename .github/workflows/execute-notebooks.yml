@@ -46,19 +46,18 @@ jobs:
     - name: Strip output
       run: nbstripout examples/**/*.ipynb
 
-    # This step takes c. 20 minutes
     - name: Execute notebooks
       run: python tools/nb_exec.py examples/**/*.ipynb
 
-#    - name: Open PR
-#      uses: peter-evans/create-pull-request@v5
-#      with:
-#        author: "Econ-ARK Bot <noreply@econ-ark.org>"
-#        branch: "bot/update-notebooks"
-#        token: ${{ secrets.GITHUB_TOKEN }}
-#        commit-message: "[bot] updated notebooks"
-#        delete-branch: true
-#        title: "[bot] Execute example notebooks"
-#        body: |
-#          This PR was automatically generated to re-execute
-#          the example notebooks for use in the documentation.
+    - name: Open PR
+      uses: peter-evans/create-pull-request@v5
+      with:
+        author: "Econ-ARK Bot <noreply@econ-ark.org>"
+        branch: "bot/update-notebooks"
+        token: ${{ secrets.GITHUB_TOKEN }}
+        commit-message: "[bot] updated notebooks"
+        delete-branch: true
+        title: "[bot] Execute example notebooks"
+        body: |
+          This PR was automatically generated to re-execute
+          the example notebooks for use in the documentation.
