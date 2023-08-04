@@ -9,11 +9,12 @@ in the examples directory are executed.
 Notebooks are executed in parallel, with one worker
 per processor in the host machine.
 """
+
+import multiprocessing
 import os
+import sys
 import time
 from pathlib import Path
-import sys
-import multiprocessing
 
 import nbformat
 from nbclient import NotebookClient
